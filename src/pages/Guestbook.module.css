@@ -1,0 +1,152 @@
+.guestbook {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    height: 100vh;
+    background: linear-gradient(106.37deg, #dfe8ff 29.63%, #f3c6f1 51.55%, #ffcfd1 90.85%);
+}
+
+.title {
+    margin-bottom: 20px;
+    font-size: 30px;
+}
+
+.container {
+    width: 60vw;
+    height: 70vh;
+    background-color: rgb(255, 255, 255);
+    box-shadow: rgb(187, 187, 187) 0px 10px 20px 0px;
+    border-radius: 30px;
+}
+
+.contents {
+    height: 80%;
+    padding: 20px;
+    /* background-color: rgb(0, 0, 255); */
+
+    /*스크롤바 기능 유지하지만 화면상 보이지 않게 하기 */
+
+    /* for Internet Explorer, Edge */
+    -ms-overflow-style: none;
+    /* for Firefox */
+    scrollbar-width: none;
+    overflow-y: scroll;
+}
+
+.contents::-webkit-scrollbar {
+    display: none;
+    /* for Chrome, Safari, and Opera */
+}
+
+.comment {
+    display: inline-block;
+    max-width: 80%;
+    padding: 10px;
+    border-radius: 10px 10px 10px 0;
+    font-weight: 300;
+    margin: 10px 0 10px;
+    /* margin: 10px 50% 10px 0; */
+    word-break: break-all;
+    line-height: 1.4;
+
+    background: linear-gradient(rgb(235, 147, 247) 0%, rgb(211, 152, 253) 100%);
+    box-shadow: rgba(235, 147, 247) 0px 3px 8px;
+
+    /* background: linear-gradient(#dfe8ff 0%, #f3c6f1 100%);
+    box-shadow: rgb(141, 141, 141) 0px 2px 8px; */
+
+}
+
+.inputBox {
+    height: 10%;
+    width: 100%;
+    margin-top: 10px;
+    text-align: center;
+}
+
+
+input {
+    height: 30px;
+    width: 80%;
+    border-radius: 10px;
+    border: 0px solid;
+    box-shadow: 1px 1px 8px 1px #dadce0 inset;
+}
+
+.submitButton {
+    height: 30px;
+    margin-left: 10px;
+    background-color: #f0f8ff;
+    border: 1px solid #000000e8;
+    border-radius: 10px;
+}
+
+.shareButton {
+    margin-top: 20px;
+    height: 50px;
+    border: 1px solid #00000000;
+    border-radius: 15px;
+}
+
+
+
+.shareButton {
+    align-items: center;
+    appearance: none;
+    background-color: #fff;
+    border-radius: 24px;
+    border-style: none;
+    box-shadow: rgba(0, 0, 0, .2) 0 3px 5px -1px, rgba(0, 0, 0, .14) 0 6px 10px 0, rgba(0, 0, 0, .12) 0 1px 18px 0;
+    box-sizing: border-box;
+    color: #3c4043;
+    cursor: pointer;
+    display: inline-flex;
+    fill: currentcolor;
+    font-family: "Google Sans", Roboto, Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    height: 48px;
+    justify-content: center;
+    letter-spacing: .25px;
+    line-height: normal;
+    max-width: 100%;
+    overflow: visible;
+    padding: 2px 24px;
+    position: relative;
+    text-align: center;
+    text-transform: none;
+    transition: box-shadow 280ms cubic-bezier(.4, 0, .2, 1), opacity 15ms linear 30ms, transform 270ms cubic-bezier(0, 0, .2, 1) 0ms;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    width: auto;
+    will-change: transform, opacity;
+    z-index: 0;
+}
+
+.shareButton:hover {
+    color: #3e4043;
+}
+
+.shareButton:active {
+    box-shadow: 0 4px 4px 0 rgb(60 64 67 / 30%), 0 8px 12px 6px rgb(60 64 67 / 15%);
+    outline: none;
+}
+
+.shareButton:focus {
+    outline: none;
+}
+
+
+@media (max-width:740px) {
+    .container {
+        width: 90vw;
+        height: 70vh;
+    }
+
+    .submitButton {
+        margin-left: 5px;
+    }
+}
