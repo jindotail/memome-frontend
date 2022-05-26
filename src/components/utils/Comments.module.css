@@ -22,8 +22,9 @@
 }
 
 .date {
+    display: flex;
+    align-items: flex-end;
     margin-left: 10px;
-    padding-top: 25px;
     color: #5d5d5d;
     font-size: 11px;
 }
