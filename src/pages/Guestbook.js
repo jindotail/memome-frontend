@@ -1,3 +1,4 @@
+import Comments from '../components/utils/Comments';
 import styles from "./Guestbook.module.css";
 
 function Guestbook() {
@@ -6,8 +7,8 @@ function Guestbook() {
             <span className={styles.title}> ____'s Guestbook</span>
             <div className={styles.container}>
                 <div className={styles.contents}>
-                    <div className={styles.comment}>  Volupta si dolor incididunt nulla.</div>
-                    <div className={styles.comment}>  Do Lorem reprehenderit qui esse qui pariatur excepteur culpa culpa occaecat. Quis esse fugiat nisi tempor aliquip. Laborum laborum labore velit tempor. Eiusmod sit elit nulla consequat reprehenderit enim voluptate. </div>
+                    <Comments />
+                    <Comments />
                 </div>
                 <div className={styles.inputBox}>
                     <input />

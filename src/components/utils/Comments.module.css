@@ -1,0 +1,27 @@
+.container {
+    display: flex;
+    margin: 10px auto 20px 0;
+}
+
+.comment {
+    display: inline-block;
+    max-width: 80%;
+    padding: 10px;
+    border-radius: 10px 10px 10px 0;
+    font-weight: 300;
+    word-break: break-all;
+    line-height: 1.4;
+
+    background: linear-gradient(rgb(235, 147, 247) 0%, rgb(211, 152, 253) 100%);
+    box-shadow: rgba(235, 147, 247) 0px 3px 8px;
+
+    /* background: linear-gradient(#dfe8ff 0%, #f3c6f1 100%);
+    box-shadow: rgb(141, 141, 141) 0px 2px 8px; */
+}
+
+.date {
+    margin-left: 10px;
+    padding-top: 25px;
+    color: #5d5d5d;
+    font-size: 11px;
+}
