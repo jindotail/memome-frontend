@@ -4,7 +4,7 @@ import styles from "./Guestbook.module.css";
 function Guestbook() {
     return (
         <div className={styles.guestbook}>
-            <span className={styles.title}> ____'s Guestbook</span>
+            <span className={styles.title}> Jindo's Guestbook</span>
             <div className={styles.container}>
                 <div className={styles.contents}>
                     <Comments />
