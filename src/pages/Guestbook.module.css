@@ -56,6 +56,10 @@ input {
     box-shadow: 1px 1px 8px 1px #dadce0 inset;
 }
 
+input:focus {
+    outline: 1px solid #bdbdbd;
+}
+
 .submitButton {
     height: 30px;
     margin-left: 10px;
@@ -70,8 +74,6 @@ input {
     border: 1px solid #00000000;
     border-radius: 15px;
 }
-
-
 
 .shareButton {
     align-items: center;
