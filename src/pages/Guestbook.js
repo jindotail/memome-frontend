@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from "react-router";
 import useFetch from "../hooks/useFetch";
 import Comments from '../components/utils/Comments';
@@ -19,6 +19,18 @@ function Guestbook() {
         }
     };
 
+    // 현재 시간 리턴 함수
+    const [timer, setTimer] = useState('0');
+
+    useEffect(() => {
+        const date = new Date();
+        const year = String(date.getFullYear());
+        const month = String(date.getMonth() + 1);
+        const day = String(date.getDate());
+        const totalDate = year + "-" + (("00" + month.toString()).slice(-2)) + "-" + (("00" + day.toString()).slice(-2));
+        setTimer(totalDate);
+    }, [timer])
+
     // 전송 버튼 함수
     function onSubmit(e) {
         e.preventDefault();
@@ -31,7 +43,7 @@ function Guestbook() {
             },
             body: JSON.stringify({
                 comment: commentRef.current.value,
-                date: "xxxx-xx-xx"
+                date: { timer }
             })
         }).then(res => {
             if (res.ok) {
