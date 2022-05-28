@@ -1,0 +1,69 @@
+{
+  "comment": [
+    {
+      "id": 1,
+      "comment": "댓글 test",
+      "date": "2022-05-01"
+    },
+    {
+      "id": 2,
+      "comment": "댓글 test 2 입니다",
+      "date": "2022-05-02"
+    },
+    {
+      "id": 3,
+      "comment": "댓글 test 3 입니다",
+      "date": "2022-05-03"
+    },
+    {
+      "comment": "asdf",
+      "date": "xxxx-xx-xx",
+      "id": 4
+    },
+    {
+      "comment": "잘 보고 갑니다^^",
+      "date": "xxxx-xx-xx",
+      "id": 5
+    },
+    {
+      "comment": "ㅎㅇ",
+      "date": "xxxx-xx-xx",
+      "id": 6
+    },
+    {
+      "comment": "ㅎㅇ",
+      "date": "xxxx-xx-xx",
+      "id": 7
+    },
+    {
+      "comment": "ㅇㄴ녕하세요!",
+      "date": "xxxx-xx-xx",
+      "id": 8
+    },
+    {
+      "comment": "ㅇㄴ녕하세요!ㅁㅁ",
+      "date": "xxxx-xx-xx",
+      "id": 9
+    },
+    {
+      "comment": "안녕ㅎ사에ㅛ",
+      "date": "xxxx-xx-xx",
+      "id": 10
+    },
+    {
+      "comment": "하이",
+      "date": "xxxx-xx-xx",
+      "id": 11
+    },
+    {
+      "comment": "하이",
+      "date": "xxxx-xx-xx",
+      "id": 12
+    },
+    {
+      "comment": "guestbook!!",
+      "date": "xxxx-xx-xx",
+      "id": 13
+    }
+  ]
+}
