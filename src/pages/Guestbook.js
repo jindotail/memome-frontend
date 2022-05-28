@@ -4,9 +4,9 @@ import useFetch from "../hooks/useFetch";
 import Comments from '../components/utils/Comments';
 import styles from "./Guestbook.module.css";
 
-function Guestbook() {
+function Guestbook({ page }) {
     const url = window.location.href;
-    const comments = useFetch("http://localhost:3001/comment");
+    const comments = useFetch(`http://localhost:3001/comment?page=${page}`);
     const navigate = useNavigate();
 
     // 방명록 주소 복사 함수
@@ -43,12 +43,13 @@ function Guestbook() {
             },
             body: JSON.stringify({
                 comment: commentRef.current.value,
-                date: { timer }
+                date: { timer },
+                page: page
             })
         }).then(res => {
             if (res.ok) {
                 alert("전송이 되었습니다.");
-                window.location.replace("/")
+                window.location.replace(`/${page}`)
 
             }
         })
@@ -63,7 +64,7 @@ function Guestbook() {
 
     return (
         <div className={styles.guestbook}>
-            <span className={styles.title}> Jindo's Guestbook</span>
+            <span className={styles.title}> {page}'s Guestbook</span>
             <div className={styles.container}>
                 <div className={styles.contents}>
                     {comments.map(comment => (

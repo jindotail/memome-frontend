@@ -5,7 +5,10 @@ import Guestbook from './pages/Guestbook';
 function App() {
   return (
     <BrowserRouter>
-      <Guestbook />
+      <Routes>
+        <Route path="/tail" element={<Guestbook page="Tail" />} />
+        <Route path="/jindo" element={<Guestbook page="Jindo" />} />
+      </Routes>
     </BrowserRouter>
   );
 }
