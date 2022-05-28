@@ -34,7 +34,12 @@ function Guestbook({ page }) {
     // 전송 버튼 함수
     function onSubmit(e) {
         e.preventDefault();
-        console.log(commentRef.current.value);
+
+        // form input 값 없이 submit 금지 
+        if (commentRef.current.value.length == 0) {
+            alert("인사말을 입력해주세요!");
+            return false;
+        }
 
         fetch(`http://localhost:3001/comment`, {
             method: "POST",
