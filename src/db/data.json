@@ -1,106 +1,16 @@
 {
   "comment": [
     {
-      "comment": "hi",
+      "comment": "안녕하세요!",
       "date": "2022-05-29",
       "page": "Jindo",
       "id": 1
     },
     {
-      "comment": "hi tail",
+      "comment": "test",
       "date": "2022-05-29",
-      "page": "Tail",
+      "page": "Jindo",
       "id": 2
-    },
-    {
-      "comment": "hi",
-      "date": "2022-05-29",
-      "page": "Tail",
-      "id": 3
-    },
-    {
-      "comment": "hiss",
-      "date": "2022-05-29",
-      "page": "Tail",
-      "id": 4
-    },
-    {
-      "comment": "sdsd",
-      "date": "2022-05-29",
-      "page": "Tail",
-      "id": 5
-    },
-    {
-      "comment": "adf",
-      "date": "2022-05-29",
-      "page": "Tail",
-      "id": 6
-    },
-    {
-      "comment": "adfasdfasf",
-      "date": "2022-05-29",
-      "page": "Tail",
-      "id": 7
-    },
-    {
-      "comment": "fdf",
-      "date": "2022-05-29",
-      "page": "Tail",
-      "id": 8
-    },
-    {
-      "comment": "",
-      "date": "2022-05-29",
-      "page": "Tail",
-      "id": 9
-    },
-    {
-      "comment": "",
-      "date": "2022-05-29",
-      "page": "Tail",
-      "id": 10
-    },
-    {
-      "comment": "",
-      "date": "2022-05-29",
-      "page": "Tail",
-      "id": 11
-    },
-    {
-      "comment": "dafd",
-      "date": "2022-05-29",
-      "page": "Tail",
-      "id": 12
-    },
-    {
-      "comment": "",
-      "date": "2022-05-29",
-      "page": "Tail",
-      "id": 13
-    },
-    {
-      "comment": "as",
-      "date": "2022-05-29",
-      "page": "Tail",
-      "id": 14
-    },
-    {
-      "comment": "adf",
-      "date": "2022-05-29",
-      "page": "Tail",
-      "id": 15
-    },
-    {
-      "comment": "adf",
-      "date": "2022-05-29",
-      "page": "Tail",
-      "id": 16
-    },
-    {
-      "comment": "adf",
-      "date": "2022-05-29",
-      "page": "Tail",
-      "id": 17
     }
   ]
 }
