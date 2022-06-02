@@ -1,16 +1,19 @@
 import { useEffect, useState } from "react";
+import axios from 'axios';
 
-export default function useFetch(url) {
+export default function useAxios(url) {
     const [data, setData] = useState([]);
 
     useEffect(() => {
-        fetch(url)
+        axios.get(url)
             .then(res => {
-                return res.json();
+                //console.log(res.data.body);
+                return res.data.body;
             })
             .then(data => {
                 setData(data);
-            });
+            })
+            .catch(error => { console.log(Error) });
     }, [url]);
 
     return data;

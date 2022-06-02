@@ -3,10 +3,11 @@ import { useNavigate } from "react-router";
 import axios from 'axios';
 import Comments from '../components/utils/Comments';
 import styles from "./Guestbook.module.css";
+import useAxios from '../hooks/useAxios';
 
 function Guestbook({ page }) {
     const url = window.location.href;
-    // const comments = useFetch(`http://localhost:3001/comment?page=${page}`);
+    const comments = useAxios(`http://localhost:8080/api/comment/${page}`);
 
     // 방명록 주소 복사 함수
     const handleCopy = async (text) => {
@@ -65,9 +66,9 @@ function Guestbook({ page }) {
             <span className={styles.title}> {page}'s Guestbook</span>
             <div className={styles.container}>
                 <div className={styles.contents}>
-                    {/* {comments.map(comment => (
+                    {comments.map(comment => (
                         <Comments comment={comment} key={comment.id} />
-                    ))} */}
+                    ))}
                 </div>
                 <form className={styles.inputBox} onSubmit={onSubmit}>
                     <input type="text" ref={commentRef} />
