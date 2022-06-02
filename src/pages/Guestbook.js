@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from 'react';
-import { useNavigate } from "react-router";
 import axios from 'axios';
 import Comments from '../components/utils/Comments';
 import styles from "./Guestbook.module.css";
@@ -18,18 +17,6 @@ function Guestbook({ page }) {
             alert('복사 실패!');
         }
     };
-
-    // 현재 시간 리턴 함수
-    const [currentDate, setCurrentDate] = useState('0');
-
-    useEffect(() => {
-        const date = new Date();
-        const year = String(date.getFullYear());
-        const month = String(date.getMonth() + 1);
-        const day = String(date.getDate());
-        const totalDate = year + "-" + (("00" + month.toString()).slice(-2)) + "-" + (("00" + day.toString()).slice(-2));
-        setCurrentDate(totalDate);
-    }, [currentDate])
 
     // 전송 버튼 함수
     function onSubmit(e) {
@@ -52,9 +39,9 @@ function Guestbook({ page }) {
             }
         )
             .then(res => {
-                if (res.ok) {
-                    alert("전송이 되었습니다.");
-                }
+
+                alert("전송이 되었습니다.");
+
             })
             .catch(res => { console.log('Error!') });
     }

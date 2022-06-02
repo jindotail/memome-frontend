@@ -7,7 +7,6 @@ export default function useAxios(url) {
     useEffect(() => {
         axios.get(url)
             .then(res => {
-                //console.log(res.data.body);
                 return res.data.body;
             })
             .then(data => {
