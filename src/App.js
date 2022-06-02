@@ -6,8 +6,8 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/tail" element={<Guestbook page="Tail" />} />
-        <Route path="/jindo" element={<Guestbook page="Jindo" />} />
+        <Route path="/tail" element={<Guestbook page="tail" />} />
+        <Route path="/jindo" element={<Guestbook page="jindo" />} />
       </Routes>
     </BrowserRouter>
   );

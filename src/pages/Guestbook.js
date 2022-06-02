@@ -1,13 +1,12 @@
 import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from "react-router";
-import useFetch from "../hooks/useFetch";
+import axios from 'axios';
 import Comments from '../components/utils/Comments';
 import styles from "./Guestbook.module.css";
 
 function Guestbook({ page }) {
     const url = window.location.href;
-    const comments = useFetch(`http://localhost:3001/comment?page=${page}`);
-    const navigate = useNavigate();
+    // const comments = useFetch(`http://localhost:3001/comment?page=${page}`);
 
     // 방명록 주소 복사 함수
     const handleCopy = async (text) => {
@@ -36,34 +35,28 @@ function Guestbook({ page }) {
         e.preventDefault();
 
         // form input 값 없이 submit 금지 
-        if (commentRef.current.value.length == 0) {
+        if (commentRef.current.value.length === 0) {
             alert("인사말을 입력해주세요!");
             return false;
         }
 
-        fetch(`http://localhost:3001/comment`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
+        axios.post(`http://localhost:8080/api/comment/${page}`,
+            {
+                comment: commentRef.current.value
             },
-            body: JSON.stringify({
-                comment: commentRef.current.value,
-                date: currentDate,
-                page: page
-            })
-        }).then(res => {
-            if (res.ok) {
-                alert("전송이 되었습니다.");
-                window.location.replace(`/${page}`)
-
+            {
+                headers: {
+                    "Content-Type": "application/json",
+                }
             }
-        })
+        )
+            .then(res => {
+                if (res.ok) {
+                    alert("전송이 되었습니다.");
+                }
+            })
+            .catch(res => { console.log('Error!') });
     }
-
-    // 최신 댓글로 정렬
-    comments.sort((a, b) => {
-        return (b.id - a.id)
-    })
 
     const commentRef = useRef(null);
 
@@ -72,9 +65,9 @@ function Guestbook({ page }) {
             <span className={styles.title}> {page}'s Guestbook</span>
             <div className={styles.container}>
                 <div className={styles.contents}>
-                    {comments.map(comment => (
+                    {/* {comments.map(comment => (
                         <Comments comment={comment} key={comment.id} />
-                    ))}
+                    ))} */}
                 </div>
                 <form className={styles.inputBox} onSubmit={onSubmit}>
                     <input type="text" ref={commentRef} />
