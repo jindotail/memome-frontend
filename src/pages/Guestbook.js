@@ -58,6 +58,11 @@ function Guestbook({ page }) {
             .catch(res => { console.log('Error!') });
     };
 
+    // 최신 댓글로 정렬
+    comments.sort((a, b) => {
+        return (b.idx - a.idx)
+    })
+
     const commentRef = useRef(null);
 
     return (
