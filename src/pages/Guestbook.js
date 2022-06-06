@@ -5,24 +5,11 @@ import styles from "./Guestbook.module.css";
 import { IoColorPaletteOutline } from "react-icons/io5";
 import { MdContentCopy } from "react-icons/md";
 import Custom from '../components/utils/Custom';
-//import useAxios from '../hooks/useAxios';
+import useAxios from '../hooks/useAxios';
 
 function Guestbook({ page }) {
     const copyUrl = window.location.href;
-    const url = `http://localhost:8080/api/comment/${page}`;
-
-    const [comments, setComments] = useState([]);
-
-    // comment data 가져오기 (useState를 사용해서 실시간으로 comment가 추가되는 것을 볼 수 있음)
-    axios.get(url)
-        .then(res => {
-            return res.data.body;
-        })
-        .then(data => {
-            setComments(data);
-        })
-        .catch(error => { console.log(Error) });
-
+    const comments = useAxios(`http://localhost:8080/api/comment/${page}`);
 
     // 방명록 주소 복사 함수
     const handleCopy = async (text) => {
@@ -57,6 +44,7 @@ function Guestbook({ page }) {
             .then(res => {
                 commentRef.current.value = "";
                 console.log("전송 성공");
+                window.location.replace(`/${page}`);
             })
             .catch(res => { console.log('Error!') });
     };
