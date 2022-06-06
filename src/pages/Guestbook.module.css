@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Galada&family=Gowun+Batang&family=Poor+Story&family=Yeon+Sung&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Galada&family=Gowun+Batang&family=Poor+Story&family=Yeon+Sung&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&display=swap');
 
 .guestbook {
     display: flex;
@@ -14,7 +15,9 @@
     margin: 5px 0;
     color: #453a3a;
     font-size: 50px;
-    font-family: 'Galada', cursive;
+    /* font-family: 'Galada', cursive; */
+    font-family: 'Gowun Batang', serif;
+    font-weight: 700;
 }
 
 .container {
@@ -77,6 +80,10 @@ input:focus {
     background-color: #ffffff;
 }
 
+.buttonPart {
+    display: flex;
+}
+
 .shareButton {
     display: inline-flex;
     position: relative;
@@ -84,9 +91,10 @@ input:focus {
     align-items: center;
     max-width: 100%;
     margin-top: 20px;
+    margin-right: 20px;
     padding: 2px 24px;
     background-color: #fff;
-    border-radius: 24px;
+    border-radius: 30px;
     border-style: none;
     box-shadow: rgba(0, 0, 0, .2) 0 3px 5px -1px, rgba(0, 0, 0, .14) 0 6px 10px 0, rgba(0, 0, 0, .12) 0 1px 18px 0;
     box-sizing: border-box;

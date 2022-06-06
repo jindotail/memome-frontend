@@ -1,0 +1,62 @@
+.openModal {
+    background-color: yellow;
+    z-index: 10;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 99;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.modal.openModal {
+    display: flex;
+    align-items: center;
+    animation: modal-bg-show 0.3s;
+}
+
+.modal>section {
+    /* width: 50%;
+    max-width: 1000px;
+    height: 50%;
+    max-height: 700px; */
+    width: 200px;
+    height: 150px;
+    margin: 0 auto;
+    border-radius: 0.3rem;
+    background-color: #fff;
+    animation: modal-show 0.3s;
+    overflow: hidden;
+}
+
+.title {
+    margin: 12px 0px 0px 8px;
+}
+
+.colorPicker {
+    display: flex;
+    margin-top: 15px;
+}
+
+.buttons {
+    text-align: center;
+    margin-top: 25px;
+}
+
+.applyBtn,
+.closeBtn {
+    border: none;
+    border-radius: 5px;
+    margin-right: 5px;
+    background-color: rgb(218, 218, 218);
+    cursor: pointer;
+}
+
+.applyBtn {
+    background-color: rgb(250, 158, 158);
+}

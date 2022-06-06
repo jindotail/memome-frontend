@@ -1,7 +1,10 @@
-import { useEffect, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import axios from 'axios';
 import Comments from '../components/utils/Comments';
 import styles from "./Guestbook.module.css";
+import { IoColorPaletteOutline } from "react-icons/io5";
+import { MdContentCopy } from "react-icons/md";
+import Custom from '../components/utils/Custom';
 //import useAxios from '../hooks/useAxios';
 
 function Guestbook({ page }) {
@@ -65,9 +68,27 @@ function Guestbook({ page }) {
 
     const commentRef = useRef(null);
 
+
+    // custom modal창 함수
+    const [modalOpen, setModalOpen] = useState(false);
+
+    const openModal = () => {
+        setModalOpen(true);
+    };
+    const closeModal = () => {
+        setModalOpen(false);
+    };
+
+    // 방명록 배경 색상 custom
+    const [color, setColor] = useState("");
+
+
     return (
-        <div className={styles.guestbook}>
-            <span className={styles.title}> {page}'s Guestbook</span>
+        <div className={styles.guestbook}
+            style={{
+                background: `${color}`
+            }}>
+            <span className={styles.title}> 꼬리 방명록</span>
             <div className={styles.container}>
                 <div className={styles.contents}>
                     {comments.map(comment => (
@@ -79,8 +100,18 @@ function Guestbook({ page }) {
                     <button className={styles.submitButton}>전송</button>
                 </form>
             </div>
-            <button className={styles.shareButton} onClick={() => handleCopy(copyUrl)}>방명록 공유하기</button>
-        </div >
+            <div className={styles.buttonPart}>
+                <button className={styles.shareButton}>
+                    <IoColorPaletteOutline size="24" onClick={openModal} />
+                </button>
+                <button className={styles.shareButton} onClick={() => handleCopy(copyUrl)}>
+                    <MdContentCopy size="24" />
+                </button>
+            </div>
+
+            <Custom open={modalOpen} close={closeModal} setColor={setColor} />
+        </div>
+
 
     )
 }
