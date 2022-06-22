@@ -32,29 +32,53 @@
     background-color: #fff;
     animation: modal-show 0.3s;
     overflow: hidden;
+    box-shadow: rgb(92, 89, 89) 0px 5px 18px 0px;
 }
 
 .title {
-    margin: 12px 0px 0px 8px;
+    background-color: #d5d6d7;
+    padding: 5px 0px 5px 8px;
+    font-size: 14px;
 }
 
 .colorPicker {
     display: flex;
-    margin-top: 15px;
+    margin-top: 20px;
 }
 
 .buttons {
     text-align: center;
-    margin-top: 25px;
+    margin-top: 15px;
 }
 
 .applyBtn,
 .closeBtn {
-    border: none;
+    /* border: none;
     border-radius: 5px;
     margin-right: 5px;
     background-color: rgb(218, 218, 218);
+    cursor: pointer; */
+    display: inline-flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px;
+    margin-left: 10px;
+    background-color: #fff;
+    border-radius: 30px;
+    border-style: none;
+    box-shadow: rgba(0, 0, 0, .2) 0 3px 5px -1px, rgba(0, 0, 0, .14) 0 6px 10px 0, rgba(0, 0, 0, .12) 0 1px 18px 0;
+    box-sizing: border-box;
+    color: #3c4043;
     cursor: pointer;
+    font-family: "Google Sans", Roboto, Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    height: 30px;
+    line-height: normal;
+    text-align: center;
+    transition: box-shadow 280ms cubic-bezier(.4, 0, .2, 1), opacity 15ms linear 30ms, transform 270ms cubic-bezier(0, 0, .2, 1) 0ms;
+
 }
 
 .applyBtn {

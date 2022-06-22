@@ -1,4 +1,3 @@
-import { findByLabelText } from '@testing-library/react';
 import React from 'react';
 import { SketchPicker } from 'react-color';
 import reactCSS from 'reactcss';
