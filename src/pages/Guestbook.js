@@ -84,7 +84,7 @@ function Guestbook({ page }) {
                     ))}
                 </div>
                 <form className={styles.inputBox} onSubmit={onSubmit}>
-                    <input type="text" ref={commentRef} />
+                    <input className={styles.input} type="text" ref={commentRef} />
                     <button className={styles.submitButton}>전송</button>
                 </form>
             </div>

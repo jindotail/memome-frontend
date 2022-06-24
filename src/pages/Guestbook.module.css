@@ -54,7 +54,7 @@
     text-align: center;
 }
 
-input {
+.input {
     height: 30px;
     width: 80%;
     border-radius: 10px;
@@ -62,7 +62,7 @@ input {
     box-shadow: 1px 1px 8px 1px #dadce0 inset;
 }
 
-input:focus {
+.input:focus {
     outline: 1px solid #bdbdbd;
 }
 
