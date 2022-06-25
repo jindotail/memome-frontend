@@ -40,9 +40,7 @@ function Main({ children }) {
                         Guest Book
                     </div>
                 </div>
-                <form action="" method="POST" className={styles.loginForm}>
-                    {children}
-                </form>
+                {children}
             </section>
         </div >
     )

@@ -1,19 +1,4 @@
-/*logIn part CSS*/
-.loginPart {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 40vw;
-    margin-top: 25vh;
-}
-
-.title {
-    color: #453a3a;
-    font-size: 50px;
-    font-family: 'Galada', cursive;
-}
-
-.loginForm {
+.fromStyle {
     width: 30vw;
 }
 
@@ -50,24 +35,6 @@
 
 
 @media (max-width:740px) {
-    .main {
-        height: 100vh;
-        background: linear-gradient(106.37deg, #dfe8ff 29.63%, #f3c6f1 51.55%, #ffcfd1 90.85%);
-    }
-
-    .imagePart {
-        display: none;
-    }
-
-    .loginPart {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        width: 100vw;
-        margin-top: 20vh;
-    }
-
-
     .title {
         text-align: center;
     }
@@ -76,7 +43,7 @@
         margin-top: 10px;
     }
 
-    .loginForm {
+    .fromStyle {
         background-color: #ffffff;
         width: 80vw;
         padding: 20px;
