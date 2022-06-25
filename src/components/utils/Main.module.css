@@ -163,9 +163,6 @@
     animation-fill-mode: forwards;
 }
 
-
-
-
 @keyframes fadein {
     from {
         opacity: 0;
@@ -177,27 +174,6 @@
     }
 }
 
-
-
-
-
-
-/*logIn part CSS*/
-.loginPart {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 40vw;
-    margin-top: 25vh;
-}
-
-.title {
-    color: #453a3a;
-    font-size: 50px;
-    font-family: 'Galada', cursive;
-}
-
-
 @media (max-width:740px) {
     .main {
         height: 100vh;
@@ -208,11 +184,4 @@
         display: none;
     }
 
-    .loginPart {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        width: 100vw;
-        margin-top: 20vh;
-    }
 }

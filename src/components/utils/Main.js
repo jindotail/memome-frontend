@@ -33,15 +33,7 @@ function Main({ children }) {
                     </form>
                 </div>
             </section>
-
-            <section className={styles.loginPart}>
-                <div className={styles.titlePart}>
-                    <div className={styles.title}>
-                        Guest Book
-                    </div>
-                </div>
-                {children}
-            </section>
+            {children}
         </div >
     )
 }
