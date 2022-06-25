@@ -35,7 +35,11 @@ function Login() {
             </section>
 
             <section className={styles.loginPart}>
-                <div className={styles.title}>Guest Book</div>
+                <div className={styles.titlePart}>
+                    <div className={styles.title}>
+                        Guest Book
+                    </div>
+                </div>
                 <form action="" method="POST" className={styles.loginForm}>
                     <div className={styles.inputBox}>
                         <input id="username" type="text" name="username" placeholder="아이디" className={styles.login} />
