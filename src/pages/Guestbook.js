@@ -97,6 +97,9 @@ function Guestbook({ page }) {
             style={{
                 background: `${color}`
             }}>
+            <header className={styles.header}>
+                <button onClick={logout}>Logout</button>
+            </header>
             <span className={styles.title}> 꼬리 방명록</span>
             <div className={styles.container}>
                 <div className={styles.contents}>
@@ -119,8 +122,6 @@ function Guestbook({ page }) {
             </div>
 
             <Custom open={modalOpen} close={closeModal} setColor={setColor} />
-
-            <button onClick={logout}>로그아웃 하기</button>
         </div >
 
 
