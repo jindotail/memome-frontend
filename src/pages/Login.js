@@ -26,7 +26,10 @@ function Login() {
                 console.log("로그인 성공");
                 window.location.replace((`/${idRef.current.value}`));
             })
-            .catch(res => { console.log('Error!') });
+            .catch(res => {
+                console.log('Error!');
+                alert('가입하지 않은 아이디이거나, 잘못된 비밀번호입니다.');
+            });
     };
 
     const idRef = useRef(null);

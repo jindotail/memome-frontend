@@ -24,9 +24,13 @@ function Signup() {
         )
             .then(res => {
                 console.log("전송 성공");
+                alert('가입에 성공하셨습니다!');
                 window.location.replace(`/`);
             })
-            .catch(res => { console.log('Error!') });
+            .catch(res => {
+                console.log('Error!')
+                alert('이미 가입된 아이디입니다.');
+            });
     };
 
     const idRef = useRef(null);
