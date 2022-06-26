@@ -32,6 +32,8 @@
     font-size: 15px;
     margin-top: 5px;
     float: right;
+    text-decoration: none !important;
+    color: #191919;
 }
 
 .submitButton {
