@@ -71,6 +71,27 @@ function Guestbook({ page }) {
     const [color, setColor] = useState("");
 
 
+    // 로그아웃 함수
+    function logout(e) {
+        e.preventDefault();
+
+        axios.post(`http://localhost:8080/api/auth/logout`,
+            {
+                headers: {
+                    "Content-Type": "application/json",
+                    withCredentials: true
+                }
+            }
+        )
+            .then(res => {
+                console.log(res);
+                console.log("전송 성공");
+                window.location.replace(`/`);
+            })
+            .catch(res => { console.log(res) });
+    };
+
+
     return (
         <div className={styles.guestbook}
             style={{
@@ -98,7 +119,9 @@ function Guestbook({ page }) {
             </div>
 
             <Custom open={modalOpen} close={closeModal} setColor={setColor} />
-        </div>
+
+            <button onClick={logout}>로그아웃 하기</button>
+        </div >
 
 
     )
