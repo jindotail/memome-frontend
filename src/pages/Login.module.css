@@ -32,6 +32,8 @@
     font-size: 15px;
     margin-top: 5px;
     float: right;
+    text-decoration: none !important;
+    color: #191919;
 }
 
 .submitButton {
@@ -46,7 +48,6 @@
     font-weight: 700;
     color: #453a3a;
 }
-
 
 @media (max-width:740px) {
     .loginPart {
