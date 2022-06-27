@@ -101,7 +101,11 @@ function Guestbook({ page }) {
                 background: `${color}`
             }}>
             <header className={styles.header}>
-                <button onClick={logout}>Logout</button>
+                {
+                    (sessionStorage.length > 0) ? (
+                        <button onClick={logout}>Logout</button>
+                    ) : null
+                }
             </header>
             <span className={styles.title}> {nickname} 방명록</span>
             <div className={styles.container}>
