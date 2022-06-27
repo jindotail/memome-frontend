@@ -1,4 +1,4 @@
-// 실시간으로 comment 추가되는 기능 유지시 삭제 예정 파일
+// axios로 user의 데이터 정보 가져오는 파일
 
 import { useEffect, useState } from "react";
 import axios from 'axios';
@@ -9,8 +9,7 @@ export default function useAxios(url) {
     useEffect(() => {
         axios.get(url)
             .then(res => {
-                console.log(res.data.body);
-                return res.data.body;
+                return res.data.nickname;
             })
             .then(data => {
                 setData(data);

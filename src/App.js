@@ -5,13 +5,16 @@ import Login from './pages/Login';
 import Signup from './pages/Signup';
 
 function App() {
+
+  const sessionID = sessionStorage.getItem("user_id");
+  const guestbookPath = `/${sessionID}`;
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Login page />} />
-        <Route path="/signup" element={<Signup page />} />
-        <Route path="/tail" element={<Guestbook page="tail" />} />
-        <Route path="/jindo" element={<Guestbook page="jindo" />} />
+        <Route path="/" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path={guestbookPath} element={<Guestbook page={sessionID} />} />
+        {/* <Route path="/jindo" element={<Guestbook page="jindo" />} /> */}
       </Routes>
     </BrowserRouter>
   );

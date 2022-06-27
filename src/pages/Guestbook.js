@@ -6,10 +6,12 @@ import { IoColorPaletteOutline } from "react-icons/io5";
 import { MdContentCopy } from "react-icons/md";
 import Custom from '../components/utils/Custom';
 import useAxios from '../hooks/useAxios';
+import userAxios from '../hooks/userAxios';
 
 function Guestbook({ page }) {
     const copyUrl = window.location.href;
     const comments = useAxios(`http://localhost:8080/api/comment/${page}`);
+    const nickname = userAxios(`http://localhost:8080/api/user/${page}`);
 
     // 방명록 주소 복사 함수
     const handleCopy = async (text) => {
@@ -85,6 +87,7 @@ function Guestbook({ page }) {
         )
             .then(res => {
                 console.log(res);
+                sessionStorage.clear();
                 console.log("전송 성공");
                 window.location.replace(`/`);
             })
@@ -100,11 +103,11 @@ function Guestbook({ page }) {
             <header className={styles.header}>
                 <button onClick={logout}>Logout</button>
             </header>
-            <span className={styles.title}> 꼬리 방명록</span>
+            <span className={styles.title}> {nickname} 방명록</span>
             <div className={styles.container}>
                 <div className={styles.contents}>
                     {comments.map(comment => (
-                        <Comments comment={comment} key={comment.id} />
+                        <Comments comment={comment} key={comment.idx} />
                     ))}
                 </div>
                 <form className={styles.inputBox} onSubmit={onSubmit}>
