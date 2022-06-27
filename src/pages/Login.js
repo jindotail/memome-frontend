@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import Main from '../components/utils/Main';
 import styles from "./Login.module.css";
+import { setCookie } from '../hooks/cookie';
 
 function Login() {
     // 가입하기 버튼 함수
@@ -24,8 +25,8 @@ function Login() {
         )
             .then(res => {
                 console.log("로그인 성공");
-                sessionStorage.setItem('user_id', idRef.current.value);
-                sessionStorage.setItem('user_pw', passwordRef.current.value);
+                setCookie("user_id", `${idRef.current.value}`);
+                setCookie("user_pw", `${passwordRef.current.value}`);
                 window.location.replace((`/${idRef.current.value}`));
             })
             .catch(res => {

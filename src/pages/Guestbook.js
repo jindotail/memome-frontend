@@ -7,6 +7,7 @@ import { MdContentCopy } from "react-icons/md";
 import Custom from '../components/utils/Custom';
 import useAxios from '../hooks/useAxios';
 import userAxios from '../hooks/nicknameAxios';
+import { getCookie, removeCookie } from '../hooks/cookie';
 
 function Guestbook({ page }) {
     const copyUrl = window.location.href;
@@ -87,7 +88,8 @@ function Guestbook({ page }) {
         )
             .then(res => {
                 console.log(res);
-                sessionStorage.clear();
+                removeCookie("user_id");
+                removeCookie("user_pw");
                 console.log("전송 성공");
                 window.location.replace(`/`);
             })
@@ -102,7 +104,7 @@ function Guestbook({ page }) {
             }}>
             <header className={styles.header}>
                 {
-                    (sessionStorage.length > 0) ? (
+                    (getCookie("user_id").length > 0) ? (
                         <button onClick={logout}>Logout</button>
                     ) : null
                 }
