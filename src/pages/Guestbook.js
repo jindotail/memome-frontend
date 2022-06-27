@@ -6,7 +6,7 @@ import { IoColorPaletteOutline } from "react-icons/io5";
 import { MdContentCopy } from "react-icons/md";
 import Custom from '../components/utils/Custom';
 import useAxios from '../hooks/useAxios';
-import userAxios from '../hooks/userAxios';
+import userAxios from '../hooks/nicknameAxios';
 
 function Guestbook({ page }) {
     const copyUrl = window.location.href;
