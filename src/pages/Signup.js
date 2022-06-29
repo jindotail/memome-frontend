@@ -53,7 +53,7 @@ function Signup() {
                         <input id="username" type="text" name="username" placeholder="아이디" className={styles.singup} ref={idRef} />
                     </div>
                     <div className={styles.inputBox}>
-                        <input id="username" type="text" name="username" placeholder="비밀번호" className={styles.singup} ref={passwordRef} />
+                        <input id="username" type="password" name="username" placeholder="비밀번호" className={styles.singup} ref={passwordRef} />
                     </div>
                     {/* <div className={styles.inputBox}>
                         <input id="password" type="password" name="password" placeholder="비밀번호 확인" className={styles.singup} />
