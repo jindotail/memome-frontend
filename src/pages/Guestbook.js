@@ -7,6 +7,7 @@ import { MdContentCopy } from "react-icons/md";
 import Custom from '../components/utils/Custom';
 import useAxios from '../hooks/useAxios';
 import userAxios from '../hooks/nicknameAxios';
+import DropDown from '../components/utils/DropDown';
 
 function Guestbook({ page }) {
     const copyUrl = window.location.href;
@@ -73,28 +74,6 @@ function Guestbook({ page }) {
     const [color, setColor] = useState("");
 
 
-    // 로그아웃 함수
-    function logout(e) {
-        e.preventDefault();
-
-        axios.post(`http://localhost:8080/api/auth/logout`,
-            {
-                headers: {
-                    "Content-Type": "application/json",
-                    withCredentials: true
-                }
-            }
-        )
-            .then(res => {
-                console.log(res);
-                sessionStorage.clear();
-                console.log("전송 성공");
-                window.location.replace(`/`);
-            })
-            .catch(res => { console.log(res) });
-    };
-
-
     return (
         <div className={styles.guestbook}
             style={{
@@ -103,7 +82,7 @@ function Guestbook({ page }) {
             <header className={styles.header}>
                 {
                     (sessionStorage.length > 0) ? (
-                        <button onClick={logout}>Logout</button>
+                        <DropDown />
                     ) : null
                 }
             </header>

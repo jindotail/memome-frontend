@@ -1,0 +1,127 @@
+:root {
+    --nav-size: 60px;
+    --border: 1px solid #474a4d;
+    --border-radius: 8px;
+    --speed: 500ms;
+}
+
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    color: var(--text-color);
+    text-decoration: none;
+}
+
+.navbar {
+    height: var(--nav-size);
+    padding: 0 1rem;
+}
+
+.navbarNav {
+    max-width: 100px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.navItem {
+    width: calc(var(--nav-size) * 0.8);
+    display: flex;
+    justify-content: flex-end;
+}
+
+.iconButton {
+    --button-size: calc(var(--nav-size) * 0.5);
+    width: var(--button-size);
+    height: var(--button-size);
+    border-radius: 50%;
+    padding: 5px;
+    margin: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: filter 300ms;
+    background-color: #ffffff;
+}
+
+.iconButton:hover {
+    background-color: #e7e7e7;
+}
+
+.iconPosition {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.dropdown {
+    position: absolute;
+    top: 58px;
+    right: -105px;
+    width: 150px;
+    transform: translateX(-80%);
+    background-color: #f7f7f7;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    transition: height var(--speed) ease;
+}
+
+.menuItem {
+    height: 50px;
+    display: flex;
+    align-items: center;
+    background-color: #ffffff;
+    background-repeat: var(--border-radius);
+    transition: background var(--speed);
+    padding: 0.5rem;
+    font-size: 18px;
+}
+
+.menuItem:nth-child(1) {
+    border-bottom: 1px solid #87878740;
+}
+
+.menuItem:hover {
+    background-color: #f0f0f0;
+}
+
+.menu {
+    width: 100%;
+}
+
+@media (max-width:740px) {
+    .navbar {
+        height: var(--nav-size);
+        padding: 0 1rem;
+        position: absolute;
+        top: -5px;
+        right: -20px
+    }
+
+    .dropdown {
+        position: absolute;
+        top: 50px;
+        right: -100px;
+        width: 150px;
+        transform: translateX(-80%);
+        background-color: #f7f7f7;
+        border: 1px solid #d2d2d2be;
+        border-radius: var(--border-radius);
+        overflow: hidden;
+        transition: height var(--speed) ease;
+    }
+
+    .menuItem {
+        height: 30px;
+        display: flex;
+        align-items: center;
+        background-color: #ffffff;
+        background-repeat: var(--border-radius);
+        transition: background var(--speed);
+        padding: 0.5rem;
+        font-size: 18px;
+    }
+
+}
