@@ -86,7 +86,7 @@ function Guestbook({ page }) {
                     ) : null
                 }
             </header>
-            <span className={styles.title}> {nickname} 방명록</span>
+            <span className={styles.title}> {nickname}네 방명록</span>
             <div className={styles.container}>
                 <div className={styles.contents}>
                     {comments.map(comment => (
