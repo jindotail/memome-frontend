@@ -103,6 +103,33 @@
 }
 
 
+/*로그인 했을 시, CSS*/
+.recommendComment {
+    display: flex;
+    align-items: center;
+    color: #251d1d;
+    max-width: 80%;
+    padding: 10px;
+    border-radius: 10px 10px 10px 0;
+    font-weight: 300;
+    word-break: break-all;
+    line-height: 1.4;
+    font-family: 'Gowun Batang', serif;
+    background: linear-gradient(rgba(255, 144, 242, 0.829) 0%, rgba(234, 124, 254, 0.741) 80%);
+    box-shadow: rgb(204, 204, 204) 0px 3px 8px;
+
+}
+
+.homeIcon {
+    padding: 10px 10px 10px 5px;
+    border-right: 2px solid #ffffff9b;
+}
+
+.userInfo {
+    padding: 10px 5px 10px 10px;
+}
+
+/*로그인 안했을 시 CSS*/
 .chatContainer:nth-child(1) {
     animation: fadein 1s;
     animation-delay: 1s;

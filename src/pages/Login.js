@@ -39,23 +39,34 @@ function Login() {
 
     return (
         <Main>
-            <section className={styles.loginPart}>
-                <div className={styles.titlePart}>
-                    <div className={styles.title}>
-                        Guest Book
+            {(sessionStorage.length > 0) ? (
+                <section className={styles.enterPart}>
+                    <div className={styles.titlePart}>
+                        <div className={styles.title}>
+                            Guest Book
+                        </div>
                     </div>
-                </div>
-                <form action="" method="POST" className={styles.fromStyle} onSubmit={onSubmit}>
-                    <div className={styles.inputBox}>
-                        <input id="username" type="text" name="username" placeholder="아이디" className={styles.login} ref={idRef} />
+                    <Link to={`/${sessionStorage.user_id}`} className={styles.enterButton}>내 방명록으로 가기</Link>
+                </section>
+            ) : (
+                <section className={styles.loginPart}>
+                    <div className={styles.titlePart}>
+                        <div className={styles.title}>
+                            Guest Book
+                        </div>
                     </div>
-                    <div className={styles.inputBox}>
-                        <input id="password" type="password" name="password" placeholder="비밀번호" className={styles.login} ref={passwordRef} />
-                    </div>
-                    <Link to="/signup" className={styles.signIn}>회원가입 하기</Link>
-                    <button type="submit" className={styles.submitButton}>Log In</button>
-                </form>
-            </section>
+                    <form action="" method="POST" className={styles.fromStyle} onSubmit={onSubmit}>
+                        <div className={styles.inputBox}>
+                            <input id="username" type="text" name="username" placeholder="아이디" className={styles.login} ref={idRef} />
+                        </div>
+                        <div className={styles.inputBox}>
+                            <input id="password" type="password" name="password" placeholder="비밀번호" className={styles.login} ref={passwordRef} />
+                        </div>
+                        <Link to="/signup" className={styles.signIn}>회원가입 하기</Link>
+                        <button type="submit" className={styles.submitButton}>Log In</button>
+                    </form>
+                </section>
+            )}
         </Main>
     )
 }
