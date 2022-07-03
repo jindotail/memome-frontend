@@ -4,7 +4,6 @@ import axios from 'axios';
 
 function Comments({ comment, page, id }) {
     const date = comment.iso_time;
-    console.log(page);
 
     // 댓글 삭제 함수
     //util로 옮기기
@@ -29,14 +28,17 @@ function Comments({ comment, page, id }) {
         <div className={styles.container}>
             <div className={styles.comment}>
                 <span>
-
                     {comment.comment}
                 </span>
                 <span></span>
             </div>
             <div className={styles.date}>
                 {date.substr(0, 10)}
-                <span className={styles.deleteButton} onClick={deleteComment}>&nbsp; x</span>
+                {
+                    (sessionStorage.user_id === page) ? (
+                        <span className={styles.deleteButton} onClick={deleteComment}>&nbsp; x</span>
+                    ) : null
+                }
             </div>
         </div>
     )
