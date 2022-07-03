@@ -10,7 +10,7 @@ function App() {
 
   const sessionID = sessionStorage.getItem("user_id");
   const guestbookPath = `/${sessionID}`;
-  console.log(sessionID);
+
   return (
     <BrowserRouter>
       <Routes>

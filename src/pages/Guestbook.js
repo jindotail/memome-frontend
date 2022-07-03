@@ -7,7 +7,7 @@ import { MdContentCopy } from "react-icons/md";
 import Custom from '../components/utils/Custom';
 import useAxios from '../hooks/useAxios';
 import userAxios from '../hooks/nicknameAxios';
-import DropDown from '../components/utils/DropDown';
+import Menu from '../components/utils/Menu';
 
 function Guestbook({ page }) {
     const copyUrl = window.location.href;
@@ -82,7 +82,7 @@ function Guestbook({ page }) {
             <header className={styles.header}>
                 {
                     (sessionStorage.length > 0) ? (
-                        <DropDown />
+                        <Menu user={page} />
                     ) : null
                 }
             </header>
@@ -90,7 +90,7 @@ function Guestbook({ page }) {
             <div className={styles.container}>
                 <div className={styles.contents}>
                     {comments.map(comment => (
-                        <Comments comment={comment} key={comment.idx} />
+                        <Comments comment={comment} key={comment.idx} page={page} id={comment.idx} />
                     ))}
                 </div>
                 <form className={styles.inputBox} onSubmit={onSubmit}>

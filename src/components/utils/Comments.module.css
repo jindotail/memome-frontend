@@ -28,3 +28,10 @@
     color: #5d5d5d;
     font-size: 11px;
 }
+
+.deleteButton {
+    color: rgb(247, 115, 115);
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+}
