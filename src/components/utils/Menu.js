@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import axios from 'axios';
-import "./DropDown.module.css";
 import { Link } from 'react-router-dom';
-import styles from "./DropDown.module.css";
+import styles from "./Menu.module.css";
 import { FiMenu } from 'react-icons/fi';
 import { RiLogoutCircleRLine } from 'react-icons/ri';
 import { TbUserOff } from 'react-icons/tb';
+import { withdrawal } from './Withdrawal';
 
-function DropDown() {
+function Menu({ user }) {
     // 로그아웃 함수
     function logout(e) {
         e.preventDefault();
@@ -28,12 +28,6 @@ function DropDown() {
             })
             .catch(res => { console.log(res) });
     };
-
-    //회원탈퇴 함수
-    function withdrawal(e) {
-        e.preventDefault();
-
-    }
 
     // 드롭다운 메뉴
     // 참고 사이트 : https://velog.io/@minu_624/TIL-React-DropDown
@@ -79,7 +73,7 @@ function DropDown() {
                             </Link>
                         </DropdownItem>
                         <DropdownItem leftIcon={<TbUserOff size="24" />}>
-                            <Link to="/" onClick={withdrawal}>
+                            <Link to="/" onClick={withdrawal} user={user}>
                                 회원탈퇴
                             </Link>
                         </DropdownItem>
@@ -99,4 +93,4 @@ function DropDown() {
     )
 }
 
-export default DropDown;
+export default Menu;
