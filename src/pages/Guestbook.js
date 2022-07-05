@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import axios from 'axios';
 import Comments from '../components/utils/Comments';
 import styles from "./Guestbook.module.css";
@@ -8,11 +8,21 @@ import Custom from '../components/utils/Custom';
 import useAxios from '../hooks/useAxios';
 import userAxios from '../hooks/nicknameAxios';
 import Menu from '../components/utils/Menu';
+import { useParams } from 'react-router-dom';
 
 function Guestbook({ page }) {
     const copyUrl = window.location.href;
     const comments = useAxios(`http://localhost:8080/api/comment/${page}`);
     const nickname = userAxios(`http://localhost:8080/api/user/${page}`);
+
+    //const { userId } = useParams();
+    // const [comments, setComments] = useState([])
+    // console.log(userId);
+    // useEffect(() => {
+    //     axios.get(`http://localhost:8080/api/comments/${userId}`).then(res => setComments(res.data))
+    // }, [userId])
+
+    // console.log("댓글:", comments);
 
     // 방명록 주소 복사 함수
     const handleCopy = async (text) => {

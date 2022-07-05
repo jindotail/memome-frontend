@@ -21,6 +21,7 @@ function Main({ children }) {
                                         <div className={styles.chatContainer}>
                                             <div className={styles.recommendComment}>
                                                 <div className={styles.homeIcon}>
+                                                    {/* 동그라미 만들어서 안에 아이콘 집어넣기 */}
                                                     <AiOutlineHome size="24" color='#ffffff9b' />
                                                 </div>
                                                 <div className={styles.userInfo}>
