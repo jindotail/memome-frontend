@@ -44,8 +44,13 @@ function Menu({ user }) {
         return (
             <li>
                 <div className={styles.iconPosition}>
-                    <Link to="" className={styles.iconButton} onClick={() => setOpen(!open)}>
+                    <Link to="" className={styles.iconButton} onClick={(event) => {
+                        event.preventDefault();  //to로 넘어가는거 방지
+                        event.stopPropagation();
+                        setOpen(!open);
+                    }}>
                         {props.icon}
+                        {console.log(!open, test)}
                     </Link>
                 </div>
                 {open && props.children}
