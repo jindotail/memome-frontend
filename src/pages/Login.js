@@ -5,33 +5,42 @@ import Main from '../components/utils/Main';
 import styles from "./Login.module.css";
 
 function Login() {
-    // 가입하기 버튼 함수
-    function onSubmit(e) {
-        e.preventDefault();
 
-        axios.post(`http://localhost:8080/api/auth/login`,
-            {
+    //로그인하기 버튼 함수
+    async function onSubmit(e) {
+        try {
+
+            e.preventDefault();
+            const data = {
                 id: idRef.current.value,
                 password: passwordRef.current.value,
-            },
-            {
-                headers: {
-                    "Content-Type": "application/json",
-                    withCredentials: true
-                }
-
             }
-        )
-            .then(res => {
-                console.log("로그인 성공");
-                sessionStorage.setItem('user_id', idRef.current.value);
-                sessionStorage.setItem('user_pw', passwordRef.current.value);
-                window.location.replace((`/${idRef.current.value}`));
-            })
-            .catch(res => {
-                console.log('Error!');
-                alert('가입하지 않은 아이디이거나, 잘못된 비밀번호입니다.');
-            });
+
+            console.log(data);
+
+            axios.post(`http://localhost:8080/api/auth/login`,
+                data,
+                {
+                    headers: {
+                        "Content-Type": `application/json`,
+                        "Access-Control-Allow-Origin": `http://localhost:3000`,
+                        withCredentials: true,
+                        credenitals: true,
+                    },
+                }
+            )
+                .then((res) => {
+                    const { token } = res.data;
+                    axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+                    window.location.replace(`/${data.id}`);
+                })
+                .catch(res => {
+                    console.log('Error!');
+                    alert('가입하지 않은 아이디이거나, 잘못된 비밀번호입니다.');
+                });
+        } catch (e) {
+            console.log(e);
+        }
     };
 
     const idRef = useRef(null);
