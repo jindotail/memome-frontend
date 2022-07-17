@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { AiOutlineHome } from 'react-icons/ai';
 
 function Main({ children }) {
-    const users = useAxios(`http://localhost:8080/api/user/random?count=5`);
+    const users = useAxios(`http://localhost:8080/api/user/random?count=4`);
 
     return (
         <div className={styles.main}>

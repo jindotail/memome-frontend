@@ -50,7 +50,6 @@ function Menu({ user }) {
                         setOpen(!open);
                     }}>
                         {props.icon}
-                        {console.log(!open, test)}
                     </Link>
                 </div>
                 {open && props.children}
