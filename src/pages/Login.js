@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import Main from '../components/utils/Main';
 import styles from "./Login.module.css";
 import { Cookies } from 'react-cookie';
+import { setCookie } from '../hooks/cookie';
 
 function Login() {
 
@@ -33,8 +34,8 @@ function Login() {
                 .then((res) => {
                     const { token } = res.data;
                     axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-                    // window.location.replace(`/${data.id}`);
-                    window.location.replace(`/test`);
+                    setCookie("user_id", data.id);
+                    window.location.replace(`/${data.id}`);
                 })
                 .catch(res => {
                     console.log('Error!');
@@ -58,7 +59,6 @@ function Login() {
                         </div>
                     </div>
                     <Link to={`/${sessionStorage.user_id}`} className={styles.enterButton}>내 방명록으로 가기</Link>
-                    {console.log(Cookies)}
                 </section>
             ) : (
                 <section className={styles.loginPart}>

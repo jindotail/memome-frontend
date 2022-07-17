@@ -6,7 +6,7 @@ import { FiMenu } from 'react-icons/fi';
 import { RiLogoutCircleRLine } from 'react-icons/ri';
 import { TbUserOff } from 'react-icons/tb';
 import { withdrawal } from './Withdrawal';
-import { removeCookie } from 'react-cookie';
+import { removeCookie } from '../../hooks/cookie';
 
 function Menu({ user }) {
     // 로그아웃 함수
@@ -23,8 +23,7 @@ function Menu({ user }) {
         )
             .then(res => {
                 console.log(res);
-                removeCookie("accessToken");
-                removeCookie("refreshToken");
+                removeCookie("user_id");
                 console.log("전송 성공");
                 window.location.replace(`/`);
             })

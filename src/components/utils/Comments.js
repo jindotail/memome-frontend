@@ -1,5 +1,6 @@
 import styles from "./Comments.module.css";
 import axios from 'axios';
+import { getCookie } from '../../hooks/cookie';
 
 function Comments({ comment, page, id }) {
     const date = comment.iso_time;
@@ -34,7 +35,7 @@ function Comments({ comment, page, id }) {
             <div className={styles.date}>
                 {date.substr(0, 10)}
                 {
-                    (document.cookie.user_id === page) ? (
+                    (getCookie("user_id") === page) ? (
                         <span className={styles.deleteButton} onClick={deleteComment}>&nbsp; x</span>
                     ) : null
                 }
