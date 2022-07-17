@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import Main from '../components/utils/Main';
 import styles from "./Login.module.css";
+import { Cookies } from 'react-cookie';
 
 function Login() {
 
@@ -48,7 +49,7 @@ function Login() {
 
     return (
         <Main>
-            {(sessionStorage.length > 0) ? (
+            {(Cookies.length > 0) ? (
                 <section className={styles.enterPart}>
                     <div className={styles.titlePart}>
                         <div className={styles.title}>
