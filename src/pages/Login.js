@@ -33,7 +33,8 @@ function Login() {
                 .then((res) => {
                     const { token } = res.data;
                     axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-                    window.location.replace(`/${data.id}`);
+                    // window.location.replace(`/${data.id}`);
+                    window.location.replace(`/test`);
                 })
                 .catch(res => {
                     console.log('Error!');
@@ -49,20 +50,21 @@ function Login() {
 
     return (
         <Main>
-            {(Cookies.length > 0) ? (
+            {(document.cookie.length > 0) ? (
                 <section className={styles.enterPart}>
                     <div className={styles.titlePart}>
                         <div className={styles.title}>
-                            Guest Book
+                            MEMOME
                         </div>
                     </div>
                     <Link to={`/${sessionStorage.user_id}`} className={styles.enterButton}>내 방명록으로 가기</Link>
+                    {console.log(Cookies)}
                 </section>
             ) : (
                 <section className={styles.loginPart}>
                     <div className={styles.titlePart}>
                         <div className={styles.title}>
-                            Guest Book
+                            MEMOME
                         </div>
                     </div>
                     <form action="" method="POST" className={styles.fromStyle} onSubmit={onSubmit}>

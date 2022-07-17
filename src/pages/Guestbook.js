@@ -9,7 +9,6 @@ import useAxios from '../hooks/useAxios';
 import userAxios from '../hooks/nicknameAxios';
 import Menu from '../components/utils/Menu';
 import { useParams } from 'react-router-dom';
-import { Cookies } from 'react-cookie';
 
 function Guestbook({ page }) {
     const copyUrl = window.location.href;
@@ -82,10 +81,11 @@ function Guestbook({ page }) {
         <div className={styles.guestbook}
             style={{
                 background: `${color}`
-            }}>
+            }
+            }>
             <header className={styles.header}>
                 {
-                    (Cookies.length > 0) ? (
+                    (document.cookie.length > 0) ? (
                         <Menu user={page} />
                     ) : null
                 }

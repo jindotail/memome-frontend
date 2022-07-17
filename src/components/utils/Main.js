@@ -2,7 +2,6 @@ import styles from "./Main.module.css";
 import useAxios from '../../hooks/randomAxios';
 import { Link } from 'react-router-dom';
 import { AiOutlineHome } from 'react-icons/ai';
-import { Cookies } from 'react-cookie';
 
 function Main({ children }) {
     const users = useAxios(`http://localhost:8080/api/user/random?count=3`);
@@ -12,7 +11,7 @@ function Main({ children }) {
             <section className={styles.imagePart}>
                 <div className={styles.container}>
                     {
-                        (Cookies.length > 0) ? (
+                        (document.cookie.length > 0) ? (
                             <div className={styles.contents}>
                                 <div className={styles.chatContainer}>
                                     <div className={styles.comment}>다른 유저들의 방명록에 방문해보세요!</div>
