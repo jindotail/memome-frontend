@@ -10,12 +10,14 @@ import userAxios from '../hooks/nicknameAxios';
 import Menu from '../components/utils/Menu';
 import { useParams } from 'react-router-dom';
 
-function Guestbook({ page }) {
+function Guestbook() {
     const copyUrl = window.location.href;
     const { userId } = useParams();
 
+    console.log(userId)
+
     const comments = useAxios(`/api/comment/${userId}`);
-    const nickname = userAxios(`/api/user/${page}`);
+    const nickname = userAxios(`/api/user/${userId}`);
 
     // 방명록 주소 복사 함수
     const handleCopy = async (text) => {
@@ -37,7 +39,7 @@ function Guestbook({ page }) {
             return false;
         }
 
-        axios.post(`/api/comment/${page}`,
+        axios.post(`/api/comment/${userId}`,
             {
                 comment: commentRef.current.value
             },
@@ -50,7 +52,7 @@ function Guestbook({ page }) {
             .then(res => {
                 commentRef.current.value = "";
                 console.log("전송 성공");
-                window.location.replace(`/${page}`);
+                window.location.replace(`/${userId}`);
             })
             .catch(res => { console.log('Error!') });
     };
@@ -87,16 +89,15 @@ function Guestbook({ page }) {
             <header className={styles.header}>
                 {
                     (document.cookie.length > 0) ? (
-                        <Menu user={page} />
+                        <Menu user={userId} />
                     ) : null
                 }
             </header>
-            {console.log(nickname.length)}
             <span className={styles.title}> {nickname}의 방명록</span>
             <div className={styles.container}>
                 <div className={styles.contents}>
                     {comments.map(comment => (
-                        <Comments comment={comment} key={comment.idx} page={page} id={comment.idx} />
+                        <Comments comment={comment} key={comment.idx} page={userId} id={comment.idx} />
                     ))}
                 </div>
                 <form className={styles.inputBox} onSubmit={onSubmit}>
