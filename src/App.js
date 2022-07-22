@@ -1,7 +1,5 @@
-import axios from 'axios';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
-import AuthRoute from './components/utils/AuthRoute';
 import Guestbook from './pages/Guestbook';
 import Login from './pages/Login';
 import Signup from './pages/Signup';

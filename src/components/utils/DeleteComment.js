@@ -5,7 +5,7 @@ function deleteComment({ page, id }) {
 
     // e.preventDefault();
 
-    axios.delete(`http://localhost:8080/api/comment/${page}/${id}`)
+    axios.delete(`/api/comment/${page}/${id}`)
         .then(res => {
             // handle success
             console.log(res);

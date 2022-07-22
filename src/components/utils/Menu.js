@@ -13,7 +13,7 @@ function Menu({ user }) {
     function logout(e) {
         e.preventDefault();
 
-        axios.post(`http://localhost:8080/api/auth/logout`,
+        axios.post(`/api/auth/logout`,
             {
                 headers: {
                     "Content-Type": "application/json",

@@ -14,8 +14,8 @@ function Guestbook({ page }) {
     const copyUrl = window.location.href;
     const { userId } = useParams();
 
-    const comments = useAxios(`http://localhost:8080/api/comment/${userId}`);
-    const nickname = userAxios(`http://localhost:8080/api/user/${page}`);
+    const comments = useAxios(`/api/comment/${userId}`);
+    const nickname = userAxios(`/api/user/${page}`);
 
     // 방명록 주소 복사 함수
     const handleCopy = async (text) => {
@@ -37,7 +37,7 @@ function Guestbook({ page }) {
             return false;
         }
 
-        axios.post(`http://localhost:8080/api/comment/${page}`,
+        axios.post(`/api/comment/${page}`,
             {
                 comment: commentRef.current.value
             },
@@ -78,6 +78,7 @@ function Guestbook({ page }) {
 
 
     return (
+
         <div className={styles.guestbook}
             style={{
                 background: `${color}`
@@ -90,6 +91,7 @@ function Guestbook({ page }) {
                     ) : null
                 }
             </header>
+            {console.log(nickname.length)}
             <span className={styles.title}> {nickname}의 방명록</span>
             <div className={styles.container}>
                 <div className={styles.contents}>
@@ -113,9 +115,14 @@ function Guestbook({ page }) {
 
             <Custom open={modalOpen} close={closeModal} setColor={setColor} />
         </div >
-
-
     )
+
 }
+
+
+
+
+
+
 
 export default Guestbook;

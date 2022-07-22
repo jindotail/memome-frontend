@@ -3,7 +3,7 @@
 import axios from 'axios';
 
 export function withdrawal({ user }) {
-    axios.delete(`http://localhost:8080/api/user/${user}`)
+    axios.delete(`/api/user/${user}`)
         .then(res => {
             // handle success
             console.log(res);

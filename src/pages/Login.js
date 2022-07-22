@@ -3,8 +3,7 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import Main from '../components/utils/Main';
 import styles from "./Login.module.css";
-import { Cookies } from 'react-cookie';
-import { setCookie } from '../hooks/cookie';
+import { getCookie, setCookie } from '../hooks/cookie';
 
 function Login() {
 
@@ -20,7 +19,7 @@ function Login() {
 
             console.log(data);
 
-            axios.post(`http://localhost:8080/api/auth/login`,
+            axios.post(`/api/auth/login`,
                 data,
                 {
                     headers: {
@@ -58,7 +57,7 @@ function Login() {
                             MEMOME
                         </div>
                     </div>
-                    <Link to={`/${sessionStorage.user_id}`} className={styles.enterButton}>내 방명록으로 가기</Link>
+                    <Link to={`/${getCookie("user_id")}`} className={styles.enterButton}>내 방명록으로 가기</Link>
                 </section>
             ) : (
                 <section className={styles.loginPart}>

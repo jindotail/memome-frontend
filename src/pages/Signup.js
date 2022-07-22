@@ -10,7 +10,7 @@ function Signup() {
     function onSubmit(e) {
         e.preventDefault();
 
-        axios.post(`http://localhost:8080/api/auth/signup`,
+        axios.post(`/api/auth/signup`,
             {
                 id: idRef.current.value,
                 password: passwordRef.current.value,
