@@ -31,9 +31,12 @@ function Login() {
                 }
             )
                 .then((res) => {
-                    const { token } = res.data;
-                    axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+                    const { accessToken, refreshToken } = res.data;
+                    console.log(res.data);
+                    axios.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`;
                     setCookie("user_id", data.id);
+                    setCookie("accessToken", accessToken);
+                    setCookie("refreshToken", refreshToken);
                     window.location.replace(`/${data.id}`);
                 })
                 .catch(res => {
