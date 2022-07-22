@@ -1,25 +1,8 @@
 //회원탈퇴 함수
 
 import axios from 'axios';
-import { removeCookie, setCookie } from '../../hooks/cookie';
-
-function token(user) {
-    axios.post('/api/auth/token', {
-        id: user
-    })
-        .then(res => {
-            //handle success
-            const { accessToken } = res.data;
-            setCookie("accessToken", accessToken);
-        })
-        .catch(error => {
-            if (error.response.status === 401) {
-                console.log("RefreshToken이 만료되었습니다");
-            } else {
-                console.log(error);
-            }
-        })
-}
+import { removeCookie } from '../../hooks/cookie';
+import { token } from '../../hooks/token';
 
 export function withdrawal(user) {
     axios.delete(`/api/user/${user}`)

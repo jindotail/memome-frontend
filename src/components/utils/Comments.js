@@ -1,29 +1,9 @@
 import styles from "./Comments.module.css";
 import axios from 'axios';
 import { getCookie } from '../../hooks/cookie';
+import deleteComment from './DeleteComment';
 
 function Comments({ comment, page, id }) {
-    const date = comment.iso_time;
-
-    // 댓글 삭제 함수
-    //util로 옮기기
-    function deleteComment(e) {
-        e.preventDefault();
-
-        axios.delete(`/api/comment/${page}/${id}`)
-            .then(res => {
-                // handle success
-                console.log(res);
-                window.location.replace(`/${page}`);
-            })
-            .catch(error => {
-                // handle error
-                console.log(error);
-            })
-
-    };
-
-
     return (
         <div className={styles.container}>
             <div className={styles.comment}>
@@ -36,7 +16,7 @@ function Comments({ comment, page, id }) {
                 {date.substr(0, 10)}
                 {
                     (getCookie("user_id") === page) ? (
-                        <span className={styles.deleteButton} onClick={deleteComment}>&nbsp; x</span>
+                        <span className={styles.deleteButton} onClick={e => deleteComment(page, id)}>&nbsp; x</span>
                     ) : null
                 }
             </div>
