@@ -78,7 +78,7 @@ function Menu({ user }) {
                             </Link>
                         </DropdownItem>
                         <DropdownItem leftIcon={<TbUserOff size="24" />}>
-                            <Link to="/" onClick={withdrawal} user={user}>
+                            <Link to="" onClick={e => withdrawal(user)}>
                                 회원탈퇴
                             </Link>
                         </DropdownItem>
