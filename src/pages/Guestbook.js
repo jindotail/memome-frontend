@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import axios from 'axios';
 import Comments from '../components/utils/Comments';
 import styles from "./Guestbook.module.css";
@@ -15,10 +15,15 @@ function Guestbook() {
     const copyUrl = "http://localhost:3000" + location.pathname;
     const { userId } = useParams();
 
-    console.log(userId)
-
-    const comments = useAxios(`/api/comment/${userId}`);
+    const commentsInit = useAxios(`/api/comment/${userId}`);
     const nickname = userAxios(`/api/user/${userId}`);
+
+    const [comments, setComments] = useState(commentsInit);
+
+    // 처음 방명록 방문 시, 이미 저장된 댓글 보여주는 기능
+    useEffect(() => {
+        setComments(commentsInit);
+    }, [commentsInit]);
 
     // 방명록 주소 복사 함수
     const handleCopy = async (text) => {
@@ -53,9 +58,13 @@ function Guestbook() {
             .then(res => {
                 commentRef.current.value = "";
                 console.log("전송 성공");
-                window.location.replace(`/${userId}`);
+                //window.location.replace(`/${userId}`);
             })
-            .catch(res => { console.log('Error!') });
+            .catch(res => { console.log('Error!', res) });
+
+        axios.get(`/api/comment/${userId}`).then(res => {
+            setComments(res.data.body);
+        })
     };
 
     // 최신 댓글로 정렬
