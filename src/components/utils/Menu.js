@@ -1,35 +1,13 @@
 import React, { useState } from "react";
-import axios from 'axios';
 import { Link } from 'react-router-dom';
 import styles from "./Menu.module.css";
 import { FiMenu } from 'react-icons/fi';
 import { RiLogoutCircleRLine } from 'react-icons/ri';
 import { TbUserOff } from 'react-icons/tb';
 import { withdrawal } from './Withdrawal';
-import { removeCookie } from '../../hooks/cookie';
+import Logout from './Logout';
 
 function Menu({ user }) {
-    // 로그아웃 함수
-    function logout(e) {
-        e.preventDefault();
-
-        axios.post(`/api/auth/logout`,
-            {
-                headers: {
-                    "Content-Type": "application/json",
-                    withCredentials: true
-                }
-            }
-        )
-            .then(res => {
-                console.log(res);
-                removeCookie("user_id");
-                console.log("전송 성공");
-                window.location.replace(`/`);
-            })
-            .catch(res => { console.log(res) });
-    };
-
     // 드롭다운 메뉴
     // 참고 사이트 : https://velog.io/@minu_624/TIL-React-DropDown
     function Navbar(props) {
@@ -73,7 +51,7 @@ function Menu({ user }) {
                 <div>
                     <div className={styles.menu}>
                         <DropdownItem leftIcon={<RiLogoutCircleRLine size="24" />}>
-                            <Link to="/" onClick={logout}>
+                            <Link to="/" onClick={Logout}>
                                 로그아웃
                             </Link>
                         </DropdownItem>
