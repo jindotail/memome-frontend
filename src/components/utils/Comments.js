@@ -1,9 +1,10 @@
 import styles from "./Comments.module.css";
-import axios from 'axios';
 import { getCookie } from '../../hooks/cookie';
 import deleteComment from './DeleteComment';
 
 function Comments({ comment, page, id }) {
+    const date = comment.iso_time;
+
     return (
         <div className={styles.container}>
             <div className={styles.comment}>
