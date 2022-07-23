@@ -8,10 +8,11 @@ import Custom from '../components/utils/Custom';
 import useAxios from '../hooks/useAxios';
 import userAxios from '../hooks/nicknameAxios';
 import Menu from '../components/utils/Menu';
-import { useParams } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 
 function Guestbook() {
-    const copyUrl = window.location.href;
+    const location = useLocation();
+    const copyUrl = "http://localhost:3000" + location.pathname;
     const { userId } = useParams();
 
     console.log(userId)
