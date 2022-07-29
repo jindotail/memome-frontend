@@ -16,6 +16,13 @@
     width: 30vw;
 }
 
+.header {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 15px 18px 0 0;
+}
+
 .inputBox {
     margin-top: 30px;
     text-align: center;

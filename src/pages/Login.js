@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import Main from '../components/utils/Main';
 import styles from "./Login.module.css";
 import { getCookie, setCookie } from '../hooks/cookie';
+import Menu from '../components/utils/Menu';
 
 function Login() {
 
@@ -51,10 +52,15 @@ function Login() {
     const idRef = useRef(null);
     const passwordRef = useRef(null);
 
+    const userId = document.cookie.userId;
+
     return (
         <Main>
             {(document.cookie.length > 0) ? (
                 <section className={styles.enterPart}>
+                    <header className={styles.header}>
+                        <Menu user={userId} />
+                    </header>
                     <div className={styles.titlePart}>
                         <Link to="/" className={styles.title}>
                             MEMOME
