@@ -59,7 +59,7 @@ function Signup() {
             setIsPwd2(true);
         } else {
             setPwd2Message('비밀번호가 일치하지 않습니다.');
-            setIsPwd(false);
+            setIsPwd2(false);
         }
     }
 
@@ -128,7 +128,7 @@ function Signup() {
                     </div>
                     <Link to="/" className={styles.login}>로그인 하기</Link>
                     {!(isId && isName && isPwd && isPwd2) ? (
-                        <button type="submit" className={styles.disabledButton} disabled={!(isId)}>Sign Up</button>
+                        <button type="submit" className={styles.disabledButton} disabled >Sign Up</button>
                     ) : (
                         <button type="submit" className={styles.submitButton}>Sign Up</button>
                     )}
