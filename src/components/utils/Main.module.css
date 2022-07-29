@@ -16,6 +16,24 @@
     background: linear-gradient(106.37deg, #dfe8ff 29.63%, #f3c6f1 51.55%, #ffcfd1 90.85%);
 }
 
+/*로그인 했을 시, CSS*/
+.contentsLogin {
+    height: 80%;
+    padding: 20px;
+}
+
+.chatContainerLogin {
+    display: flex;
+    margin: 10px auto 20px 0;
+}
+
+.inputChatBoxLogin {
+    height: 10%;
+    width: 100%;
+    margin-top: 10px;
+    text-align: center;
+}
+
 .container {
     width: 40vw;
     height: 70vh;
@@ -102,8 +120,6 @@
     font-size: 11px;
 }
 
-
-/*로그인 했을 시, CSS*/
 .recommendComment {
     display: flex;
     align-items: center;
@@ -128,6 +144,10 @@
 .userInfo {
     padding: 10px 5px 10px 10px;
 }
+
+
+
+/* ============================================*/
 
 /*로그인 안했을 시 CSS*/
 .chatContainer:nth-child(1) {

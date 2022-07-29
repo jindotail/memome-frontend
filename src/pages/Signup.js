@@ -41,9 +41,9 @@ function Signup() {
         <Main>
             <section className={styles.signupPart}>
                 <div className={styles.titlePart}>
-                    <div className={styles.title}>
-                        Guest Book
-                    </div>
+                    <Link to="/" className={styles.title}>
+                        MEMOME
+                    </Link>
                 </div>
                 <form action="" method="POST" className={styles.fromStyle} onSubmit={onSubmit}>
                     <div className={styles.inputBox}>
