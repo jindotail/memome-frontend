@@ -42,7 +42,13 @@ function Login() {
                 })
                 .catch(res => {
                     console.log('Error!');
-                    alert('가입하지 않은 아이디이거나, 잘못된 비밀번호입니다.');
+                    if (data.id === '') {
+                        alert("아이디를 입력하세요")
+                    } else if (data.password === '') {
+                        alert("비밀번호를 입력하세요")
+                    } else {
+                        alert('가입하지 않은 아이디이거나, 잘못된 비밀번호입니다.');
+                    }
                 });
         } catch (e) {
             console.log(e);
