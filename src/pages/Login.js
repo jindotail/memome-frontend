@@ -56,18 +56,18 @@ function Login() {
             {(document.cookie.length > 0) ? (
                 <section className={styles.enterPart}>
                     <div className={styles.titlePart}>
-                        <div className={styles.title}>
+                        <Link to="/" className={styles.title}>
                             MEMOME
-                        </div>
+                        </Link>
                     </div>
                     <Link to={`/${getCookie("user_id")}`} className={styles.enterButton}>내 방명록으로 가기</Link>
                 </section>
             ) : (
                 <section className={styles.loginPart}>
                     <div className={styles.titlePart}>
-                        <div className={styles.title}>
+                        <Link to="/" className={styles.title}>
                             MEMOME
-                        </div>
+                        </Link>
                     </div>
                     <form action="" method="POST" className={styles.fromStyle} onSubmit={onSubmit}>
                         <div className={styles.inputBox}>
