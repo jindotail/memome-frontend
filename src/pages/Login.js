@@ -52,7 +52,7 @@ function Login() {
     const idRef = useRef(null);
     const passwordRef = useRef(null);
 
-    const userId = document.cookie.userId;
+    const userId = getCookie("user_id");
 
     return (
         <Main>
@@ -66,6 +66,8 @@ function Login() {
                             MEMOME
                         </Link>
                     </div>
+                    <div className={styles.greeting}>{userId}님 안녕하세요!</div>
+                    {console.log(userId)}
                     <Link to={`/${getCookie("user_id")}`} className={styles.enterButton}>내 방명록으로 가기</Link>
                 </section>
             ) : (
