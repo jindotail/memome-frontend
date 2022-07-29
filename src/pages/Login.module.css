@@ -18,11 +18,13 @@
 
 .inputBox {
     margin-top: 30px;
+    text-align: center;
 }
 
 .login {
     height: 50px;
-    width: 100%;
+    width: 90%;
+    padding-left: 20px;
     border-radius: 30px;
     border: 0px solid;
     box-shadow: 1px 1px 8px 1px #dadce0 inset;
@@ -31,6 +33,7 @@
 .signIn {
     font-size: 15px;
     margin-top: 5px;
+    margin-right: 10px;
     float: right;
     text-decoration: none !important;
     color: #191919;
