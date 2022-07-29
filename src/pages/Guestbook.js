@@ -117,8 +117,8 @@ function Guestbook() {
                 </form>
             </div>
             <div className={styles.buttonPart}>
-                <button className={styles.shareButton}>
-                    <AiOutlineHome size="24" onClick={() => { navigate("/") }} />
+                <button className={styles.shareButton} onClick={() => { navigate("/") }}>
+                    <AiOutlineHome size="24" />
                 </button>
                 <button className={styles.shareButton} onClick={() => handleCopy(copyUrl)}>
                     <MdContentCopy size="24" />
