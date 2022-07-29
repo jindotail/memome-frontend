@@ -17,7 +17,7 @@
 }
 
 .inputBox {
-    margin-top: 30px;
+    margin-top: 20px;
     text-align: center;
 }
 
@@ -32,7 +32,7 @@
 
 .login {
     font-size: 15px;
-    margin-top: 5px;
+    margin-top: 10px;
     margin-right: 10px;
     float: right;
     text-decoration: none !important;
@@ -50,6 +50,26 @@
     font-size: 20px;
     font-weight: 700;
     color: #453a3a;
+}
+
+.disabledButton {
+    height: 50px;
+    width: 100%;
+    margin-top: 50px;
+    border: none;
+    border-radius: 30px;
+    box-shadow: rgba(0, 0, 0, .2) 0 1px 1px -1px, rgba(0, 0, 0, .14) 0 1px 5px 0, rgba(0, 0, 0, .12) 0 1px 5px 0;
+    background: #bababa;
+    font-size: 20px;
+    font-weight: 700;
+    color: #453a3a;
+}
+
+.alert {
+    margin-left: 10px;
+    float: left;
+    font-size: 11px;
+    color: #f82c2c;
 }
 
 
@@ -80,6 +100,9 @@
 
     .submitButton {
         background: linear-gradient(106.37deg, #dfe8ff 29.63%, #f3c6f1 51.55%, #ffcfd1 90.85%);
+    }
 
+    .disabledButton {
+        background: #bababa;
     }
 }
