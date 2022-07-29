@@ -2,15 +2,16 @@ import { useEffect, useRef, useState } from 'react';
 import axios from 'axios';
 import Comments from '../components/utils/Comments';
 import styles from "./Guestbook.module.css";
-import { IoColorPaletteOutline } from "react-icons/io5";
+import { AiOutlineHome } from "react-icons/ai";
 import { MdContentCopy } from "react-icons/md";
-import Custom from '../components/utils/Custom';
+// import Custom from '../components/utils/Custom';
 import useAxios from '../hooks/useAxios';
 import userAxios from '../hooks/nicknameAxios';
 import Menu from '../components/utils/Menu';
-import { useLocation, useParams } from 'react-router-dom';
+import { useLocation, useParams, useNavigate } from 'react-router-dom';
 
 function Guestbook() {
+    const navigate = useNavigate();
     const location = useLocation();
     const copyUrl = "http://localhost:3000" + location.pathname;
     const { userId } = useParams();
@@ -117,14 +118,15 @@ function Guestbook() {
             </div>
             <div className={styles.buttonPart}>
                 <button className={styles.shareButton}>
-                    <IoColorPaletteOutline size="24" onClick={openModal} />
+                    <AiOutlineHome size="24" onClick={() => { navigate("/") }} />
                 </button>
                 <button className={styles.shareButton} onClick={() => handleCopy(copyUrl)}>
                     <MdContentCopy size="24" />
                 </button>
             </div>
 
-            <Custom open={modalOpen} close={closeModal} setColor={setColor} />
+            {/* 커스텀 기능 해제  */}
+            {/* <Custom open={modalOpen} close={closeModal} setColor={setColor} /> */}
         </div >
     )
 

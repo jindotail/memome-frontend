@@ -13,7 +13,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
-        {/* <Route path="/:userId" element={<AuthRoute component={<Guestbook page={currentPageName} />} />} /> */}
+        {/* <Route path="/:userId" element={<AuthRoute component={<Guestbook />} />} /> */}
         <Route path="/:userId" element={<Guestbook />} />
       </Routes>
     </BrowserRouter>
