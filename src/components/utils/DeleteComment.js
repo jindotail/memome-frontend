@@ -17,7 +17,7 @@ function deleteComment(page, id) {
             // handle error
             if (error.response.status === 401) {
                 console.log("토큰이 만료되었습니다");
-                token(page);
+                token(page, id);
             } else {
                 console.log(error);
             };

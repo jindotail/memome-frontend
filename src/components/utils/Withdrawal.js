@@ -17,7 +17,8 @@ export function withdrawal(user) {
             // handle error
             if (error.response.status === 401) {
                 console.log("토큰이 만료되었습니다");
-                token(user);
+                token(user, "회원탈퇴");
+                //withdrawal(user);
             } else {
                 console.log(error);
             };
