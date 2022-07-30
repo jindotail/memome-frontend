@@ -1,8 +1,9 @@
 import { useState } from 'react';
-import { RiLogoutCircleRLine } from 'react-icons/ri';
+import { RiLogoutCircleRLine, RiLoginCircleLine } from 'react-icons/ri';
 import { TbUserOff } from 'react-icons/tb';
 import { Link } from 'react-router-dom';
 import Logout from './Logout';
+import Main from './Main';
 import styles from "./Menu.module.css";
 import { withdrawal } from './Withdrawal';
 
@@ -41,8 +42,8 @@ function DropdownItem(props) {
     );
 }
 
+// 로그인 했을 때 드롭다운 
 export function DropdownMenu({ user }) {
-
     return (
         <div className={styles.dropdown}>
             <div>
@@ -55,6 +56,23 @@ export function DropdownMenu({ user }) {
                     <DropdownItem leftIcon={<TbUserOff size="24" />}>
                         <Link to="" onClick={e => withdrawal(user)}>
                             회원탈퇴
+                        </Link>
+                    </DropdownItem>
+                </div>
+            </div>
+        </div>
+    );
+}
+
+// 로그인 안했을 때 드롭다운 
+export function DropdownMenuLogin() {
+    return (
+        <div className={styles.dropdown}>
+            <div>
+                <div className={styles.menu}>
+                    <DropdownItem leftIcon={<RiLoginCircleLine size="24" />}>
+                        <Link to="/" onClick={Main}>
+                            로그인
                         </Link>
                     </DropdownItem>
                 </div>

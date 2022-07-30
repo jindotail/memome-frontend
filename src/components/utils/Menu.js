@@ -1,11 +1,15 @@
 import { FiMenu } from 'react-icons/fi';
-import { DropdownMenu, Navbar, NavItem } from './Navigation';
+import { DropdownMenu, DropdownMenuLogin, Navbar, NavItem } from './Navigation';
 
 function Menu({ user }) {
     return (
         <Navbar>
             <NavItem icon={<FiMenu size="24" />}>
-                <DropdownMenu user={user} />
+                {(document.cookie.length > 0) ? (
+                    <DropdownMenu user={user} />
+                ) : (
+                    <DropdownMenuLogin />
+                )}
             </NavItem>
         </Navbar>
     )

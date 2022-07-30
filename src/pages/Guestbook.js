@@ -98,11 +98,7 @@ function Guestbook() {
             }
             }>
             <header className={styles.header}>
-                {
-                    (document.cookie.length > 0) ? (
-                        <Menu user={userId} />
-                    ) : null
-                }
+                <Menu user={userId} />
             </header>
             <span className={styles.title}> {nickname}의 방명록</span>
             <div className={styles.container}>
