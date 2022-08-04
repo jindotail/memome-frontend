@@ -32,10 +32,10 @@ function Signup() {
         }
     };
     const handleChangeId = () => {
-        const idRegex = /[!@#$%^*+=-\d.\d,\d/]/;
+        const idRegex = /^(?=.*[a-z])(?=.*[0-9]).{3,10}$/
         const confirm = idRegex.test(idRef.current.value);
-        if (idRef.current.value.length < 3 || idRef.current.value.length > 10 || confirm) {
-            setIdMessage('*3~10자의 영문과 숫자만 사용 가능합니다.');
+        if (idRef.current.value.length < 3 || idRef.current.value.length > 10 || !confirm) {
+            setIdMessage('*3~10자의 영문과 숫자의 조합만 사용 가능합니다.');
             setIsId(false);
         } else {
             setIdMessage('');
@@ -43,10 +43,10 @@ function Signup() {
         }
     };
     const handleChangePwd = () => {
-        const pwdRegex = /^(?=.*[a-z])(?=.*[0-9]).{3,20}$/
+        const pwdRegex = /^(?=.*[a-z])(?=.*[0-9])(?=.*[@$!%*#?&]).{3,20}$/
         const confirm = pwdRegex.test(passwordRef.current.value);
         if (passwordRef.current.value.length < 3 || passwordRef.current.value.length > 20 || !confirm) {
-            setPwdMessage('*3~20자의 영문과 숫자의 조합만 가능합니다.');
+            setPwdMessage('*3~20자의 영문, 숫자와 특수문자의 조합만 가능합니다.');
             setIsPwd(false);
         } else {
             setPwdMessage('');
