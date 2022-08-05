@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { AiOutlineHome } from 'react-icons/ai';
 import { RiLogoutCircleRLine, RiLoginCircleLine } from 'react-icons/ri';
 import { TbUserOff } from 'react-icons/tb';
 import { Link } from 'react-router-dom';
@@ -36,7 +37,7 @@ export function NavItem(props) {
 function DropdownItem(props) {
     return (
         <div className={styles.menuItem}>
-            <span className={styles.iconButton}>{props.leftIcon}</span>
+            <span className={styles.iconButton2}>{props.leftIcon}</span>
             {props.children}
         </div>
     );
@@ -56,6 +57,11 @@ export function DropdownMenu({ user }) {
                     <DropdownItem leftIcon={<TbUserOff size="24" />}>
                         <Link to="" onClick={e => withdrawal(user)}>
                             회원탈퇴
+                        </Link>
+                    </DropdownItem>
+                    <DropdownItem leftIcon={<AiOutlineHome size="24" />}>
+                        <Link to="/{}">
+                            내 방명록
                         </Link>
                     </DropdownItem>
                 </div>
