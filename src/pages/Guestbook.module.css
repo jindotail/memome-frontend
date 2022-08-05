@@ -1,4 +1,4 @@
-/* @import url('https://fonts.googleapis.com/css2?family=Galada&family=Gowun+Batang&family=Poor+Story&family=Yeon+Sung&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Galada&family=Gowun+Batang&family=Poor+Story&family=Yeon+Sung&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&display=swap');
 
 .guestbook {
@@ -7,15 +7,20 @@
     justify-content: center;
     align-items: center;
     margin: 0;
+    width: 100vw;
     height: 100vh;
     background: linear-gradient(106.37deg, #dfe8ff 29.63%, #f3c6f1 51.55%, #ffcfd1 90.85%);
 }
 
 .header {
+    /*색깔 있는게 나은지 없는게 나은지*/
+    display: flex;
+    justify-content: space-between;
     position: absolute;
     top: 0;
-    right: 0;
-    margin: 15px 18px 0 0;
+    width: 100vw;
+    height: 30px;
+    background-color: #ffffff7d;
 }
 
 .header>button {
@@ -33,8 +38,15 @@
     background-Color: rgb(255, 255, 255);
 }
 
+.logo {
+    color: #453a3a;
+    font-family: 'Galada', cursive;
+    font-size: 20px;
+    margin: 2px 0 0 10px;
+}
+
 .title {
-    margin: 5px 0;
+    margin: 50px 0 5px 0;
     color: #453a3a;
     font-size: 50px;
     /* font-family: 'Galada', cursive; */
@@ -141,6 +153,20 @@
 
 
 @media (max-width:740px) {
+    .guestbook {
+        width: 100vw;
+    }
+
+    .header {
+        width: 100vw;
+        background-color: #ffffff7d;
+    }
+
+    .logo {
+        font-size: 18px;
+        margin: 3px 0 0 10px;
+    }
+
     .container {
         width: 90vw;
         height: 70vh;

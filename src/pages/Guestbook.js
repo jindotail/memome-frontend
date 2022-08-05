@@ -8,7 +8,7 @@ import { MdContentCopy } from "react-icons/md";
 import useAxios from '../hooks/useAxios';
 import userAxios from '../hooks/nicknameAxios';
 import Menu from '../components/utils/Menu';
-import { useLocation, useParams, useNavigate } from 'react-router-dom';
+import { useLocation, useParams, useNavigate, Link } from 'react-router-dom';
 
 function Guestbook() {
     const navigate = useNavigate();
@@ -98,6 +98,7 @@ function Guestbook() {
             }
             }>
             <header className={styles.header}>
+                <Link to="/" className={styles.logo}>MEMOME</Link>
                 <Menu user={userId} />
             </header>
             <span className={styles.title}> {nickname}의 방명록</span>

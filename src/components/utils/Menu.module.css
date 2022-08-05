@@ -1,5 +1,5 @@
 :root {
-    --nav-size: 60px;
+    --nav-size: 35px;
     --border: 1px solid #474a4d;
     --border-radius: 8px;
     --speed: 500ms;
@@ -38,13 +38,13 @@ a {
     width: var(--button-size);
     height: var(--button-size);
     border-radius: 50%;
-    padding: 5px;
-    margin: 5px;
+    padding: 5px 0;
+    margin-top: 1px;
     display: flex;
     align-items: center;
     justify-content: center;
     transition: filter 300ms;
-    background-color: #ffffff;
+    /* background-color: #ffffff; */
 }
 
 .iconButton:hover {
@@ -96,7 +96,7 @@ a {
     .navbar {
         height: var(--nav-size);
         padding: 0 1rem;
-        position: absolute;
+        /* position: absolute; */
         top: -5px;
         right: -20px
     }
