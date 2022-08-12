@@ -32,10 +32,10 @@ function Signup() {
         }
     };
     const handleChangeId = () => {
-        const idRegex = /^(?=.*[a-z])(?=.*[0-9]).{3,10}$/
+        const idRegex = /^[A-za-z0-9]*$/;
         const confirm = idRegex.test(idRef.current.value);
         if (idRef.current.value.length < 3 || idRef.current.value.length > 10 || !confirm) {
-            setIdMessage('*3~10자의 영문과 숫자의 조합만 사용 가능합니다.');
+            setIdMessage('*3~10자의 영문과 숫자만 가능합니다.');
             setIsId(false);
         } else {
             setIdMessage('');
