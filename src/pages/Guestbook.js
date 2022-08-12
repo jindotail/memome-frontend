@@ -113,14 +113,23 @@ function Guestbook() {
                     <button className={styles.submitButton}>전송</button>
                 </form>
             </div>
-            <div className={styles.buttonPart}>
-                <button className={styles.shareButton} onClick={() => { navigate("/") }}>
-                    <AiOutlineHome size="24" />
-                </button>
-                <button className={styles.shareButton} onClick={() => handleCopy(copyUrl)}>
-                    <MdContentCopy size="24" />
-                </button>
-            </div>
+
+            {(document.cookie.length > 0) ? (
+                <div className={styles.buttonPart}>
+                    <button className={styles.shareButton} onClick={() => { navigate("/") }}>
+                        <AiOutlineHome size="24" />
+                    </button>
+                    <button className={styles.shareButton} onClick={() => handleCopy(copyUrl)}>
+                        <MdContentCopy size="24" />
+                    </button>
+                </div>
+            ) : (
+                <div className={styles.buttonPart}>
+                    <button className={styles.shareButton} onClick={() => { navigate("/signup") }}>
+                        내 방명록 만들기
+                    </button>
+                </div>
+            )}
 
             {/* 커스텀 기능 해제  */}
             {/* <Custom open={modalOpen} close={closeModal} setColor={setColor} /> */}
