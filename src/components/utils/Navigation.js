@@ -3,6 +3,7 @@ import { AiOutlineHome } from 'react-icons/ai';
 import { RiLogoutCircleRLine, RiLoginCircleLine } from 'react-icons/ri';
 import { TbUserOff } from 'react-icons/tb';
 import { Link } from 'react-router-dom';
+import { getCookie } from '../../hooks/cookie';
 import Logout from './Logout';
 import Main from './Main';
 import styles from "./Menu.module.css";
@@ -45,6 +46,8 @@ function DropdownItem(props) {
 
 // 로그인 했을 때 드롭다운 
 export function DropdownMenu({ user }) {
+    const url = "/" + getCookie("user_id");
+
     return (
         <div className={styles.dropdown}>
             <div>
@@ -60,13 +63,15 @@ export function DropdownMenu({ user }) {
                         </Link>
                     </DropdownItem>
                     <DropdownItem leftIcon={<AiOutlineHome size="24" />}>
-                        <Link to="/{}">
+                        <Link to={{
+                            pathname: url
+                        }}>
                             내 방명록
                         </Link>
                     </DropdownItem>
                 </div>
             </div>
-        </div>
+        </div >
     );
 }
 
