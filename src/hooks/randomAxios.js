@@ -9,13 +9,11 @@ export default function useAxios(url) {
     useEffect(() => {
         axios.get(url)
             .then(res => {
-                return res.data.ids;
-            })
-            .then(data => {
+                const data = res.data.users;
                 setData(data);
             })
             .catch(error => { console.log(Error) });
     }, [url]);
-
+    console.log(data.users);
     return data;
 }

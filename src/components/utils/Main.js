@@ -18,7 +18,7 @@ function Main({ children }) {
                                         <div className={styles.comment}>다른 유저들의 방명록에 방문해보세요!</div>
                                     </div>
                                     {users.map(user => (
-                                        <Link to={`/${user}`}>
+                                        <Link to={`/${user.id}`} key={user.idx}>
                                             <div className={styles.chatContainerLogin}>
                                                 <div className={styles.recommendComment}>
                                                     <div className={styles.homeIcon}>
@@ -26,7 +26,7 @@ function Main({ children }) {
                                                         <AiOutlineHome size="24" color='#ffffff9b' />
                                                     </div>
                                                     <div className={styles.userInfo}>
-                                                        {user} 님의 <br />방명록 방문가기
+                                                        {user.id} 님의 <br />방명록 방문가기
                                                     </div>
                                                 </div>
                                             </div>
