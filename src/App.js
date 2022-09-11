@@ -6,14 +6,11 @@ import Signup from './pages/Signup';
 
 
 function App() {
-  // const user = useAxios(`http://localhost:8080/api/auth/signup`);
-
   return (
-    <BrowserRouter>
+    <BrowserRouter basename='/guest-book-frontend'>
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
-        {/* <Route path="/:userId" element={<AuthRoute component={<Guestbook />} />} /> */}
         <Route path="/:userId" element={<Guestbook />} />
       </Routes>
     </BrowserRouter>
