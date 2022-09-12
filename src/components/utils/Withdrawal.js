@@ -10,7 +10,7 @@ export function withdrawal(user) {
             // handle success
             console.log(res);
             removeCookie("user_id");
-            window.location.replace(`/`);
+            window.location.replace(`/guest-book-frontend`);
             alert("탈퇴되었습니다")
         })
         .catch(error => {

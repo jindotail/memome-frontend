@@ -16,7 +16,7 @@ function Logout(e) {
             console.log(res);
             removeCookie("user_id");
             console.log("전송 성공");
-            window.location.replace(`/`);
+            window.location.replace(`/guest-book-frontend`);
         })
         .catch(res => { console.log(res) });
 };

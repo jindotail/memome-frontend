@@ -4,7 +4,6 @@ import Comments from '../components/utils/Comments';
 import styles from "./Guestbook.module.css";
 import { AiOutlineHome } from "react-icons/ai";
 import { MdContentCopy } from "react-icons/md";
-// import Custom from '../components/utils/Custom';
 import useAxios from '../hooks/useAxios';
 import userAxios from '../hooks/nicknameAxios';
 import Menu from '../components/utils/Menu';
@@ -21,11 +20,6 @@ function Guestbook() {
 
     const [comments, setComments] = useState(commentsInit);
 
-    // 처음 방명록 방문 시, 이미 저장된 댓글 보여주는 기능
-    useEffect(() => {
-        setComments(commentsInit);
-    }, [commentsInit]);
-
     // 방명록 주소 복사 함수
     const handleCopy = async (text) => {
         try {
@@ -37,7 +31,7 @@ function Guestbook() {
     };
 
     // 전송 버튼 함수
-    function onSubmit(e) {
+    const onSubmit = async (e) => {
         e.preventDefault();
 
         // form input 값 없이 submit 금지 
@@ -63,18 +57,18 @@ function Guestbook() {
             })
             .catch(res => { console.log('Error!', res) });
 
-        axios.get(`/api/comment/${userId}`).then(res => {
+        await axios.get(`/api/comment/${userId}`).then(res => {
+            console.log("enter", res.data.body)
             setComments(res.data.body);
         })
     };
 
     // 최신 댓글로 정렬
     comments.sort((a, b) => {
-        return (b.idx - a.idx)
+        return new Date(b.iso_time) - new Date(a.iso_time)
     })
 
     const commentRef = useRef(null);
-
 
     // custom modal창 함수
     const [modalOpen, setModalOpen] = useState(false);
@@ -88,6 +82,13 @@ function Guestbook() {
 
     // 방명록 배경 색상 custom
     const [color, setColor] = useState("");
+
+    // 처음 방명록 방문 시, 이미 저장된 댓글 보여주는 기능
+    useEffect(() => {
+        setComments(commentsInit);
+    }, [commentsInit]);
+
+
 
 
     return (

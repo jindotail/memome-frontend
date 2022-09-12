@@ -11,10 +11,15 @@ export function token(user, type) {
             //handle success
             const { accessToken } = res.data;
             axios.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`;
+
+            removeCookie("accessToken");
             setCookie("accessToken", accessToken);
+
             if (type === "회원탈퇴") {
+                console.log("회원탈퇴 들어옴")
                 withdrawal(user);
             } else {
+                console.log("댓글삭제 들어옴")
                 deleteComment(user, type);
             }
         })
@@ -25,7 +30,7 @@ export function token(user, type) {
                 removeCookie("refreshToken");
                 removeCookie("accessToken");
                 removeCookie("user_id");
-                window.location.replace("/");
+                window.location.replace("/guest-book-frontend");
             } else {
                 console.log(error);
             }

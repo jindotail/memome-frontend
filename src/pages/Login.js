@@ -38,7 +38,7 @@ function Login() {
                     setCookie("user_id", data.id);
                     setCookie("accessToken", accessToken);
                     setCookie("refreshToken", refreshToken);
-                    window.location.replace(`/${data.id}`);
+                    window.location.replace(`/guest-book-frontend/${data.id}`);
                 })
                 .catch(res => {
                     console.log('Error!');
