@@ -31,7 +31,8 @@
     "build": "env-cmd -f ./env/.env.production react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "predeploy": "npm run build"
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
@@ -54,5 +55,5 @@
   "devDependencies": {
     "gh-pages": "^4.0.0"
   },
-  "homepage": "http://jindotail.github.io/guest-book-frontend/"
+  "homepage": "https://jindotail.github.io/guest-book-frontend/"
 }
