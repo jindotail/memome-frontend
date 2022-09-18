@@ -9,6 +9,8 @@
     "@testing-library/user-event": "^13.5.0",
     "atob": "^2.1.2",
     "axios": "^0.27.2",
+    "env-cmd": "^10.1.0",
+    "http-proxy-middleware": "^2.0.6",
     "react": "^18.1.0",
     "react-color": "^2.19.3",
     "react-cookie": "^4.1.1",
@@ -24,7 +26,9 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start:dev": "env-cmd -f ./env/.env.development react-scripts start",
+    "start:prod": "env-cmd -f ./env/.env.production react-scripts start",
+    "build": "env-cmd -f ./env/.env.production react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
@@ -48,7 +52,6 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "https://guestbook-jindotail.herokuapp.com",
   "devDependencies": {
     "gh-pages": "^4.0.0"
   },
