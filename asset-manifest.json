@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/guest-book-frontend/static/css/main.b3bbb06e.css",
+    "main.js": "/guest-book-frontend/static/js/main.1d994484.js",
+    "index.html": "/guest-book-frontend/index.html",
+    "main.b3bbb06e.css.map": "/guest-book-frontend/static/css/main.b3bbb06e.css.map",
+    "main.1d994484.js.map": "/guest-book-frontend/static/js/main.1d994484.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.b3bbb06e.css",
+    "static/js/main.1d994484.js"
+  ]
+}
