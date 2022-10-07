@@ -14,6 +14,5 @@ export default function useAxios(url) {
             })
             .catch(error => { console.log(Error) });
     }, [url]);
-    console.log(data.users);
     return data;
 }

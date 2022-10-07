@@ -7,7 +7,7 @@ import Signup from './pages/Signup';
 
 function App() {
   return (
-    <BrowserRouter basename='/guest-book-frontend'>
+    <BrowserRouter basename='/'>
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/signup" element={<Signup />} />

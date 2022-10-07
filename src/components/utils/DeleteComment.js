@@ -8,11 +8,11 @@ function deleteComment(page, id) {
     // e.preventDefault();
     console.log(page, id)
 
-    axios.delete(`/api/comment/${page}/${id}`)
+    axios.delete(`${process.env.REACT_APP_API_URL}/api/comment/${page}/${id}`)
         .then(res => {
             // handle success
             console.log(res);
-            window.location.replace(`/guest-book-frontend/${page}`);
+            window.location.replace(`/${page}`);
         })
         .catch(error => {
             // handle error

@@ -4,7 +4,7 @@ import { withdrawal } from '../components/utils/Withdrawal';
 import { removeCookie, setCookie } from './cookie';
 
 export function token(user, type) {
-    axios.post('/api/auth/token', {
+    axios.post(`${process.env.REACT_APP_API_URL}/api/auth/token`, {
         id: user
     })
         .then(res => {
@@ -30,7 +30,7 @@ export function token(user, type) {
                 removeCookie("refreshToken");
                 removeCookie("accessToken");
                 removeCookie("user_id");
-                window.location.replace("/guest-book-frontend");
+                window.location.replace("/");
             } else {
                 console.log(error);
             }

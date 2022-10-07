@@ -5,12 +5,12 @@ import { removeCookie } from '../../hooks/cookie';
 import { token } from '../../hooks/token';
 
 export function withdrawal(user) {
-    axios.delete(`/api/user/${user}`)
+    axios.delete(`${process.env.REACT_APP_API_URL}/api/user/${user}`)
         .then(res => {
             // handle success
             console.log(res);
             removeCookie("user_id");
-            window.location.replace(`/guest-book-frontend`);
+            window.location.replace(`/`);
             alert("탈퇴되었습니다")
         })
         .catch(error => {

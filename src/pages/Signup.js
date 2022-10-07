@@ -72,13 +72,8 @@ function Signup() {
             nickname: nicknameRef.current.value,
         }
 
-        axios.post(`/api/auth/signup`,
-            data,
-            {
-                headers: {
-                    "Content-Type": "application/json",
-                }
-            }
+        axios.post(`${process.env.REACT_APP_API_URL}/api/auth/signup`,
+            data
         )
             .then(res => {
                 console.log("전송 성공");

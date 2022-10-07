@@ -25,10 +25,10 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "env-cmd -f ./env/.env.production react-scripts start",
+    "start": "env-cmd -f ./env/.env.development react-scripts start",
     "start:dev": "env-cmd -f ./env/.env.development react-scripts start",
     "start:prod": "env-cmd -f ./env/.env.production react-scripts start",
-    "build": "env-cmd -f ./env/.env.production react-scripts build",
+    "build": "env-cmd -f ./env/.env.production react-scripts build && shx cp build/index.html build/404.html",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
@@ -53,7 +53,8 @@
     ]
   },
   "devDependencies": {
-    "gh-pages": "^4.0.0"
+    "gh-pages": "^4.0.0",
+    "shx": "^0.3.4"
   },
-  "homepage": "https://jindotail.github.io/guest-book-frontend/"
+  "homepage": "https://memome.be/"
 }
