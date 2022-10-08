@@ -9,6 +9,8 @@ function Signup() {
     const nicknameRef = useRef(null);
     const passwordRef = useRef(null);
     const password2Ref = useRef(null);
+    const pwdQuestionRef = useRef(null);
+    const pwdAnswerRef = useRef(null);
 
     // 메시지 
     const [nameMessage, setNameMessage] = useState("");
@@ -20,6 +22,8 @@ function Signup() {
     const [isId, setIsId] = useState(false);
     const [isPwd, setIsPwd] = useState(false);
     const [isPwd2, setIsPwd2] = useState(false);
+    const [isPwdQuestion, setIsPwdQuestion] = useState(false);
+    const [isPwdAnswer, setIsPwdAnswer] = useState(false);
 
     //유효성 확인
     const handleChangeName = () => {
@@ -52,7 +56,7 @@ function Signup() {
             setPwdMessage('');
             setIsPwd(true)
         }
-    }
+    };
     const handleChangePwd2 = () => {
         if (passwordRef.current.value === password2Ref.current.value) {
             setPwd2Message("");
@@ -60,6 +64,20 @@ function Signup() {
         } else {
             setPwd2Message('비밀번호가 일치하지 않습니다.');
             setIsPwd2(false);
+        }
+    };
+    const handleChangePwdQuestion = () => {
+        if (pwdQuestionRef.current.value !== "") {
+            setIsPwdQuestion(true);
+        } else {
+            setIsPwdQuestion(false);
+        }
+    }
+    const handleChangePwdAnswer = () => {
+        if (pwdAnswerRef.current.value !== "") {
+            setIsPwdAnswer(true);
+        } else {
+            setIsPwdAnswer(false);
         }
     }
 
@@ -70,6 +88,8 @@ function Signup() {
             id: idRef.current.value,
             password: passwordRef.current.value,
             nickname: nicknameRef.current.value,
+            passwordQuestion: pwdQuestionRef.current.value,
+            passwordAnswer: pwdAnswerRef.current.value
         }
 
         axios.post(`${process.env.REACT_APP_API_URL}/api/auth/signup`,
@@ -121,8 +141,14 @@ function Signup() {
                         <input id="password2" type="password" name="password2" placeholder="비밀번호 재확인" className={styles.singup} ref={password2Ref} onChange={handleChangePwd2} maxLength='20' />
                         <p className={styles.alert}>{pwd2Message}</p>
                     </div>
+                    <div className={styles.inputBox}>
+                        <input id="pwdQuestion" type="text" name="pwdQuestion" placeholder="비밀번호 찾기 질문 : Ex) 내가 좋아하는 동물은?" className={styles.singup} ref={pwdQuestionRef} onChange={handleChangePwdQuestion} />
+                    </div>
+                    <div className={styles.inputBox}>
+                        <input id="pwdAnswer" type="text" name="pwdAnswer" placeholder="비밀번호 찾기 답변 : Ex) 아르마딜로" className={styles.singup} ref={pwdAnswerRef} onChange={handleChangePwdAnswer} />
+                    </div>
                     <Link to="/" className={styles.login}>로그인 하기</Link>
-                    {!(isId && isName && isPwd && isPwd2) ? (
+                    {!(isId && isName && isPwd && isPwd2 && isPwdQuestion && isPwdAnswer) ? (
                         <button type="submit" className={styles.disabledButton} disabled >Sign Up</button>
                     ) : (
                         <button type="submit" className={styles.submitButton}>Sign Up</button>

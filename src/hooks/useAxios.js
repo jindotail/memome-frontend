@@ -13,9 +13,8 @@ export default function useAxios(url) {
                 setData(data);
             })
             .catch(error => {
-                console.log(Error);
-                alert("존재하지 않는 방명록입니다.")
-                window.location.replace("/");
+                const errorCode = "notFound";
+                return errorCode;
             });
     }, [url]);
 

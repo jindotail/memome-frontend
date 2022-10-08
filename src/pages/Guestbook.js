@@ -10,6 +10,7 @@ import useAxios from '../hooks/useAxios';
 import userAxios from '../hooks/nicknameAxios';
 import Menu from '../components/utils/Menu';
 import { useLocation, useParams, useNavigate, Link } from 'react-router-dom';
+import NotFound from './NotFound';
 
 function Guestbook() {
     const navigate = useNavigate();
@@ -142,55 +143,60 @@ function Guestbook() {
 
     return (
 
-        <div className={styles.guestbook}
-            style={{
-                background: `${color}`
-            }
-            }>
-            <header className={styles.header}>
-                <Link to="/" className={styles.logo}>MEMOME</Link>
-                <Menu user={userId} />
-            </header>
-            <span className={styles.title}> {nickname}의 방명록</span>
-            <div className={styles.container}>
-                <div className={styles.contents}>
-                    {comments.map(comment => (
-                        <Comments comment={comment} key={comment.idx} page={userId} id={comment.idx} />
-                    ))}
+        (commentsInit !== "notFound") ? (
+            <div className={styles.guestbook}
+                style={{
+                    background: `${color}`
+                }
+                }>
+                <header className={styles.header}>
+                    <Link to="/" className={styles.logo}>MEMOME</Link>
+                    <Menu user={userId} />
+                </header>
+                <span className={styles.title}> {nickname}의 방명록</span>
+                <div className={styles.container}>
+                    <div className={styles.contents}>
+                        {comments.map(comment => (
+                            <Comments comment={comment} key={comment.idx} page={userId} id={comment.idx} />
+                        ))}
+                    </div>
+                    <form className={styles.inputBox} onSubmit={onSubmit}>
+                        <input className={styles.input} type="text" ref={commentRef} />
+                        <button className={styles.submitButton}>전송</button>
+                    </form>
                 </div>
-                <form className={styles.inputBox} onSubmit={onSubmit}>
-                    <input className={styles.input} type="text" ref={commentRef} />
-                    <button className={styles.submitButton}>전송</button>
-                </form>
+
+                {(document.cookie.length > 0) ? (
+                    <div className={styles.buttonPart}>
+                        <button className={styles.shareButton} onClick={() => { navigate("/") }}>
+                            <AiOutlineHome size="24" />
+                        </button>
+                        <button className={styles.shareButton} onClick={() => handleCopy(copyUrl)}>
+                            <MdContentCopy size="24" />
+                        </button>
+                        <button className={styles.shareButton} onClick={shareTwitter}>
+                            {/* <MdContentCopy size="24" /> */}
+                            <FaTwitter size="24" />
+                        </button>
+                        <button className={styles.shareButton} onClick={shareKakao}>
+                            <RiKakaoTalkFill size="24" />
+                        </button>
+                    </div>
+                ) : (
+                    <div className={styles.buttonPart}>
+                        <button className={styles.shareButton} onClick={() => { navigate("/signup") }}>
+                            내 방명록 만들기
+                        </button>
+                    </div>
+                )}
+
+                {/* 커스텀 기능 해제  */}
+                {/* <Custom open={modalOpen} close={closeModal} setColor={setColor} /> */}
+            </div >) : (
+            <div>
+                <NotFound />
             </div>
-
-            {(document.cookie.length > 0) ? (
-                <div className={styles.buttonPart}>
-                    <button className={styles.shareButton} onClick={() => { navigate("/") }}>
-                        <AiOutlineHome size="24" />
-                    </button>
-                    <button className={styles.shareButton} onClick={() => handleCopy(copyUrl)}>
-                        <MdContentCopy size="24" />
-                    </button>
-                    <button className={styles.shareButton} onClick={shareTwitter}>
-                        {/* <MdContentCopy size="24" /> */}
-                        <FaTwitter size="24" />
-                    </button>
-                    <button className={styles.shareButton} onClick={shareKakao}>
-                        <RiKakaoTalkFill size="24" />
-                    </button>
-                </div>
-            ) : (
-                <div className={styles.buttonPart}>
-                    <button className={styles.shareButton} onClick={() => { navigate("/signup") }}>
-                        내 방명록 만들기
-                    </button>
-                </div>
-            )}
-
-            {/* 커스텀 기능 해제  */}
-            {/* <Custom open={modalOpen} close={closeModal} setColor={setColor} /> */}
-        </div >
+        )
     )
 
 }

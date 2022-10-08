@@ -5,7 +5,9 @@ import Main from '../components/utils/Main';
 import styles from "./Login.module.css";
 import { getCookie, setCookie } from '../hooks/cookie';
 import Menu from '../components/utils/Menu';
+
 function Login() {
+
     //로그인하기 버튼 함수
     async function onSubmit(e) {
         try {
@@ -14,7 +16,7 @@ function Login() {
                 id: idRef.current.value,
                 password: passwordRef.current.value,
             }
-            console.log(data);
+
             axios.post(`${process.env.REACT_APP_API_URL}/api/auth/login`,
                 data,
                 {
@@ -47,6 +49,7 @@ function Login() {
     const idRef = useRef(null);
     const passwordRef = useRef(null);
     const userId = getCookie("user_id");
+
     return (
         <Main>
             {(document.cookie.length > 0) ? (
@@ -76,7 +79,8 @@ function Login() {
                         <div className={styles.inputBox}>
                             <input id="password" type="password" name="password" placeholder="비밀번호" className={styles.login} ref={passwordRef} />
                         </div>
-                        <Link to="/signup" className={styles.signIn}>회원가입 하기</Link>
+                        <Link to="/findPassword" className={styles.signIn}>비밀번호 찾기</Link>
+                        <Link to="/signup" className={styles.signIn}>회원가입 &nbsp; </Link>
                         <button type="submit" className={styles.submitButton}>Log In</button>
                     </form>
                 </section>
