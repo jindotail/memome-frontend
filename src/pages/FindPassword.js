@@ -1,11 +1,35 @@
 import styles from './FindPassword.module.css';
 import Main from "../components/utils/Main";
 import { Link } from 'react-router-dom';
+import { getCookie } from '../hooks/cookie';
+import axios from 'axios';
+import { useRef } from 'react';
+import pwdQuestionAxios from '../hooks/pwdQuestionAxios';
 
 function FindPassword() {
+
+    const find_user = getCookie("find_user");
+    const question = pwdQuestionAxios(`${process.env.REACT_APP_API_URL}/api/user/${find_user}/password_question`);
+    console.log(question);
+    const answerRef = useRef(null);
+
     const onSubmit = () => {
-        return;
-    }
+        axios.post(`${process.env.REACT_APP_API_URL}/api/user/${find_user}/password_question`,
+            {
+                passwordAnswer: answerRef.current.value
+            }
+        )
+            .then(res => {
+                answerRef.current.value = "";
+                window.location.replace(`/resetPassword`);
+            })
+            .catch(res => {
+                alert("틀린 답변입니다.")
+                window.location.replace(`/findPassword`);
+            });
+    };
+
+
     return (
         <Main>
             <section className={styles.findPwdPart}>
@@ -17,17 +41,12 @@ function FindPassword() {
                 <form action="" method="POST" className={styles.fromStyle} onSubmit={onSubmit} disabled>
                     <div className={styles.inputBox}>
                         <section className={styles.questionBox}>
-                            <div className={styles.questionContenets}>Q. 나의 강아지 이름은?</div>
+                            <div className={styles.questionContenets}>Q. {question}</div>
                         </section>
-                        <input id="answer" type="text" name="answer" placeholder="답을 입력하세요" className={styles.findPwdInputBox} maxLength='10' />
+                        <input id="answer" type="text" name="answer" placeholder="답을 입력하세요" className={styles.findPwdInputBox} maxLength='10' ref={answerRef} />
                     </div>
 
                     <button type="submit" className={styles.submitButton}>Check</button>
-                    {/* {!(isId && isName && isPwd && isPwd2 && isPwdQuestion && isPwdAnswer) ? (
-                        <button type="submit" className={styles.disabledButton} disabled >Sign Up</button>
-                    ) : (
-                        <button type="submit" className={styles.submitButton}>Sign Up</button>
-                    )} */}
                 </form>
             </section>
         </Main>
