@@ -5,7 +5,7 @@ import { removeCookie, setCookie } from './cookie';
 
 export function token(user, type) {
     axios.post(`${process.env.REACT_APP_API_URL}/api/auth/token`, {
-        id: user
+        id: user.user
     })
         .then(res => {
             //handle success
@@ -17,10 +17,15 @@ export function token(user, type) {
 
             if (type === "회원탈퇴") {
                 console.log("회원탈퇴 들어옴")
-                withdrawal(user);
-            } else {
+                withdrawal(user.user);
+            }
+            else if (type === "닉네임변경") {
+                alert("다시 닉네임 변경을 시도하세요.");
+                window.location.replace("/profile");
+            }
+            else {
                 console.log("댓글삭제 들어옴")
-                deleteComment(user, type);
+                deleteComment(user.user, user.id);
             }
         })
         .catch(error => {

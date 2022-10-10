@@ -14,10 +14,11 @@ export function withdrawal(user) {
             alert("탈퇴되었습니다")
         })
         .catch(error => {
+            const userInfo = { user }
             // handle error
             if (error.response.status === 401) {
                 console.log("토큰이 만료되었습니다");
-                token(user, "회원탈퇴");
+                token(userInfo, "회원탈퇴");
                 //withdrawal(user);
             } else {
                 console.log(error);

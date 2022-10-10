@@ -103,6 +103,10 @@ a {
     border-bottom: 1px solid #87878740;
 }
 
+.menuItem:nth-child(3) {
+    border-bottom: 1px solid #87878740;
+}
+
 .menuItem:hover {
     background-color: #f0f0f0;
 }

@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { AiOutlineHome } from 'react-icons/ai';
 import { RiLogoutCircleRLine, RiLoginCircleLine } from 'react-icons/ri';
 import { TbUserOff } from 'react-icons/tb';
+import { CgProfile } from 'react-icons/cg';
 import { Link } from 'react-router-dom';
 import { getCookie } from '../../hooks/cookie';
 import Logout from './Logout';
@@ -57,9 +58,9 @@ export function DropdownMenu({ user }) {
                             로그아웃
                         </Link>
                     </DropdownItem>
-                    <DropdownItem leftIcon={<TbUserOff size="24" />}>
-                        <Link to="" onClick={e => withdrawal(user)}>
-                            회원탈퇴
+                    <DropdownItem leftIcon={<CgProfile size="24" />}>
+                        <Link to="/profile">
+                            내 프로필
                         </Link>
                     </DropdownItem>
                     <DropdownItem leftIcon={<AiOutlineHome size="24" />}>
@@ -67,6 +68,11 @@ export function DropdownMenu({ user }) {
                             pathname: url
                         }}>
                             내 방명록
+                        </Link>
+                    </DropdownItem>
+                    <DropdownItem leftIcon={<TbUserOff size="24" />}>
+                        <Link to="" onClick={e => withdrawal(user)}>
+                            회원탈퇴
                         </Link>
                     </DropdownItem>
                 </div>
