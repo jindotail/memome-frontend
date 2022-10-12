@@ -5,8 +5,16 @@ import Main from '../components/utils/Main';
 import styles from "./Login.module.css";
 import { getCookie, setCookie } from '../hooks/cookie';
 import Menu from '../components/utils/Menu';
+import userAxios from '../hooks/nicknameAxios';
 
 function Login() {
+    
+    const idRef = useRef(null);
+    const passwordRef = useRef(null);
+    const userId = getCookie("user_id");
+
+    // 닉네임 가져오기
+    const nickname = userAxios(`${process.env.REACT_APP_API_URL}/api/user/${userId}`);
 
     //로그인하기 버튼 함수
     async function onSubmit(e) {
@@ -46,9 +54,6 @@ function Login() {
             console.log(e);
         }
     };
-    const idRef = useRef(null);
-    const passwordRef = useRef(null);
-    const userId = getCookie("user_id");
 
     return (
         <Main>
@@ -62,7 +67,7 @@ function Login() {
                             MEMOME
                         </Link>
                     </div>
-                    <div className={styles.greeting}>{userId}님 안녕하세요!</div>
+                    <div className={styles.greeting}>{nickname}님 안녕하세요!</div>
                     <Link to={`/${getCookie("user_id")}`} className={styles.enterButton}>내 방명록으로 가기</Link>
                 </section>
             ) : (
