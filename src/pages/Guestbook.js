@@ -62,9 +62,11 @@ function Guestbook() {
     };
 
     // 최신 댓글로 정렬
-    comments.sort((a, b) => {
-        return new Date(b.iso_time) - new Date(a.iso_time)
-    })
+    if(commentsInit !== "notFound"){
+        comments.sort((a, b) => {
+            return new Date(b.iso_time) - new Date(a.iso_time)
+        })
+    }
 
     const commentRef = useRef(null);
 

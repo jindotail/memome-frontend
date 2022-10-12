@@ -13,8 +13,7 @@ export default function useAxios(url) {
                 setData(data);
             })
             .catch(error => {
-                const errorCode = "notFound";
-                return errorCode;
+                setData("notFound");
             });
     }, [url]);
 
