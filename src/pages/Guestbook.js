@@ -62,7 +62,7 @@ function Guestbook() {
     };
 
     // 최신 댓글로 정렬
-    if(commentsInit !== "notFound"){
+    if (commentsInit !== "notFound") {
         comments.sort((a, b) => {
             return new Date(b.iso_time) - new Date(a.iso_time)
         })
@@ -87,9 +87,7 @@ function Guestbook() {
     }
 
     // url 가져오기
-    const url = window.location.href;
-    const domain = url.substring(0, url.indexOf("/", 10));
-    console.log(domain)
+    const url = "https://memome.be"
 
     const shareKakao = () => {
         window.Kakao.Link.sendDefault({
@@ -97,7 +95,7 @@ function Guestbook() {
             content: {
                 title: '나만의 방명록 : MEMOME',
                 description: '나만의 방명록을 만들어보고 친구들과 공유해보세요!',
-                imageUrl: domain + '/assets/img/memome_test.png',
+                imageUrl: "https://i.ibb.co/zGKbKbx/memome-test.png",
                 link: {
                     webUrl: url,
                     mobileWebUrl: url,
