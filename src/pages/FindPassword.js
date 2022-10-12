@@ -1,7 +1,7 @@
 import styles from './FindPassword.module.css';
 import Main from "../components/utils/Main";
 import { Link } from 'react-router-dom';
-import { getCookie } from '../hooks/cookie';
+import { getCookie, removeCookie } from '../hooks/cookie';
 import axios from 'axios';
 import { useRef } from 'react';
 import pwdQuestionAxios from '../hooks/pwdQuestionAxios';
@@ -10,21 +10,22 @@ function FindPassword() {
 
     const find_user = getCookie("find_user");
     const question = pwdQuestionAxios(`${process.env.REACT_APP_API_URL}/api/user/${find_user}/password_question`);
-    console.log(question);
     const answerRef = useRef(null);
 
-    const onSubmit = () => {
+    const onSubmit = (e) => {
+        e.preventDefault();
         axios.post(`${process.env.REACT_APP_API_URL}/api/user/${find_user}/password_question`,
             {
                 passwordAnswer: answerRef.current.value
             }
         )
             .then(res => {
-                answerRef.current.value = "";
                 window.location.replace(`/resetPassword`);
+                //removeCookie("find_user");
             })
             .catch(res => {
                 alert("틀린 답변입니다.")
+                answerRef.current.value = "";
                 window.location.replace(`/findPassword`);
             });
     };
