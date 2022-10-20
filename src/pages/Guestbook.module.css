@@ -183,3 +183,32 @@
         margin-bottom: 15px;
     }
 }
+
+/* 모바일에서 input 클릭 시 크기 변화 */
+@media (max-height:670px) {
+    .container {
+        width: 90vw;
+        height: 60vh;
+    }
+    .contents{
+        height: 70%;
+        padding: 20px;
+    }
+    .buttonPart{
+        display: none;
+    }
+}
+
+@media (max-height:500px) {
+    .container {
+        width: 90vw;
+        height: 60vh;
+    }
+    .contents{
+        height: 60%;
+        padding: 20px;
+    }
+    .buttonPart{
+        display: none;
+    }
+}
