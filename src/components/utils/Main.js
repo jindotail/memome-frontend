@@ -35,7 +35,7 @@ function Main({ children }) {
                                 </div>
                                 <form className={styles.inputChatBoxLogin}>
                                     <input className={styles.input} type="text" disabled />
-                                    <button className={styles.chatButton}>전송</button>
+                                    <button className={styles.chatButton} disabled>전송</button>
                                 </form>
                             </>
                         ) : (
@@ -65,7 +65,7 @@ function Main({ children }) {
                                 </div>
                                 <form className={styles.inputChatBox}>
                                     <input className={styles.input} type="text" disabled />
-                                    <button className={styles.chatButton}>전송</button>
+                                    <button className={styles.chatButton} disabled>전송</button>
                                 </form>
                             </>
                         )
