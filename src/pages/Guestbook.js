@@ -47,7 +47,7 @@ function Guestbook() {
       return false;
     }
 
-    axios
+    await axios
       .post(`${process.env.REACT_APP_API_URL}/api/comment/${userId}`, {
         comment: commentRef.current.value,
       })
@@ -62,6 +62,8 @@ function Guestbook() {
             console.log("enter", res.data.body);
             setComments(res.data.body);
           });
+          const scrollToTop = document.getElementById("contents");
+          scrollToTop.scrollTop -= 150000;
       })
       .catch((res) => {
         console.log("Error!", res);
@@ -163,7 +165,7 @@ function Guestbook() {
       </header>
       <span className={styles.title}> {nickname}의 방명록</span>
       <div className={styles.container}>
-        <div className={styles.contents}>
+        <div className={styles.contents} id="contents">
           {comments.map((comment) => (
             <Comments
               comment={comment}

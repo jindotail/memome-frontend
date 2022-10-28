@@ -59,27 +59,27 @@
     height: 70vh;
     background-color: rgb(255, 255, 255);
     box-shadow: rgb(187, 187, 187) 0px 10px 20px 0px;
-    border-radius: 30px;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
 }
 
 .contents {
     height: 80%;
     padding: 20px;
-    /* background-color: rgb(0, 0, 255); */
-
-    /*스크롤바 기능 유지하지만 화면상 보이지 않게 하기 */
-
-    /* for Internet Explorer, Edge */
-    -ms-overflow-style: none;
-    /* for Firefox */
-    scrollbar-width: none;
     overflow-y: scroll;
 }
 
 .contents::-webkit-scrollbar {
-    display: none;
-    /* for Chrome, Safari, and Opera */
+    width: 10px;
 }
+.contents::-webkit-scrollbar-thumb {
+    background-color: #c7c7c7;
+    border-radius: 10px;
+    box-shadow: inset 0px 0px 1px white;
+}
+
 
 .inputBox {
     height: 10%;
