@@ -11,6 +11,7 @@ import userAxios from "../hooks/nicknameAxios";
 import Menu from "../components/utils/Menu";
 import { useLocation, useParams, useNavigate, Link } from "react-router-dom";
 import NotFound from "./NotFound";
+import Loading from '../components/utils/Loading';
 
 function Guestbook() {
   const navigate = useNavigate();
@@ -27,6 +28,9 @@ function Guestbook() {
 
   const [comments, setComments] = useState(commentsInit);
 
+
+const [loading, setLoading] = useState(false);
+
   // 방명록 주소 복사 함수
   const handleCopy = async (text) => {
     try {
@@ -40,6 +44,7 @@ function Guestbook() {
   // 전송 버튼 함수
   const onSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true); // api 호출 전에 true로 변경하여 로딩화면 띄우기
 
     // form input 값 없이 submit 금지
     if (commentRef.current.value.length === 0) {
@@ -62,6 +67,9 @@ function Guestbook() {
             console.log("enter", res.data.body);
             setComments(res.data.body);
           });
+
+          setLoading(false); // api 호출 완료 됐을 때 false로 변경하려 로딩화면 숨김처리
+
           const scrollToTop = document.getElementById("contents");
           scrollToTop.scrollTop -= 150000;
       })
@@ -157,6 +165,9 @@ function Guestbook() {
         background: `${color}`,
       }}
     >
+      {/* 로딩중일 때 화면 */}
+       {loading ? <Loading /> : null} 
+
       <header className={styles.header}>
         <Link to="/" className={styles.logo}>
           MEMOME
