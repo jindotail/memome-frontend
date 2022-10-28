@@ -185,7 +185,7 @@
 }
 
 /* 모바일에서 input 클릭 시 크기 변화 */
-@media (max-height:670px) {
+@media (max-height:640px) {
     .container {
         width: 90vw;
         height: 60vh;
