@@ -165,8 +165,6 @@ const [loading, setLoading] = useState(false);
         background: `${color}`,
       }}
     >
-      {/* 로딩중일 때 화면 */}
-       {loading ? <Loading /> : null} 
 
       <header className={styles.header}>
         <Link to="/" className={styles.logo}>
@@ -231,6 +229,9 @@ const [loading, setLoading] = useState(false);
 
       {/* 커스텀 기능 해제  */}
       {/* <Custom open={modalOpen} close={closeModal} setColor={setColor} /> */}
+      
+      {/* 로딩중일 때 화면 */}
+      {loading ? <Loading /> : null}  
     </div>
   ) : (
     <div>

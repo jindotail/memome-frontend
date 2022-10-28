@@ -37,9 +37,6 @@ function Comments({ comment, page, id }) {
 
     return (
         <div className={styles.container}>
-
-            {/* 로딩중일 때 화면 */}
-            {loading ? <Loading /> : null} 
             
             <div className={styles.comment}>
                 <span>
@@ -55,6 +52,9 @@ function Comments({ comment, page, id }) {
                     ) : null
                 }
             </div>
+            
+            {/* 로딩중일 때 화면 */}
+            {loading ? <Loading /> : null} 
         </div>
     )
 }
