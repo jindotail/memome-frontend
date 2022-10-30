@@ -2,8 +2,15 @@ import styles from './ResetPassword.module.css';
 import Main from "../components/utils/Main";
 import { Link } from 'react-router-dom';
 import { useRef, useState } from 'react';
+import axios from 'axios';
+import { getCookie, removeCookie } from '../hooks/cookie';
+import pwdToken from '../hooks/pwdToken';
 
 function ResetPassword() {
+    
+    // user_id 가져오기
+    const user = getCookie("find_user");
+
     // Ref
     const passwordRef = useRef(null);
     const password2Ref = useRef(null);
@@ -38,9 +45,28 @@ function ResetPassword() {
         }
     };
 
-    const onSubmit = () => {
-        return;
-    }
+    // 비밀번호 재설정 버튼 함수
+    function onSubmit(e) {
+        e.preventDefault();
+        axios.post(`${process.env.REACT_APP_API_URL}/api/auth/change_password`,
+            {
+                id: user,
+                password: passwordRef.current.value
+            }
+        )
+            .then((res) => {
+
+                pwdToken(user, passwordRef.current.value);
+                alert("비밀번호가 변경되었습니다.")
+                removeCookie("find_user");
+                window.location.replace(`/`);
+            })
+            .catch(res => {
+                if (res.response.status === 401) {
+                    console.log("토큰이 만료되었습니다");
+                }
+            });
+    };
 
     return (
         <Main>
