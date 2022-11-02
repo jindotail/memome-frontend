@@ -9,7 +9,7 @@ function Logout(e) {
         .then(res => {
             console.log(res);
             removeCookie("user_id");
-            removeCookie("find_user");
+            localStorage.removeItem("find_user");
             removeCookie("refreshToken");
             removeCookie("accessToken");
             console.log("전송 성공");

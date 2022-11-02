@@ -9,7 +9,7 @@ import pwdToken from '../hooks/pwdToken';
 function ResetPassword() {
     
     // user_id 가져오기
-    const user = getCookie("find_user");
+    const user = localStorage.getItem("find_user");
 
     // Ref
     const passwordRef = useRef(null);
@@ -58,7 +58,7 @@ function ResetPassword() {
 
                 pwdToken(user, passwordRef.current.value);
                 alert("비밀번호가 변경되었습니다.")
-                removeCookie("find_user");
+                localStorage.removeItem("find_user");
                 window.location.replace(`/`);
             })
             .catch(res => {

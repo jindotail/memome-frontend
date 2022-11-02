@@ -8,7 +8,7 @@ import pwdQuestionAxios from '../hooks/pwdQuestionAxios';
 
 function FindPassword() {
 
-    const find_user = getCookie("find_user");
+    const find_user = localStorage.getItem("find_user");
     const question = pwdQuestionAxios(`${process.env.REACT_APP_API_URL}/api/user/${find_user}/password_question`);
     const answerRef = useRef(null);
 

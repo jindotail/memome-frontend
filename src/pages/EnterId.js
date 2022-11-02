@@ -21,7 +21,7 @@ function EnterId() {
 
             axios.get(`${process.env.REACT_APP_API_URL}/api/user/${data.id}`)
                 .then((res) => {
-                    setCookie("find_user", data.id);
+                    localStorage.setItem("find_user", data.id);
                     window.location.replace(`/findPassword`);
                 })
                 .catch(res => {
