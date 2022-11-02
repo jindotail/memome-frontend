@@ -11,7 +11,7 @@ import userAxios from "../hooks/nicknameAxios";
 import Menu from "../components/utils/Menu";
 import { useLocation, useParams, useNavigate, Link } from "react-router-dom";
 import NotFound from "./NotFound";
-import Loading from '../components/utils/Loading';
+import Loading from "../components/utils/Loading";
 
 function Guestbook() {
   const navigate = useNavigate();
@@ -28,8 +28,7 @@ function Guestbook() {
 
   const [comments, setComments] = useState(commentsInit);
 
-
-const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   // 방명록 주소 복사 함수
   const handleCopy = async (text) => {
@@ -68,10 +67,10 @@ const [loading, setLoading] = useState(false);
             setComments(res.data.body);
           });
 
-          setLoading(false); // api 호출 완료 됐을 때 false로 변경하려 로딩화면 숨김처리
+        setLoading(false); // api 호출 완료 됐을 때 false로 변경하려 로딩화면 숨김처리
 
-          const scrollToTop = document.getElementById("contents");
-          scrollToTop.scrollTop -= 150000;
+        const scrollToTop = document.getElementById("contents");
+        scrollToTop.scrollTop -= 150000;
       })
       .catch((res) => {
         console.log("Error!", res);
@@ -90,7 +89,7 @@ const [loading, setLoading] = useState(false);
   // SNS 공유 기능 (트위터)
   const shareTwitter = () => {
     var sendText = "MEMOME: 나만의 방명록"; // 전달할 텍스트
-    var sendUrl = "https://memome.be"; // 전달할 URL
+    var sendUrl = `https://memome.be/${userId}`; // 전달할 URL
     window.open(
       "https://twitter.com/intent/tweet?text=" + sendText + "&url=" + sendUrl
     );
@@ -105,7 +104,7 @@ const [loading, setLoading] = useState(false);
   }
 
   // url 가져오기
-  const url = "https://memome.be";
+  const url = `https://memome.be/${userId}`;
 
   const shareKakao = () => {
     window.Kakao.Link.sendDefault({
@@ -165,7 +164,6 @@ const [loading, setLoading] = useState(false);
         background: `${color}`,
       }}
     >
-
       <header className={styles.header}>
         <Link to="/" className={styles.logo}>
           MEMOME
@@ -229,9 +227,9 @@ const [loading, setLoading] = useState(false);
 
       {/* 커스텀 기능 해제  */}
       {/* <Custom open={modalOpen} close={closeModal} setColor={setColor} /> */}
-      
+
       {/* 로딩중일 때 화면 */}
-      {loading ? <Loading /> : null}  
+      {loading ? <Loading /> : null}
     </div>
   ) : (
     <div>
