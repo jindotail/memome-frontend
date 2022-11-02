@@ -1,6 +1,6 @@
 import styles from './ResetPassword.module.css';
 import Main from "../components/utils/Main";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useRef, useState } from 'react';
 import axios from 'axios';
 import { getCookie, removeCookie } from '../hooks/cookie';
@@ -10,6 +10,9 @@ function ResetPassword() {
     
     // user_id 가져오기
     const user = localStorage.getItem("find_user");
+
+    // navigate 설정
+    const navigate = useNavigate();
 
     // Ref
     const passwordRef = useRef(null);
@@ -55,11 +58,10 @@ function ResetPassword() {
             }
         )
             .then((res) => {
-
                 pwdToken(user, passwordRef.current.value);
                 alert("비밀번호가 변경되었습니다.")
                 localStorage.removeItem("find_user");
-                window.location.replace(`/`);
+                navigate("/");
             })
             .catch(res => {
                 if (res.response.status === 401) {

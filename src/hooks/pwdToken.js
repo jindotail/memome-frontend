@@ -21,7 +21,6 @@ export default function pwdToken(id, password) {
     )
         .then((res) => {
             removeCookie("passwordToken");
-            window.location.replace(`/resetPassword`);
         })
         .catch(res => {
             alert(res);
