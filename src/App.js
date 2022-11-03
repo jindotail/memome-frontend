@@ -6,7 +6,7 @@ import Guestbook from './pages/Guestbook';
 import Login from './pages/Login';
 import NotFound from './pages/NotFound';
 import Profile from './pages/Profile';
-import Readme from './pages/readme';
+import Readme from './pages/Readme';
 import ResetPassword from './pages/ResetPassword';
 import Signup from './pages/Signup';
 
