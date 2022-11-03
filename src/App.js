@@ -6,13 +6,14 @@ import Guestbook from './pages/Guestbook';
 import Login from './pages/Login';
 import NotFound from './pages/NotFound';
 import Profile from './pages/Profile';
+import Readme from './pages/readme';
 import ResetPassword from './pages/ResetPassword';
 import Signup from './pages/Signup';
 
 
 function App() {
   return (
-    <BrowserRouter basename='/'>
+    <BrowserRouter basename="/">
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
@@ -21,6 +22,7 @@ function App() {
         <Route path="/resetPassword" element={<ResetPassword />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/:userId" element={<Guestbook />} />
+        <Route path="/readme" element={<Readme />} />
         <Route path="/404" element={<NotFound />} />
         <Route path="/*" element={<NotFound />} />
       </Routes>
