@@ -14,6 +14,18 @@ function Readme () {
       setId(idRef.current.value);
     }
 
+    // markdown 복사
+    let text = `[![Memome Profile](https://memome-readme.herokuapp.com/v1/layout?id=${id})](https://memome.be/${id})`
+  
+    const handleCopy = async (text) => {
+      try {
+        await navigator.clipboard.writeText(text);
+        alert("복사 성공!");
+      } catch (error) {
+        alert("복사 실패!");
+      }
+    };
+
     return (
       <div>
         <header className={styles.header}>
@@ -37,12 +49,12 @@ function Readme () {
             <div>
               <p className={styles.title}>Markdown</p>
               <div className={styles.markdown}>
-                <p>
+                <p id="readme">
                   {/* 마크다운 코드 보여줌 */}
                   [![Memome Profile](https://memome-readme.herokuapp.com/v1/layout?id={id})](https://memome.be/{id})
                 </p>
                 <div className={styles.copyButtonContainer}>
-                  <button className={styles.copyButton}>복사</button>
+                  <button className={styles.copyButton} onClick={() => handleCopy(text)}>복사</button>
                 </div>
               </div>
             </div>
