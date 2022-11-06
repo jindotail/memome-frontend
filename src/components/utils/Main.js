@@ -1,5 +1,5 @@
 import styles from "./Main.module.css";
-import useAxios from '../../hooks/randomAxios';
+import useAxios from '../../hooks/getRandomUser';
 import { Link } from 'react-router-dom';
 import { AiOutlineHome } from 'react-icons/ai';
 

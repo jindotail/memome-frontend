@@ -1,9 +1,9 @@
 import styles from './Profile.module.css';
 import Main from "../components/utils/Main";
 import { Link } from 'react-router-dom';
-import { useRef, useState } from 'react';
+import { useRef } from 'react';
 import { getCookie } from '../hooks/cookie';
-import userAxios from '../hooks/userAxios';
+import userAxios from '../hooks/getUserInfo';
 import axios from 'axios';
 import { token } from '../hooks/token';
 

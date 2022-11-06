@@ -5,7 +5,7 @@ import Main from '../components/utils/Main';
 import styles from "./Login.module.css";
 import { getCookie, setCookie } from '../hooks/cookie';
 import Menu from '../components/utils/Menu';
-import userAxios from '../hooks/nicknameAxios';
+import userAxios from '../hooks/getNickname';
 
 function Login() {
     
