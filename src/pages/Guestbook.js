@@ -2,21 +2,18 @@ import { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import Comments from "../components/utils/Comments";
 import styles from "./Guestbook.module.css";
-import { AiOutlineHome } from "react-icons/ai";
-import { MdContentCopy } from "react-icons/md";
+import { BsGithub } from 'react-icons/bs';
 import { FaTwitter } from "react-icons/fa";
 import { RiKakaoTalkFill } from "react-icons/ri";
 import useAxios from "../hooks/getComments";
 import userAxios from "../hooks/getNickname";
 import Menu from "../components/utils/Menu";
-import { useLocation, useParams, useNavigate, Link } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 import NotFound from "./NotFound";
 import Loading from "../components/utils/Loading";
 
 function Guestbook() {
   const navigate = useNavigate();
-  const location = useLocation();
-  const copyUrl = "https://memome.be" + location.pathname;
   const { userId } = useParams();
 
   const commentsInit = useAxios(
@@ -29,16 +26,6 @@ function Guestbook() {
   const [comments, setComments] = useState(commentsInit);
 
   const [loading, setLoading] = useState(false);
-
-  // 방명록 주소 복사 함수
-  const handleCopy = async (text) => {
-    try {
-      await navigator.clipboard.writeText(text);
-      alert("복사 성공!");
-    } catch (error) {
-      alert("복사 실패!");
-    }
-  };
 
   // 전송 버튼 함수
   const onSubmit = async (e) => {
@@ -190,20 +177,9 @@ function Guestbook() {
 
       {document.cookie.length > 0 ? (
         <div className={styles.buttonPart}>
-          <button
-            className={styles.shareButton}
-            onClick={() => {
-              navigate("/");
-            }}
-          >
-            <AiOutlineHome size="24" />
-          </button>
-          <button
-            className={styles.shareButton}
-            onClick={() => handleCopy(copyUrl)}
-          >
-            <MdContentCopy size="24" />
-          </button>
+          <Link to="/readme" className={styles.shareButton}>
+            <BsGithub size="24" />
+          </Link>
           <button className={styles.shareButton} onClick={shareTwitter}>
             {/* <MdContentCopy size="24" /> */}
             <FaTwitter size="24" />

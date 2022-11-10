@@ -100,14 +100,10 @@ a {
 
 .menuItem:nth-child(2) {
     border-top: 1px solid #87878740;
+    border-bottom: 1px solid #87878740;
 }
 
 .menuItem:nth-child(3) {
-    border-top: 1px solid #87878740;
-}
-
-.menuItem:nth-child(4) {
-    border-top: 1px solid #87878740;
     border-bottom: 1px solid #87878740;
 }
 
