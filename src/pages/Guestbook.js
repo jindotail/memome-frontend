@@ -5,6 +5,7 @@ import styles from "./Guestbook.module.css";
 import { BsGithub } from 'react-icons/bs';
 import { FaTwitter } from "react-icons/fa";
 import { RiKakaoTalkFill } from "react-icons/ri";
+import { ImBubble } from "react-icons/im";
 import useAxios from "../hooks/getComments";
 import userAxios from "../hooks/getNickname";
 import Menu from "../components/utils/Menu";
@@ -174,6 +175,10 @@ function Guestbook() {
           <button className={styles.submitButton}>전송</button>
         </form>
       </div>
+
+      <Link to="/readme" className={styles.feedback}>
+          <ImBubble size="24" />
+      </Link>
 
       {document.cookie.length > 0 ? (
         <div className={styles.buttonPart}>
