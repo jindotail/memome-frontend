@@ -47,7 +47,7 @@ function Signup() {
         }
     };
     const handleChangePwd = () => {
-        const pwdRegex = /^(?=.*[a-z])(?=.*[0-9]).{3,20}$/
+        const pwdRegex = /^(?=.*[a-z])(?=.*[0-9]).{3,30}$/
         const confirm = pwdRegex.test(passwordRef.current.value);
         if (passwordRef.current.value.length < 3 || passwordRef.current.value.length > 20 || !confirm) {
             setPwdMessage('*3~20자의 영문과 숫자 조합한 비밀번호만 가능합니다.');
