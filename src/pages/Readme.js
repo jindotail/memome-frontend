@@ -51,7 +51,7 @@ function Readme () {
               <div className={styles.markdown}>
                 <p id="readme">
                   {/* 마크다운 코드 보여줌 */}
-                  [![Memome Profile](https://memome-readme.herokuapp.com/v1/layout?id={id})](https://memome.be/{id})
+                  [![Memome Profile](https://memome-readme.herokuapp.com/v1/layout/{id})](https://memome.be/{id})
                 </p>
                 <div className={styles.copyButtonContainer}>
                   <button className={styles.copyButton} onClick={() => handleCopy(text)}>복사</button>
