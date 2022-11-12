@@ -176,7 +176,7 @@ function Guestbook() {
         </form>
       </div>
 
-      <Link to="/readme" className={styles.feedback}>
+      <Link to="/feedback" className={styles.feedback}>
           <ImBubble size="24" />
       </Link>
 
