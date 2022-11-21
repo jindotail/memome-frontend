@@ -163,6 +163,10 @@ function Guestbook() {
       </header>
       <span className={styles.title}> {nickname}의 방명록</span>
       <div className={styles.container}>
+        <div className={styles.alertContainer}>
+          <div className={styles.alert}>익명으로 작성할 수 있으며, 어뷰징 방지를 위해 <br/> IP를 수집하고 있습니다.</div>
+          <div className={styles.alertMaximum}>익명으로 작성할 수 있으며, 어뷰징 방지를 위해 IP를 수집하고 있습니다.</div>
+        </div>
         <div className={styles.contents} id="contents">
           {comments.map((comment) => (
             <Comments

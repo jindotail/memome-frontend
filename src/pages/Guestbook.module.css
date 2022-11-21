@@ -65,9 +65,40 @@
     border-bottom-right-radius: 15px;
 }
 
+.alertContainer{
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+.alert {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    height: 30px;
+    font-family:'GangwonEdu_OTFBoldA';
+    border-radius: 10px;
+    background-color: #dbdbdb85;
+    color: #535353;
+    font-size: 13px;
+}
+
+.alertMaximum {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    height: 30px;
+    font-family:'GangwonEdu_OTFBoldA';
+    border-radius: 10px;
+    background-color: #dbdbdb85;
+    color: #535353;
+    font-size: 13px;
+}
+
 .contents {
     height: 80%;
-    padding: 20px;
+    padding: 0 20px;
     overflow-y: scroll;
 }
 
@@ -202,6 +233,27 @@
         line-height: 2.5rem;
         margin-bottom: 15px;
     }
+    
+    .alert {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        width: 80%;
+        height: 30px;
+        font-family:'GangwonEdu_OTFBoldA';
+        padding: 5px 10px;
+        border-radius: 10px;
+        background-color: #dbdbdb85;
+        color: #535353cb;
+        font-weight: 900;
+        font-size: 13px;
+    }
+
+    .alertMaximum{
+        display: none;
+    }
+    
 }
 
 /* 모바일에서 input 클릭 시 크기 변화 */
@@ -211,7 +263,7 @@
         height: 60vh;
     }
     .contents{
-        height: 70%;
+        height: 50%;
         padding: 20px;
     }
     .buttonPart{
@@ -225,7 +277,7 @@
         height: 60vh;
     }
     .contents{
-        height: 60%;
+        height: 40%;
         padding: 20px;
     }
     .buttonPart{
