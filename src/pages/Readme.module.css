@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Galada&family=Gowun+Batang&family=Poor+Story&family=Yeon+Sung&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=block');
 
 .header{
     display: flex;
@@ -96,21 +97,22 @@
 
 .demo{
     width: 360px;
-    height: 210px;
+    height: 200px;
     padding: 10px 20px;
     border-radius: 20px;
     background: linear-gradient(106.37deg, #dfe8ff 29.63%, #f3c6f1 51.55%, #ffcfd1 90.85%);
 }
 
 .demoTitle{
-    font-size: 18px;
-    font-family: 'Cafe24Ssurround';
+    font-size: 20px;
+    font-family: "Noto Sans KR, sans-serif";
+    font-weight: 900;
     color: #453a3a;
 }
 
 .demoSubTitle{
     font-size: 13px;
-    font-family: 'Cafe24Ssurround';
+    font-family: "Noto Sans KR, sans-serif";
     color: #453a3a;
 }
 
@@ -130,7 +132,7 @@
 .logo{
     font-size: 18px;
     font-family: 'Galada', cursive;
-    margin-top: 30px;
+    margin-top: 10px;
     margin-left: auto;
     color: #453a3a;
 }

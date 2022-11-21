@@ -8,7 +8,7 @@ function Readme () {
 
     const idRef = useRef(null);
 
-    const [id, setId] = useState("memome");
+    const [id, setId] = useState(userId);
 
     const onSubmit = () => {
       setId(idRef.current.value);
@@ -41,7 +41,7 @@ function Readme () {
             <div>
               <p className={styles.title}>ID 입력</p>
               <div>
-                <input className={styles.input} placeholder="유저 ID를 입력하세요" ref={idRef}/>
+                <input className={styles.input} placeholder={userId} ref={idRef} />
                 <button className={styles.idButton} onClick={onSubmit}>입력</button>
               </div>
             </div> 
@@ -51,7 +51,7 @@ function Readme () {
               <div className={styles.markdown}>
                 <p id="readme">
                   {/* 마크다운 코드 보여줌 */}
-                  [![Memome Profile](https://memome-readme.herokuapp.com/v1/layout/{id})](https://memome.be/{id})
+                  [![Memome Profile](https://memome-readme.be/v1/layout/{id})](https://memome.be/{id})
                 </p>
                 <div className={styles.copyButtonContainer}>
                   <button className={styles.copyButton} onClick={() => handleCopy(text)}>복사</button>
