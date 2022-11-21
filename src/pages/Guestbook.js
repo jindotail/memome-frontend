@@ -31,15 +31,15 @@ function Guestbook() {
   // 전송 버튼 함수
   const onSubmit = async (e) => {
     e.preventDefault();
-    setLoading(true); // api 호출 전에 true로 변경하여 로딩화면 띄우기
-
+    
     // form input 값 없이 submit 금지
     if (commentRef.current.value.length === 0) {
       alert("인사말을 입력해주세요!");
       return false;
-    }
+    } else {
+      setLoading(true); // api 호출 전에 true로 변경하여 로딩화면 띄우기
 
-    await axios
+      await axios
       .post(`${process.env.REACT_APP_API_URL}/api/comment/${userId}`, {
         comment: commentRef.current.value,
       })
@@ -63,6 +63,9 @@ function Guestbook() {
       .catch((res) => {
         console.log("Error!", res);
       });
+    }
+
+    
   };
 
   // 최신 댓글로 정렬
