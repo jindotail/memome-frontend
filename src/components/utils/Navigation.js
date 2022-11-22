@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { AiOutlineHome } from 'react-icons/ai';
+import { AiOutlineHome, AiOutlineInfoCircle } from 'react-icons/ai';
 import { RiLogoutCircleRLine, RiLoginCircleLine } from 'react-icons/ri';
 import { TbUserOff } from 'react-icons/tb';
 import { CgProfile } from 'react-icons/cg';
@@ -70,6 +70,11 @@ export function DropdownMenu({ user }) {
                             내 방명록
                         </Link>
                     </DropdownItem>
+                    <DropdownItem leftIcon={<AiOutlineInfoCircle size="24" />}>
+                        <Link to="/about">
+                            버전관리
+                        </Link>
+                    </DropdownItem>
                     <DropdownItem leftIcon={<TbUserOff size="24" />}>
                         <Link to="" onClick={e => withdrawal(user)}>
                             회원탈퇴
@@ -90,6 +95,11 @@ export function DropdownMenuLogin() {
                     <DropdownItem leftIcon={<RiLoginCircleLine size="24" />}>
                         <Link to="/" onClick={Main}>
                             로그인
+                        </Link>
+                    </DropdownItem>
+                    <DropdownItem leftIcon={<AiOutlineInfoCircle size="24" />}>
+                        <Link to="/about">
+                            버전관리
                         </Link>
                     </DropdownItem>
                 </div>

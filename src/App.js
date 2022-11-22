@@ -9,6 +9,7 @@ import Profile from './pages/Profile';
 import Readme from './pages/Readme';
 import ResetPassword from './pages/ResetPassword';
 import Signup from './pages/Signup';
+import Version from './pages/Version';
 
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
         <Route path="/profile" element={<Profile />} />
         <Route path="/:userId" element={<Guestbook />} />
         <Route path="/readme" element={<Readme />} />
+        <Route path="/version" element={<Version />} />
         <Route path="/404" element={<NotFound />} />
         <Route path="/*" element={<NotFound />} />
       </Routes>
