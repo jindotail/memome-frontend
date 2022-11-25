@@ -71,7 +71,7 @@ export function DropdownMenu({ user }) {
                         </Link>
                     </DropdownItem>
                     <DropdownItem leftIcon={<AiOutlineInfoCircle size="24" />}>
-                        <Link to="/about">
+                        <Link to="/version">
                             버전관리
                         </Link>
                     </DropdownItem>
@@ -98,7 +98,7 @@ export function DropdownMenuLogin() {
                         </Link>
                     </DropdownItem>
                     <DropdownItem leftIcon={<AiOutlineInfoCircle size="24" />}>
-                        <Link to="/about">
+                        <Link to="/version">
                             버전관리
                         </Link>
                     </DropdownItem>
