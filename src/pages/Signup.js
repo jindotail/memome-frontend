@@ -147,7 +147,6 @@ function Signup() {
                     <div className={styles.inputBox}>
                         <input id="pwdAnswer" type="text" name="pwdAnswer" placeholder="비밀번호 찾기 답변 : Ex) 아르마딜로" className={styles.singup} ref={pwdAnswerRef} onChange={handleChangePwdAnswer} />
                     </div>
-                    <Link to="/" className={styles.login}>로그인 하기</Link>
                     {!(isId && isName && isPwd && isPwd2 && isPwdQuestion && isPwdAnswer) ? (
                         <button type="submit" className={styles.disabledButton} disabled >Sign Up</button>
                     ) : (
