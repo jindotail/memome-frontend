@@ -53,12 +53,10 @@ function Guestbook() {
           .then((res) => {
             console.log("enter", res.data.body);
             setComments(res.data.body);
-          });
+          })
 
         setLoading(false); // api 호출 완료 됐을 때 false로 변경하려 로딩화면 숨김처리
 
-        const scrollToTop = document.getElementById("contents");
-        scrollToTop.scrollTop -= 150000;
       })
       .catch((res) => {
         console.log("Error!", res);
@@ -68,10 +66,10 @@ function Guestbook() {
     
   };
 
-  // 최신 댓글로 정렬
+  // 날짜 오름차순으로 댓글 정렬
   if (commentsInit !== "notFound") {
     comments.sort((a, b) => {
-      return new Date(b.iso_time) - new Date(a.iso_time);
+      return new Date(a.iso_time) - new Date(b.iso_time);
     });
   }
 
@@ -138,6 +136,13 @@ function Guestbook() {
   useEffect(() => {
     setComments(commentsInit);
   }, [commentsInit]);
+
+  useEffect(()=>{
+    const scrollToTop = document.getElementById("contents");
+    //scrollToTop.scrollTop -= 150000;
+    console.log(scrollToTop.scrollHeight)
+    scrollToTop.scrollTop = scrollToTop.scrollHeight+500;
+  },[comments]);
 
   //
   useEffect(() => {
