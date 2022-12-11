@@ -13,7 +13,7 @@ npm run start:prod // prod 서버로 실행
 ```
 
 `localhost:3000` : 로컬 접속
-`https://memome./be` : 도메인 접속
+`https://memome.be` : 도메인 접속
 
 ## 사용
 
