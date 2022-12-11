@@ -25,7 +25,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "env-cmd -f ./env/.env.development react-scripts start",
+    "start": "env-cmd -f ./env/.env.production react-scripts start",
     "start:dev": "env-cmd -f ./env/.env.development react-scripts start",
     "start:prod": "env-cmd -f ./env/.env.production react-scripts start",
     "build": "env-cmd -f ./env/.env.production react-scripts build && shx cp build/index.html build/404.html",
