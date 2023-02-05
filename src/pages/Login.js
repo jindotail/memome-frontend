@@ -57,7 +57,7 @@ function Login() {
 
     return (
         <Main>
-            {(document.cookie.length > 0) ? (
+            {(userId) ? (
                 <section className={styles.enterPart}>
                     <header className={styles.header}>
                         <Menu user={userId} />

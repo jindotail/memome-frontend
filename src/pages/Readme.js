@@ -15,7 +15,7 @@ function Readme () {
     }
 
     // markdown 복사
-    let text = `[![Memome Profile](https://memome-readme.herokuapp.com/v1/layout/${id})](https://memome.be/${id})`
+    let text = `[![Memome Profile](https://readme.memome.be/v1/${id})](https://memome.be/${id})`
   
     const handleCopy = async (text) => {
       try {

@@ -12,10 +12,13 @@ import Menu from "../components/utils/Menu";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import NotFound from "./NotFound";
 import Loading from "../components/utils/Loading";
+import { getCookie } from "../hooks/cookie";
 
 function Guestbook() {
   const navigate = useNavigate();
   const { userId } = useParams();
+  
+  const user_Id = getCookie("user_id");
 
   const commentsInit = useAxios(
     `${process.env.REACT_APP_API_URL}/api/comment/${userId}`
@@ -192,7 +195,7 @@ function Guestbook() {
           <ImBubble size="24" />
       </Link>
 
-      {document.cookie.length > 0 ? (
+      {user_Id ? (
         <div className={styles.buttonPart}>
           <Link to="/readme" className={styles.shareButton}>
             <BsGithub size="24" />

@@ -2,16 +2,18 @@ import styles from "./Main.module.css";
 import useAxios from '../../hooks/getRandomUser';
 import { Link } from 'react-router-dom';
 import { AiOutlineHome } from 'react-icons/ai';
+import { getCookie } from "../../hooks/cookie";
 
 function Main({ children }) {
     const users = useAxios(`${process.env.REACT_APP_API_URL}/api/user/random?count=3`);
+    const userId = getCookie("user_id");
 
     return (
         <div className={styles.main}>
             <section className={styles.imagePart}>
                 <div className={styles.container}>
                     {
-                        (document.cookie.length > 0) ? (
+                        (userId > 0) ? (
                             <>
                                 <div className={styles.contentsLogin}>
                                     <div className={styles.chatContainerLogin}>
