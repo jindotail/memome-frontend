@@ -172,8 +172,14 @@ function Guestbook() {
       <span className={styles.title}> {nickname}의 방명록</span>
       <div className={styles.container}>
         <div className={styles.alertContainer}>
-          <div className={styles.alert}>익명으로 작성할 수 있으며, 어뷰징 방지를 위해 <br/> IP를 수집하고 있습니다.</div>
-          <div className={styles.alertMaximum}>익명으로 작성할 수 있으며, 어뷰징 방지를 위해 IP를 수집하고 있습니다.</div>
+          <div className={styles.alert}>
+            익명으로 작성할 수 있으며, 어뷰징 방지를 위해 <br /> IP를 수집하고
+            있습니다.
+          </div>
+          <div className={styles.alertMaximum}>
+            익명으로 작성할 수 있으며, 어뷰징 방지를 위해 IP를 수집하고
+            있습니다.
+          </div>
         </div>
         <div className={styles.contents} id="contents">
           {comments.map((comment) => (
@@ -186,13 +192,18 @@ function Guestbook() {
           ))}
         </div>
         <form className={styles.inputBox} onSubmit={onSubmit}>
-          <input className={styles.input} type="text" ref={commentRef} />
+          <input
+            className={styles.input}
+            type="text"
+            ref={commentRef}
+            maxlength="1000"
+          />
           <button className={styles.submitButton}>전송</button>
         </form>
       </div>
 
       <Link to="/feedback" className={styles.feedback}>
-          <ImBubble size="24" />
+        <ImBubble size="24" />
       </Link>
 
       {user_Id ? (
