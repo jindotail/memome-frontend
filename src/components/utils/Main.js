@@ -49,21 +49,21 @@ function Main({ children }) {
                                         <div className={styles.date}>2022-07-01</div>
                                     </div>
                                     <div className={styles.chatContainer}>
-                                        <div className={styles.comment}>나만의 방명록을 만들고</div>
+                                        <div className={styles.comment}>나만의 방명록을 만들어봐요</div>
                                         <div className={styles.date}>2022-07-02</div>
                                     </div>
                                     <div className={styles.chatContainer}>
-                                        <div className={styles.comment}>친구들과 함께 인사를 나눠봐요</div>
+                                        <div className={styles.comment}>깃허브 ReadMe에도 추가할 수 있어요!</div>
                                         <div className={styles.date}>2022-07-03</div>
                                     </div>
-                                    <div className={styles.chatContainer}>
+                                    {/* <div className={styles.chatContainer}>
                                         <div className={styles.comment}>함께 쓰면 더 행복한 MEMOME</div>
                                         <div className={styles.date}>2022-07-03</div>
                                     </div>
                                     <div className={styles.chatContainer}>
                                         <div className={styles.comment}>같이 즐겨봐요~!</div>
                                         <div className={styles.date}>2022-07-03</div>
-                                    </div>
+                                    </div> */}
                                 </div>
                                 <form className={styles.inputChatBox}>
                                     <input className={styles.input} type="text" disabled />
