@@ -34,9 +34,10 @@ function Readme () {
         setSignup(true);
       }
 
-      return(
+      return() =>{
         removeCookie("finishSignup");
-      )
+      }
+        
     },[]);
 
     return (
