@@ -1,10 +1,11 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Menu from '../components/utils/Menu';
-import { getCookie } from '../hooks/cookie';
+import { getCookie, removeCookie } from '../hooks/cookie';
 import styles from "./Readme.module.css";
 
 function Readme () {  
     const userId = getCookie("user_id");
+    const [signup, setSignup] = useState(false);
 
     const idRef = useRef(null);
 
@@ -26,6 +27,18 @@ function Readme () {
       }
     };
 
+    useEffect(()=>{
+      let signupYN = getCookie("finishSignup");
+
+      if(signupYN) {
+        setSignup(true);
+      }
+
+      return(
+        removeCookie("finishSignup");
+      )
+    },[]);
+
     return (
       <div>
         <header className={styles.header}>
@@ -38,6 +51,16 @@ function Readme () {
         </header>
         <section className={styles.container}>
           <div className={styles.main}>
+            {
+              (signup) ? (
+                <div>
+                  회원가입을 환영합니다~!
+                </div>
+              ) : null
+            }
+            <div>
+              회원가입을 환영합니다!
+            </div>
             <div>
               <p className={styles.title}>ID 입력</p>
               <div>

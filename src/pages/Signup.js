@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import Main from '../components/utils/Main';
 import styles from "./Signup.module.css";
+import { setCookie } from '../hooks/cookie';
 
 function Signup() {
     const idRef = useRef(null);
@@ -98,7 +99,8 @@ function Signup() {
             .then(res => {
                 console.log("전송 성공");
                 alert('가입에 성공하셨습니다!');
-                window.location.replace(`/`);
+                window.location.replace(`/readme`);
+                setCookie("finishSignup", "done");
             })
             .catch(res => {
                 console.log('Error!')
@@ -145,7 +147,7 @@ function Signup() {
                         <input id="pwdQuestion" type="text" name="pwdQuestion" placeholder="비밀번호 찾기 질문 : Ex) 내가 좋아하는 동물은?" className={styles.singup} ref={pwdQuestionRef} onChange={handleChangePwdQuestion} />
                     </div>
                     <div className={styles.inputBox}>
-                        <input id="pwdAnswer" type="text" name="pwdAnswer" placeholder="비밀번호 찾기 답변 : Ex) 아르마딜로" className={styles.singup} ref={pwdAnswerRef} onChange={handleChangePwdAnswer} />
+                        <input id="pwdAnswer" type="text" name="pwdAnswer" placeholder="비밀번호 찾기 답변 : Ex) 코알라" className={styles.singup} ref={pwdAnswerRef} onChange={handleChangePwdAnswer} />
                     </div>
                     {!(isId && isName && isPwd && isPwd2 && isPwdQuestion && isPwdAnswer) ? (
                         <button type="submit" className={styles.disabledButton} disabled >Sign Up</button>
