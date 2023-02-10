@@ -3,6 +3,8 @@ import useAxios from '../../hooks/getRandomUser';
 import { Link } from 'react-router-dom';
 import { AiOutlineHome } from 'react-icons/ai';
 import { getCookie } from "../../hooks/cookie";
+import Header from "./Header";
+import { currentTime } from "../common/common";
 
 function Main({ children }) {
     const users = useAxios(`${process.env.REACT_APP_API_URL}/api/user/random?count=3`);
@@ -10,6 +12,7 @@ function Main({ children }) {
 
     return (
         <div className={styles.main}>
+            <Header userId={userId}/>
             <section className={styles.imagePart}>
                 <div className={styles.container}>
                     {
@@ -46,15 +49,15 @@ function Main({ children }) {
 
                                     <div className={styles.chatContainer}>
                                         <div className={styles.comment}>안녕하세요 MEMOME입니다!</div>
-                                        <div className={styles.date}>2022-07-01</div>
+                                        <div className={styles.date}>{currentTime()}</div>
                                     </div>
                                     <div className={styles.chatContainer}>
                                         <div className={styles.comment}>나만의 방명록을 만들어봐요</div>
-                                        <div className={styles.date}>2022-07-02</div>
+                                        <div className={styles.date}>{currentTime()}</div>
                                     </div>
                                     <div className={styles.chatContainer}>
                                         <div className={styles.comment}>깃허브 ReadMe에도 추가할 수 있어요!</div>
-                                        <div className={styles.date}>2022-07-03</div>
+                                        <div className={styles.date}>{currentTime()}</div>
                                     </div>
                                     {/* <div className={styles.chatContainer}>
                                         <div className={styles.comment}>함께 쓰면 더 행복한 MEMOME</div>
