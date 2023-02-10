@@ -59,9 +59,6 @@ function Login() {
         <Main>
             {(userId) ? (
                 <section className={styles.enterPart}>
-                    <header className={styles.header}>
-                        <Menu user={userId} />
-                    </header>
                     <div className={styles.titlePart}>
                         <Link to="/" className={styles.title}>
                             MEMOME

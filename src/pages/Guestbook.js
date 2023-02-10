@@ -8,11 +8,11 @@ import { RiKakaoTalkFill } from "react-icons/ri";
 import { ImBubble } from "react-icons/im";
 import useAxios from "../hooks/getComments";
 import userAxios from "../hooks/getNickname";
-import Menu from "../components/utils/Menu";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import NotFound from "./NotFound";
 import Loading from "../components/utils/Loading";
 import { getCookie } from "../hooks/cookie";
+import Header from "../components/utils/Header";
 
 function Guestbook() {
   const navigate = useNavigate();
@@ -163,12 +163,7 @@ function Guestbook() {
         background: `${color}`,
       }}
     >
-      <header className={styles.header}>
-        <Link to="/" className={styles.logo}>
-          MEMOME
-        </Link>
-        <Menu user={userId} />
-      </header>
+      <Header userId={userId}/>
       <span className={styles.title}> {nickname}의 방명록</span>
       <div className={styles.container}>
         <div className={styles.alertContainer}>

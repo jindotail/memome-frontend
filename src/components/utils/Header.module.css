@@ -1,0 +1,33 @@
+
+.header {
+    /*색깔 있는게 나은지 없는게 나은지*/
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 30px;
+    background-color: #ffffff7d;
+}
+
+.header>button {
+    width: 60px;
+    height: 25px;
+    border: none;
+    background-Color: rgba(255, 235, 235, 0.84);
+    font-weight: 700;
+    font-size: 12px;
+    box-shadow: rgb(187, 187, 187) 0px 3px 10px 0px;
+    cursor: pointer;
+}
+
+.header>button:hover {
+    background-Color: rgb(255, 255, 255);
+}
+
+.logo {
+    color: #453a3a;
+    font-family: 'Galada', cursive;
+    font-size: 20px;
+    margin: 2px 0 0 10px;
+}

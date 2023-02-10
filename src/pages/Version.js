@@ -1,11 +1,15 @@
+import Header from "../components/utils/Header";
 import styles from "./Version.module.css";
 
 function Version () {
     return(
         <div>
-            <header className={styles.header}>
-            About Memome 
-            </header>
+            <div>
+                <Header />
+                <header className={styles.header}>
+                    About Memome 
+                </header>
+            </div>
             <section className={styles.container}>
             <div className={styles.main}>
                 <div>
