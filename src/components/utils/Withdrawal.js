@@ -5,7 +5,7 @@ import { removeCookie } from '../../hooks/cookie';
 import { token } from '../../hooks/token';
 
 export function withdrawal(user) {
-    const result = confirm("정말 회원탈퇴를 하시겠습니까?");
+    const result = window.confirm("정말 회원탈퇴를 하시겠습니까?");
 
     if(result) {
         axios
