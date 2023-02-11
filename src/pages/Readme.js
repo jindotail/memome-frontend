@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import Header from '../components/utils/Header';
 import Menu from '../components/utils/Menu';
 import { getCookie, removeCookie } from '../hooks/cookie';
 import styles from "./Readme.module.css";
@@ -42,26 +43,23 @@ function Readme () {
 
     return (
       <div>
+        <Header />
         <header className={styles.header}>
           Memome ReadMe
-          {/* {(document.cookie.length > 0)?(  
-            <div className={styles.menu}>
-              <Menu user={userId} />
-            </div>
-          ):null} */}
         </header>
         <section className={styles.container}>
           <div className={styles.main}>
             {
               (signup) ? (
-                <div>
-                  회원가입을 환영합니다~!
-                </div>
+                <>
+                  <h1>
+                    🥳회원가입을 환영합니다
+                  </h1>
+                  <p><b>아래 링크를 복사해서 README에 방명록을 추가해보세요!</b></p>
+                  <br />
+                </>
               ) : null
             }
-            <div>
-              회원가입을 환영합니다!
-            </div>
             <div>
               <p className={styles.title}>ID 입력</p>
               <div>
