@@ -143,7 +143,6 @@ function Guestbook() {
   useEffect(()=>{
     const scrollToTop = document.getElementById("contents");
     //scrollToTop.scrollTop -= 150000;
-    console.log(scrollToTop.scrollHeight)
     scrollToTop.scrollTop = scrollToTop.scrollHeight+500;
   },[comments]);
 
@@ -191,7 +190,7 @@ function Guestbook() {
             className={styles.input}
             type="text"
             ref={commentRef}
-            maxlength="1000"
+            maxLength="1000"
           />
           <button className={styles.submitButton}>전송</button>
         </form>
