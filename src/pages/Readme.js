@@ -55,9 +55,7 @@ function Readme () {
                 </p>
                 <br />
               </>
-            ) : null}
-
-            {!signup ? (
+            ) : (
               <>
                 <div>
                   <p className={styles.title}>ID 입력</p>
@@ -74,7 +72,7 @@ function Readme () {
                 </div>
                 <br />
               </>
-            ) : null}
+            )}
 
             <div>
               <p className={styles.title}>Markdown</p>
