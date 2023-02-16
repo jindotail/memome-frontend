@@ -44,39 +44,53 @@ function Readme () {
     return (
       <div>
         <Header />
-        <header className={styles.header}>
-          Memome ReadMe
-        </header>
+        <header className={styles.header}>Memome ReadMe</header>
         <section className={styles.container}>
           <div className={styles.main}>
-            {
-              (signup) ? (
-                <>
-                  <h1>
-                    🥳회원가입을 환영합니다
-                  </h1>
-                  <p><b>아래 링크를 복사해서 README에 방명록을 추가해보세요!</b></p>
-                  <br />
-                </>
-              ) : null
-            }
-            <div>
-              <p className={styles.title}>ID 입력</p>
-              <div>
-                <input className={styles.input} placeholder={userId} ref={idRef} />
-                <button className={styles.idButton} onClick={onSubmit}>입력</button>
-              </div>
-            </div> 
-            <br />
+            {signup ? (
+              <>
+                <h1>🥳회원가입을 환영합니다</h1>
+                <p>
+                  <b>아래 링크를 복사해서 README에 방명록을 추가해보세요!</b>
+                </p>
+                <br />
+              </>
+            ) : null}
+
+            {!signup ? (
+              <>
+                <div>
+                  <p className={styles.title}>ID 입력</p>
+                  <div>
+                    <input
+                      className={styles.input}
+                      placeholder={userId}
+                      ref={idRef}
+                    />
+                    <button className={styles.idButton} onClick={onSubmit}>
+                      입력
+                    </button>
+                  </div>
+                </div>
+                <br />
+              </>
+            ) : null}
+
             <div>
               <p className={styles.title}>Markdown</p>
               <div className={styles.markdown}>
                 <p id="readme">
                   {/* 마크다운 코드 보여줌 */}
-                  [![Memome Profile](https://readme.memome.be/v1/${id})](https://memome.be/${id})
+                  [![Memome Profile](https://readme.memome.be/v1/{id}
+                  )](https://memome.be/{id})
                 </p>
                 <div className={styles.copyButtonContainer}>
-                  <button className={styles.copyButton} onClick={() => handleCopy(text)}>복사</button>
+                  <button
+                    className={styles.copyButton}
+                    onClick={() => handleCopy(text)}
+                  >
+                    복사
+                  </button>
                 </div>
               </div>
             </div>
@@ -92,11 +106,11 @@ function Readme () {
                   <div className={styles.comments}>{id}의 방명록입니다~!</div>
                   <div className={styles.logoContainer}>
                     <div className={styles.logo}>MEMOME</div>
-                  </div>                
+                  </div>
                 </div>
-                <div>{/* Version 2  */}</div>  
+                <div>{/* Version 2  */}</div>
               </div>
-             </div> 
+            </div>
           </div>
         </section>
       </div>
