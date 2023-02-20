@@ -75,6 +75,16 @@ function Readme () {
               </>
             )}
 
+            {/* 테마 적용 파트 */}
+            <section>
+              <p className={styles.title}>Theme</p>
+              <div>
+                <div>테마 내용</div>
+                <div>테마 이름</div>
+                <button>적용</button>
+              </div>
+            </section>
+
             <div>
               <p className={styles.title}>Markdown</p>
               <div className={styles.markdown}>
