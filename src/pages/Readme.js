@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { Link } from 'react-router-dom';
 import Header from '../components/utils/Header';
 import Menu from '../components/utils/Menu';
 import { getCookie, removeCookie } from '../hooks/cookie';
@@ -110,6 +111,11 @@ function Readme () {
               </div>
             </div>
           </div>
+        </section>
+        <section className={styles.buttonSection}>
+          <Link to={`/${getCookie("user_id")}`} className={styles.enterButton}>
+            내 방명록으로 가기
+          </Link>
         </section>
       </div>
     );
