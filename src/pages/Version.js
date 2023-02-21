@@ -1,11 +1,15 @@
 import Header from "../components/utils/Header";
+import { getCookie } from "../hooks/cookie";
 import styles from "./Version.module.css";
 
 function Version () {
+    
+    const userId = getCookie("user_id");
+
     return(
         <div>
             <div>
-                <Header />
+                <Header userId={userId}/>
                 <header className={styles.header}>
                     About Memome 
                 </header>
