@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Header from '../components/utils/Header';
 import Menu from '../components/utils/Menu';
+import SelectTheme from '../components/utils/SelectTheme';
 import { getCookie, removeCookie } from '../hooks/cookie';
 import styles from "./Readme.module.css";
 
@@ -76,33 +77,7 @@ function Readme () {
             )}
 
             {/* 테마 적용 파트 */}
-            {/* <section>
-              <p className={styles.title}>Theme</p>
-              <div>
-                <div>테마 내용</div>
-                <div>테마 이름</div>
-                <button>적용</button>
-              </div>
-            </section> */}
-
-            <div class={styles.container}>
-              <p className={styles.title}>Theme</p>
-              <form class="form cf">
-                <section class="plan cf">
-                  <input type="radio" name="radio1" id="free" value="free" /><label class="free-label four col" for="free">Free</label>
-                  <input type="radio" name="radio1" id="basic" value="basic" checked /><label class="basic-label four col" for="basic">Basic</label>
-                  <input type="radio" name="radio1" id="premium" value="premium" /><label class="premium-label four col" for="premium">Premium</label>
-                </section>
-              </form>
-              {/*   <section class="plan cf">
-                  <h2>Choose a plan:</h2>
-                  <input type="radio" name="radio1" id="free" value="free"><label class="free-label four col" for="free">Free</label>
-                  <input type="radio" name="radio1" id="basic" value="basic" checked><label class="basic-label four col" for="basic">Basic</label>
-                  <input type="radio" name="radio1" id="premium" value="premium"><label class="premium-label four col" for="premium">Premium</label>
-                </section>
-                <input class="submit" type="submit" value="Submit">		
-              </form> */}
-            </div>
+            <SelectTheme />
 
             <div>
               <p className={styles.title}>Markdown</p>
