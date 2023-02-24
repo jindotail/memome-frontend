@@ -5,6 +5,7 @@ import Menu from '../components/utils/Menu';
 import SelectTheme from '../components/utils/SelectTheme';
 import { getCookie, removeCookie } from '../hooks/cookie';
 import styles from "./Readme.module.css";
+import { AiOutlineHome } from "react-icons/ai";
 
 function Readme () {  
     const userId = getCookie("user_id");
@@ -118,7 +119,7 @@ function Readme () {
         </section>
         <section className={styles.buttonSection}>
           <Link to={`/${getCookie("user_id")}`} className={styles.enterButton}>
-            내 방명록으로 가기
+            <AiOutlineHome size="24" /> &nbsp; 내 페이지로
           </Link>
         </section>
       </div>
