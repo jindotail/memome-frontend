@@ -12,7 +12,7 @@ const SelectTheme = () => {
 
   return (
     <>
-      <p className={styles.title}>Theme</p>
+      <p className={styles.title}>테마 변경</p>
       <section className={styles.select}>
         <div className={styles.content} >
           <input type="radio" name="theme" id="default" value="default"/>
