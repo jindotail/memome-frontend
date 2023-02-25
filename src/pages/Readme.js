@@ -15,6 +15,9 @@ function Readme () {
 
     const [id, setId] = useState(userId);
 
+    // 회원가입 직후 아이디 가져오기
+    const signup_id = getCookie("user_id");
+
     const onSubmit = () => {
       setId(idRef.current.value);
     }
@@ -83,11 +86,21 @@ function Readme () {
             <div>
               <p className={styles.title}>Markdown</p>
               <div className={styles.markdown}>
-                <p id="readme">
-                  {/* 마크다운 코드 보여줌 */}
-                  [![Memome Profile](https://readme.memome.be/v1/{id}
-                  )](https://memome.be/{id})
-                </p>
+                {/* 회원가입 직후와 아닐 경우 분기 처리 */}
+                {id ? (
+                  <p id="readme">
+                    {/* 마크다운 코드 보여줌 */}
+                    [![Memome Profile](https://readme.memome.be/v1/{id}
+                    )](https://memome.bse/{id})
+                  </p>
+                ) : (
+                  <p id="readme">
+                    {/* 마크다운 코드 보여줌 */}
+                    [![Memome Profile](https://readme.memome.be/v1/{signup_id}
+                    )](https://memome.be/{signup_id})
+                  </p>
+                )}
+                
                 <div className={styles.copyButtonContainer}>
                   <button
                     className={styles.copyButton}
