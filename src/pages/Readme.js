@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Header from '../components/utils/Header';
-import Menu from '../components/utils/Menu';
 import SelectTheme from '../components/utils/SelectTheme';
 import { getCookie, removeCookie } from '../hooks/cookie';
 import styles from "./Readme.module.css";
