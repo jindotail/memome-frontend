@@ -44,6 +44,7 @@ a {
     align-items: center;
     justify-content: center;
     transition: filter 300ms;
+    cursor: pointer;
     /* background-color: #ffffff; */
 }
 
@@ -59,6 +60,7 @@ a {
     justify-content: center;
     transition: filter 300ms;
     background-color: #ffffff;
+    cursor: pointer;
 }
 
 .iconButton:hover {
@@ -98,8 +100,16 @@ a {
     font-size: 16px;
 }
 
-.menuItem:nth-child(2) {
+.menuItem:nth-child(1) {
+    border-bottom: 1px solid #87878740;
+}
+
+.menuItem:nth-child(3) {
     border-top: 1px solid #87878740;
+    border-bottom: 1px solid #87878740;
+}
+
+.menuItem:nth-child(4) {
     border-bottom: 1px solid #87878740;
 }
 

@@ -3,12 +3,15 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import Main from '../components/utils/Main';
 import styles from "./Signup.module.css";
+import { setCookie } from '../hooks/cookie';
 
 function Signup() {
     const idRef = useRef(null);
     const nicknameRef = useRef(null);
     const passwordRef = useRef(null);
     const password2Ref = useRef(null);
+    const pwdQuestionRef = useRef(null);
+    const pwdAnswerRef = useRef(null);
 
     // 메시지 
     const [nameMessage, setNameMessage] = useState("");
@@ -20,6 +23,8 @@ function Signup() {
     const [isId, setIsId] = useState(false);
     const [isPwd, setIsPwd] = useState(false);
     const [isPwd2, setIsPwd2] = useState(false);
+    const [isPwdQuestion, setIsPwdQuestion] = useState(false);
+    const [isPwdAnswer, setIsPwdAnswer] = useState(false);
 
     //유효성 확인
     const handleChangeName = () => {
@@ -43,16 +48,16 @@ function Signup() {
         }
     };
     const handleChangePwd = () => {
-        const pwdRegex = /^(?=.*[a-z])(?=.*[0-9])(?=.*[@$!%*#?&]).{3,20}$/
+        const pwdRegex = /^(?=.*[a-z])(?=.*[0-9]).{3,30}$/
         const confirm = pwdRegex.test(passwordRef.current.value);
         if (passwordRef.current.value.length < 3 || passwordRef.current.value.length > 20 || !confirm) {
-            setPwdMessage('*3~20자의 영문, 숫자와 특수문자의 조합만 가능합니다.');
+            setPwdMessage('*3~20자의 영문과 숫자 조합한 비밀번호만 가능합니다.');
             setIsPwd(false);
         } else {
             setPwdMessage('');
             setIsPwd(true)
         }
-    }
+    };
     const handleChangePwd2 = () => {
         if (passwordRef.current.value === password2Ref.current.value) {
             setPwd2Message("");
@@ -60,6 +65,20 @@ function Signup() {
         } else {
             setPwd2Message('비밀번호가 일치하지 않습니다.');
             setIsPwd2(false);
+        }
+    };
+    const handleChangePwdQuestion = () => {
+        if (pwdQuestionRef.current.value !== "") {
+            setIsPwdQuestion(true);
+        } else {
+            setIsPwdQuestion(false);
+        }
+    }
+    const handleChangePwdAnswer = () => {
+        if (pwdAnswerRef.current.value !== "") {
+            setIsPwdAnswer(true);
+        } else {
+            setIsPwdAnswer(false);
         }
     }
 
@@ -70,20 +89,18 @@ function Signup() {
             id: idRef.current.value,
             password: passwordRef.current.value,
             nickname: nicknameRef.current.value,
+            passwordQuestion: pwdQuestionRef.current.value,
+            passwordAnswer: pwdAnswerRef.current.value
         }
 
-        axios.post(`/api/auth/signup`,
-            data,
-            {
-                headers: {
-                    "Content-Type": "application/json",
-                }
-            }
+        axios.post(`${process.env.REACT_APP_API_URL}/api/auth/signup`,
+            data
         )
             .then(res => {
                 console.log("전송 성공");
                 alert('가입에 성공하셨습니다!');
-                window.location.replace(`/`);
+                window.location.replace(`/readme`);
+                setCookie("finishSignup", "done");
             })
             .catch(res => {
                 console.log('Error!')
@@ -126,8 +143,13 @@ function Signup() {
                         <input id="password2" type="password" name="password2" placeholder="비밀번호 재확인" className={styles.singup} ref={password2Ref} onChange={handleChangePwd2} maxLength='20' />
                         <p className={styles.alert}>{pwd2Message}</p>
                     </div>
-                    <Link to="/" className={styles.login}>로그인 하기</Link>
-                    {!(isId && isName && isPwd && isPwd2) ? (
+                    <div className={styles.inputBox}>
+                        <input id="pwdQuestion" type="text" name="pwdQuestion" placeholder="비밀번호 찾기 질문 : Ex) 내가 좋아하는 동물은?" className={styles.singup} ref={pwdQuestionRef} onChange={handleChangePwdQuestion} />
+                    </div>
+                    <div className={styles.inputBox}>
+                        <input id="pwdAnswer" type="text" name="pwdAnswer" placeholder="비밀번호 찾기 답변 : Ex) 코알라" className={styles.singup} ref={pwdAnswerRef} onChange={handleChangePwdAnswer} />
+                    </div>
+                    {!(isId && isName && isPwd && isPwd2 && isPwdQuestion && isPwdAnswer) ? (
                         <button type="submit" className={styles.disabledButton} disabled >Sign Up</button>
                     ) : (
                         <button type="submit" className={styles.submitButton}>Sign Up</button>

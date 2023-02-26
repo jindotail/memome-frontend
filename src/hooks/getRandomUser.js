@@ -1,3 +1,5 @@
+// axios로 random user의 데이터 정보 가져오는 파일
+
 import { useEffect, useState } from "react";
 import axios from 'axios';
 
@@ -7,17 +9,10 @@ export default function useAxios(url) {
     useEffect(() => {
         axios.get(url)
             .then(res => {
-                return res.data.body;
-            })
-            .then(data => {
+                const data = res.data.users;
                 setData(data);
             })
-            .catch(error => {
-                console.log(Error);
-                alert("존재하지 않는 방명록입니다.")
-                window.location.replace("/");
-            });
+            .catch(error => { console.log(Error) });
     }, [url]);
-
     return data;
 }

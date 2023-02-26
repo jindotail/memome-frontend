@@ -1,5 +1,3 @@
-// axios로 user의 데이터 정보 가져오는 파일
-
 import { useEffect, useState } from "react";
 import axios from 'axios';
 
@@ -9,12 +7,14 @@ export default function useAxios(url) {
     useEffect(() => {
         axios.get(url)
             .then(res => {
-                return res.data.nickname;
+                return res.data.body;
             })
             .then(data => {
                 setData(data);
             })
-            .catch(error => { console.log(Error) });
+            .catch(error => {
+                setData("notFound");
+            });
     }, [url]);
 
     return data;

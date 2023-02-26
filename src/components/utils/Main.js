@@ -1,17 +1,22 @@
 import styles from "./Main.module.css";
-import useAxios from '../../hooks/randomAxios';
+import useAxios from '../../hooks/getRandomUser';
 import { Link } from 'react-router-dom';
 import { AiOutlineHome } from 'react-icons/ai';
+import { getCookie } from "../../hooks/cookie";
+import Header from "./Header";
+import { currentTime } from "../common/common";
 
 function Main({ children }) {
-    const users = useAxios(`/api/user/random?count=3`);
+    const users = useAxios(`${process.env.REACT_APP_API_URL}/api/user/random?count=3`);
+    const userId = getCookie("user_id");
 
     return (
         <div className={styles.main}>
+            <Header userId={userId}/>
             <section className={styles.imagePart}>
                 <div className={styles.container}>
                     {
-                        (document.cookie.length > 0) ? (
+                        (userId > 0) ? (
                             <>
                                 <div className={styles.contentsLogin}>
                                     <div className={styles.chatContainerLogin}>
@@ -35,7 +40,7 @@ function Main({ children }) {
                                 </div>
                                 <form className={styles.inputChatBoxLogin}>
                                     <input className={styles.input} type="text" disabled />
-                                    <button className={styles.chatButton}>전송</button>
+                                    <button className={styles.chatButton} disabled>전송</button>
                                 </form>
                             </>
                         ) : (
@@ -44,28 +49,28 @@ function Main({ children }) {
 
                                     <div className={styles.chatContainer}>
                                         <div className={styles.comment}>안녕하세요 MEMOME입니다!</div>
-                                        <div className={styles.date}>2022-07-01</div>
+                                        <div className={styles.date}>{currentTime()}</div>
                                     </div>
                                     <div className={styles.chatContainer}>
-                                        <div className={styles.comment}>나만의 방명록을 만들고</div>
-                                        <div className={styles.date}>2022-07-02</div>
+                                        <div className={styles.comment}>나만의 방명록을 만들어봐요</div>
+                                        <div className={styles.date}>{currentTime()}</div>
                                     </div>
                                     <div className={styles.chatContainer}>
-                                        <div className={styles.comment}>친구들과 함께 인사를 나눠봐요</div>
-                                        <div className={styles.date}>2022-07-03</div>
+                                        <div className={styles.comment}>깃허브 ReadMe에도 추가할 수 있어요!</div>
+                                        <div className={styles.date}>{currentTime()}</div>
                                     </div>
-                                    <div className={styles.chatContainer}>
+                                    {/* <div className={styles.chatContainer}>
                                         <div className={styles.comment}>함께 쓰면 더 행복한 MEMOME</div>
                                         <div className={styles.date}>2022-07-03</div>
                                     </div>
                                     <div className={styles.chatContainer}>
                                         <div className={styles.comment}>같이 즐겨봐요~!</div>
                                         <div className={styles.date}>2022-07-03</div>
-                                    </div>
+                                    </div> */}
                                 </div>
                                 <form className={styles.inputChatBox}>
                                     <input className={styles.input} type="text" disabled />
-                                    <button className={styles.chatButton}>전송</button>
+                                    <button className={styles.chatButton} disabled>전송</button>
                                 </form>
                             </>
                         )

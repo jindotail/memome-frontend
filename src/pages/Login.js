@@ -5,40 +5,40 @@ import Main from '../components/utils/Main';
 import styles from "./Login.module.css";
 import { getCookie, setCookie } from '../hooks/cookie';
 import Menu from '../components/utils/Menu';
+import userAxios from '../hooks/getNickname';
 
 function Login() {
+    
+    const idRef = useRef(null);
+    const passwordRef = useRef(null);
+    const userId = getCookie("user_id");
+
+    // 닉네임 가져오기
+    const nickname = userAxios(`${process.env.REACT_APP_API_URL}/api/user/${userId}`);
 
     //로그인하기 버튼 함수
     async function onSubmit(e) {
         try {
-
             e.preventDefault();
             const data = {
                 id: idRef.current.value,
                 password: passwordRef.current.value,
             }
 
-            console.log(data);
-
-            axios.post(`/api/auth/login`,
+            axios.post(`${process.env.REACT_APP_API_URL}/api/auth/login`,
                 data,
                 {
-                    headers: {
-                        "Content-Type": `application/json`,
-                        "Access-Control-Allow-Origin": `http://localhost:3000`,
-                        withCredentials: true,
-                        credenitals: true,
+                    header: {
+                        'Authorization': getCookie("accessToken"),
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json',
+                        'Access-Control-Allow-Credentials': true
                     },
                 }
             )
                 .then((res) => {
-                    const { accessToken, refreshToken } = res.data;
-                    console.log(res.data);
-                    axios.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`;
                     setCookie("user_id", data.id);
-                    setCookie("accessToken", accessToken);
-                    setCookie("refreshToken", refreshToken);
-                    window.location.replace(`/guest-book-frontend/${data.id}`);
+                    window.location.replace(`/${data.id}`);
                 })
                 .catch(res => {
                     console.log('Error!');
@@ -55,25 +55,16 @@ function Login() {
         }
     };
 
-    const idRef = useRef(null);
-    const passwordRef = useRef(null);
-
-    const userId = getCookie("user_id");
-
     return (
         <Main>
-            {(document.cookie.length > 0) ? (
+            {(userId) ? (
                 <section className={styles.enterPart}>
-                    <header className={styles.header}>
-                        <Menu user={userId} />
-                    </header>
                     <div className={styles.titlePart}>
                         <Link to="/" className={styles.title}>
                             MEMOME
                         </Link>
                     </div>
-                    <div className={styles.greeting}>{userId}님 안녕하세요!</div>
-                    {console.log(userId)}
+                    <div className={styles.greeting}>{nickname}님 안녕하세요!</div>
                     <Link to={`/${getCookie("user_id")}`} className={styles.enterButton}>내 방명록으로 가기</Link>
                 </section>
             ) : (
@@ -90,7 +81,8 @@ function Login() {
                         <div className={styles.inputBox}>
                             <input id="password" type="password" name="password" placeholder="비밀번호" className={styles.login} ref={passwordRef} />
                         </div>
-                        <Link to="/signup" className={styles.signIn}>회원가입 하기</Link>
+                        <Link to="/enterId" className={styles.signIn}>비밀번호 찾기</Link>
+                        <Link to="/signup" className={styles.signIn}>회원가입 &nbsp; </Link>
                         <button type="submit" className={styles.submitButton}>Log In</button>
                     </form>
                 </section>
@@ -98,5 +90,4 @@ function Login() {
         </Main>
     )
 }
-
 export default Login;
