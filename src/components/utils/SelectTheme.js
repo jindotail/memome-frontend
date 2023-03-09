@@ -1,16 +1,11 @@
 import styles from "./SelectTheme.module.css";
 import themeA from "../../assets/images/warm_theme.png";
-import { useState } from "react";
 
 const SelectTheme = () => {
-  //const [theme, setTheme] = useState("");
-
   let theme;
 
   const handleSelectTheme = (value) => {
-    alert(`${value} 입니다`);
     theme = value;
-    console.log(theme, "theme");
   };
 
   const handleSubmit = () => {
