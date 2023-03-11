@@ -13,11 +13,12 @@ import NotFound from "./NotFound";
 import Loading from "../components/utils/Loading";
 import { getCookie } from "../hooks/cookie";
 import Header from "../components/utils/Header";
+import { useSelector } from "react-redux";
 
 function Guestbook() {
   const navigate = useNavigate();
   const { userId } = useParams();
-  
+
   const user_Id = getCookie("user_id");
 
   const commentsInit = useAxios(
@@ -34,7 +35,7 @@ function Guestbook() {
   // 전송 버튼 함수
   const onSubmit = async (e) => {
     e.preventDefault();
-    
+
     // form input 값 없이 submit 금지
     if (commentRef.current.value.length === 0) {
       alert("인사말을 입력해주세요!");
@@ -43,30 +44,26 @@ function Guestbook() {
       setLoading(true); // api 호출 전에 true로 변경하여 로딩화면 띄우기
 
       await axios
-      .post(`${process.env.REACT_APP_API_URL}/api/comment/${userId}`, {
-        comment: commentRef.current.value,
-      })
-      .then((res) => {
-        commentRef.current.value = "";
-        console.log("전송 성공");
-        //window.location.replace(`/${userId}`);
+        .post(`${process.env.REACT_APP_API_URL}/api/comment/${userId}`, {
+          comment: commentRef.current.value,
+        })
+        .then((res) => {
+          commentRef.current.value = "";
+          //window.location.replace(`/${userId}`);
 
-        axios
-          .get(`${process.env.REACT_APP_API_URL}/api/comment/${userId}`)
-          .then((res) => {
-            console.log("enter", res.data.body);
-            setComments(res.data.body);
-          })
+          axios
+            .get(`${process.env.REACT_APP_API_URL}/api/comment/${userId}`)
+            .then((res) => {
+              console.log("enter", res.data.body);
+              setComments(res.data.body);
+            });
 
-        setLoading(false); // api 호출 완료 됐을 때 false로 변경하려 로딩화면 숨김처리
-
-      })
-      .catch((res) => {
-        console.log("Error!", res);
-      });
+          setLoading(false); // api 호출 완료 됐을 때 false로 변경하려 로딩화면 숨김처리
+        })
+        .catch((res) => {
+          console.log("Error!", res);
+        });
     }
-
-    
   };
 
   // 날짜 오름차순으로 댓글 정렬
@@ -122,6 +119,9 @@ function Guestbook() {
     });
   };
 
+  // 테마색상 가져오기
+  const themeColor = useSelector((state) => state.theme.themeColor);
+
   // custom modal창 함수
   const [modalOpen, setModalOpen] = useState(false);
 
@@ -159,7 +159,7 @@ function Guestbook() {
     <div
       className={styles.guestbook}
       style={{
-        background: `${color}`,
+        background: `linear-gradient(106.37deg, ${themeColor.startColor} 29.63%, ${themeColor.middleColor} 51.55%, ${themeColor.endColor} 90.85%)`,
       }}
     >
       <Header userId={userId}/>

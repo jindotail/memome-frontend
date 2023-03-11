@@ -9,6 +9,7 @@ import { token } from '../hooks/token';
 import SelectTheme from '../components/utils/SelectTheme';
 import Header from '../components/utils/Header';
 import { AiOutlineHome } from "react-icons/ai";
+import { useSelector } from 'react-redux';
 
 function Profile() {
 
@@ -42,16 +43,23 @@ function Profile() {
                 }
                 else if (res.response.status === 401) {
                     console.log("토큰이 만료되었습니다");
-                    token(userId, "닉네임변경");
+                    token(userId, "닉네임");
                 }
             });
     };
 
+    // 테마색상 가져오기
+    const themeColor = useSelector((state) => state.theme.themeColor);
 
     return (
       <div>
         <Header userId={user} />
-        <header className={styles.header}>My Profile </header>
+        <header className={styles.header}
+          style={{
+            background: `linear-gradient(106.37deg, ${themeColor.startColor} 29.63%, ${themeColor.middleColor} 51.55%, ${themeColor.endColor} 90.85%)`,
+          }}>
+            My Profile 
+        </header>
         <section className={styles.container}>
             <div className={styles.nicknamePart}>
                 <p className={styles.title}>닉네임 수정</p>

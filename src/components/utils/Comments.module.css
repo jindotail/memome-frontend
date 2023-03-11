@@ -14,11 +14,7 @@
     word-break: break-all;
     line-height: 1.4;
     font-family: 'GangwonEdu_OTFBoldA';
-    background: linear-gradient(rgb(235, 147, 247) 0%, rgb(211, 152, 253) 100%);
-    box-shadow: rgba(235, 147, 247) 0px 3px 8px;
-
-    /* background: linear-gradient(#dfe8ff 0%, #f3c6f1 100%);
-    box-shadow: rgb(141, 141, 141) 0px 2px 8px; */
+    box-shadow: rgb(187 187 187) 0px 3px 8px; 
 }
 
 .date {

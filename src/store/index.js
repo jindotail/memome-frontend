@@ -1,10 +1,28 @@
-import { configureStore } from '@reduxjs/toolkit';
-import themeRedeucer from './theme';
+import { combineReducers, configureStore } from '@reduxjs/toolkit';
+import persistReducer from 'redux-persist/es/persistReducer';
+import persistStore from 'redux-persist/es/persistStore';
+import storage from 'redux-persist/lib/storage';
+import themeReducer from './theme';
 
-const store = configureStore({
-    reducer: {
-      theme: themeRedeucer
-    }
+const persistConfig = {
+  key: "react",
+  storage,
+  whitelist: ['theme']
+};
+
+export const rootReducer = combineReducers({
+  theme: themeReducer
+})
+
+const persistedReducer = persistReducer(persistConfig, rootReducer);
+
+export const store = configureStore({
+    reducer: persistedReducer,
+    middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: false,
+    }),
 });
 
-export default store;
+export const persistor = persistStore(store);
+

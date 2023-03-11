@@ -11,7 +11,7 @@
     font-family: 'Galada', cursive;
     font-size: 30px;
     color: #000;
-    background: linear-gradient(106.37deg, #dfe8ff 29.63%, #f3c6f1 51.55%, #ffcfd1 90.85%);
+    /* background: linear-gradient(106.37deg, #dfe8ff 29.63%, #f3c6f1 51.55%, #ffcfd1 90.85%); */
 }
 
 .menu {
@@ -100,7 +100,7 @@
     height: 200px;
     padding: 10px 20px;
     border-radius: 20px;
-    background: linear-gradient(106.37deg, #dfe8ff 29.63%, #f3c6f1 51.55%, #ffcfd1 90.85%);
+    /* background: linear-gradient(106.37deg, #dfe8ff 29.63%, #f3c6f1 51.55%, #ffcfd1 90.85%); */
 }
 
 .demoTitle{

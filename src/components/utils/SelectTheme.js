@@ -1,15 +1,61 @@
 import styles from "./SelectTheme.module.css";
 import themeA from "../../assets/images/warm_theme.png";
+import axios from "axios";
+import { getCookie } from "../../hooks/cookie";
+import { token } from "../../hooks/token";
+import { useDispatch } from "react-redux";
+import { themeActions } from "../../store/theme";
 
 const SelectTheme = () => {
+  const dispatch = useDispatch();
+
   let theme;
 
   const handleSelectTheme = (value) => {
     theme = value;
   };
 
-  const handleSubmit = () => {
-    console.log(theme, "submit");
+  // 사용자 id 가져오기
+  const user = getCookie("user_id");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    axios.patch(`${process.env.REACT_APP_API_URL}/api/user/${user}`,
+        {
+          themeId: theme
+        }
+    )
+        .then((res) => {
+            alert("테마가 변경되었습니다.");
+            axios.get(`${process.env.REACT_APP_API_URL}/api/user/${user}`)
+            .then((res)=>{
+              const startColor = res.data.theme.backgroundColor.start;
+              const middleColor = res.data.theme.backgroundColor.middle;
+              const endColor = res.data.theme.backgroundColor.end;
+
+              const startCommentColor = res.data.theme.commentColor.start;
+              const endCommentColor = res.data.theme.commentColor.end;
+
+              dispatch(themeActions.setThemeColor({
+                startColor: startColor,
+                middleColor: middleColor,
+                endColor: endColor
+              }));
+
+              dispatch(themeActions.setCommentColor({
+                startColor: startCommentColor,
+                endColor: endCommentColor
+              }));
+
+            })
+        })
+        .catch(res => {
+            const userId = { user }
+            if (res.response.status === 401) {
+                console.log("토큰이 만료되었습니다");
+                token(userId, "테마");
+            }
+        });
   };
 
   return (
@@ -21,7 +67,7 @@ const SelectTheme = () => {
           <label
             for="default"
             onClick={(e) => {
-              handleSelectTheme("default");
+              handleSelectTheme(1);
             }}
           >
             기본
@@ -33,7 +79,7 @@ const SelectTheme = () => {
           <label
             for="warm"
             onClick={(e) => {
-              handleSelectTheme("warm");
+              handleSelectTheme(2);
             }}
           >
             따뜻한
@@ -45,7 +91,7 @@ const SelectTheme = () => {
           <label
             for="cold"
             onClick={(e) => {
-              handleSelectTheme("cold");
+              handleSelectTheme(3);
             }}
           >
             차가운
@@ -57,7 +103,7 @@ const SelectTheme = () => {
           <label
             for="ect"
             onClick={(e) => {
-              handleSelectTheme("ect");
+              handleSelectTheme(4);
             }}
           >
             기타

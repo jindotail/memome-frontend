@@ -5,15 +5,19 @@ import App from './App';
 import { CookiesProvider } from 'react-cookie';
 import axios from "axios";
 import { Provider } from 'react-redux';
-import store from './store';
+import { persistor, store } from './store';
+import { PersistGate } from 'redux-persist/integration/react';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 axios.defaults.withCredentials = true;
+
 root.render(
     <Provider store={store}>
-      <CookiesProvider>
-        <App />
-      </CookiesProvider>
+      <PersistGate loading={null} persistor={persistor}>
+        <CookiesProvider>
+          <App />
+        </CookiesProvider>
+      </PersistGate>
     </Provider>
 );
 
