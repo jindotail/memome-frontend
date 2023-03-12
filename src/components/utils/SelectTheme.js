@@ -99,8 +99,8 @@ const SelectTheme = () => {
               handleSelectTheme(3);
             }}
           >
-            초록
-            <img src={themeGreen} className={styles.themeImg} />
+            오렌지
+            <img src={themeOrange} className={styles.themeImg} />
           </label>
         </div>
         <div className={styles.content}>
@@ -111,8 +111,8 @@ const SelectTheme = () => {
               handleSelectTheme(4);
             }}
           >
-            오렌지
-            <img src={themeOrange} className={styles.themeImg} />
+            초록
+            <img src={themeGreen} className={styles.themeImg} />
           </label>
         </div>
       </section>
