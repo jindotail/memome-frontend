@@ -1,10 +1,15 @@
 import styles from "./SelectTheme.module.css";
-import themeA from "../../assets/images/warm_theme.png";
 import axios from "axios";
 import { getCookie } from "../../hooks/cookie";
 import { token } from "../../hooks/token";
 import { useDispatch } from "react-redux";
 import { themeActions } from "../../store/theme";
+
+// 테마 이미지
+import themeDefault from "../../assets/images/default.png";
+import themeBlue from "../../assets/images/blue.png";
+import themeGreen from "../../assets/images/green.png";
+import themeOrange from "../../assets/images/orange.png";
 
 const SelectTheme = () => {
   const dispatch = useDispatch();
@@ -71,7 +76,7 @@ const SelectTheme = () => {
             }}
           >
             기본
-            <img src={themeA} className={styles.themeImg} />
+            <img src={themeDefault} className={styles.themeImg} />
           </label>
         </div>
         <div className={styles.content}>
@@ -82,8 +87,8 @@ const SelectTheme = () => {
               handleSelectTheme(2);
             }}
           >
-            따뜻한
-            <img src={themeA} className={styles.themeImg} />
+            파랑
+            <img src={themeBlue} className={styles.themeImg} />
           </label>
         </div>
         <div className={styles.content}>
@@ -94,8 +99,8 @@ const SelectTheme = () => {
               handleSelectTheme(3);
             }}
           >
-            차가운
-            <img src={themeA} className={styles.themeImg} />
+            초록
+            <img src={themeGreen} className={styles.themeImg} />
           </label>
         </div>
         <div className={styles.content}>
@@ -106,8 +111,8 @@ const SelectTheme = () => {
               handleSelectTheme(4);
             }}
           >
-            기타
-            <img src={themeA} className={styles.themeImg} />
+            오렌지
+            <img src={themeOrange} className={styles.themeImg} />
           </label>
         </div>
       </section>
