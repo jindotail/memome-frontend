@@ -24,9 +24,42 @@ function Guestbook() {
   const commentsInit = useAxios(
     `${process.env.REACT_APP_API_URL}/api/comment/${userId}`
   );
+  
   const nickname = userAxios(
     `${process.env.REACT_APP_API_URL}/api/user/${userId}`
   );
+
+  // 테마 데이터 가져오기
+  const [theme, setTheme] = useState();
+
+  const getTheme = async() => {
+    await axios.get(`${process.env.REACT_APP_API_URL}/api/user/${userId}`)
+      .then((res) => {
+        setTheme(res.data.theme)
+      })
+  }
+
+  let themeData; //실제로 사용할 테마 데이터 담아두는 변수
+
+  if (theme) { // theme이 undefined이지 않을 경우
+    themeData = theme
+  } else { // theme이 undefined일 않을 경우 (데이터가 아직 안불러져 왔을 때)
+    themeData = {
+      backgroundColor: {
+        start: "#FFFFF",
+        middle: "#00000",
+        end: "#00000"
+      },
+      commentColor: {
+        start: "#00000",
+        end: "#FFFFF"
+      }
+    }
+  }
+
+  useEffect(() => {
+    getTheme();
+  },[]);
 
   const [comments, setComments] = useState(commentsInit);
 
@@ -159,7 +192,7 @@ function Guestbook() {
     <div
       className={styles.guestbook}
       style={{
-        background: `linear-gradient(106.37deg, ${themeColor.startColor} 29.63%, ${themeColor.middleColor} 51.55%, ${themeColor.endColor} 90.85%)`,
+        background: `linear-gradient(106.37deg, ${themeData.backgroundColor.start} 29.63%, ${themeData.backgroundColor.middle} 51.55%, ${themeData.backgroundColor.end} 90.85%)`,
       }}
     >
       <Header userId={userId}/>
@@ -182,6 +215,7 @@ function Guestbook() {
               key={comment.idx}
               page={userId}
               id={comment.idx}
+              themeData={themeData}
             />
           ))}
         </div>
