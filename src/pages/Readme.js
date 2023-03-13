@@ -5,7 +5,6 @@ import SelectTheme from '../components/utils/SelectTheme';
 import { getCookie, removeCookie } from '../hooks/cookie';
 import styles from "./Readme.module.css";
 import { AiOutlineHome } from "react-icons/ai";
-import { useSelector } from 'react-redux';
 
 function Readme () {  
     const userId = getCookie("user_id");
@@ -34,10 +33,6 @@ function Readme () {
       }
     };
 
-    // 테마색상 가져오기
-    const themeColor = useSelector((state) => state.theme.themeColor);
-
-
     useEffect(()=>{
       let signupYN = getCookie("finishSignup");
 
@@ -54,11 +49,7 @@ function Readme () {
     return (
       <div>
         <Header userId={userId} />
-        <header className={styles.header}
-          style={{
-            background: `linear-gradient(106.37deg, ${themeColor.startColor} 29.63%, ${themeColor.middleColor} 51.55%, ${themeColor.endColor} 90.85%)`,
-          }}
-        >
+        <header className={styles.header}>
           Memome ReadMe
         </header>
         <section className={styles.container}>
@@ -126,11 +117,7 @@ function Readme () {
             <div>
               <p className={styles.title}>Demo</p>
               <div className={styles.demoContainer}>
-                <div className={styles.demo}
-                  style={{
-                    background: `linear-gradient(106.37deg, ${themeColor.startColor} 29.63%, ${themeColor.middleColor} 51.55%, ${themeColor.endColor} 90.85%)`,
-                  }}
-                >
+                <div className={styles.demo}>
                   <p className={styles.demoTitle}>{id}의 방명록</p>
                   <div className={styles.demoSubTitle}>Recent comments</div>
                   <div className={styles.comments}>안녕하세요</div>

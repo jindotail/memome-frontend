@@ -14,11 +14,7 @@ function Version () {
         <div>
             <div>
                 <Header userId={userId}/>
-                <header className={styles.header}
-                    style={{
-                       background: `linear-gradient(106.37deg, ${themeColor.startColor} 29.63%, ${themeColor.middleColor} 51.55%, ${themeColor.endColor} 90.85%)`,
-                    }}
-                >
+                <header className={styles.header}>
                     About Memome 
                 </header>
             </div>
