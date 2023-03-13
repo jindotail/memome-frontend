@@ -1,12 +1,12 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import persistReducer from 'redux-persist/es/persistReducer';
 import persistStore from 'redux-persist/es/persistStore';
-import storage from 'redux-persist/lib/storage';
+import storageSession from 'redux-persist/lib/storage/session';
 import themeReducer from './theme';
 
 const persistConfig = {
   key: "react",
-  storage,
+  storage: storageSession,
   whitelist: ['theme']
 };
 
