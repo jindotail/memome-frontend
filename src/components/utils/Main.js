@@ -16,7 +16,7 @@ function Main({ children }) {
             <section className={styles.imagePart}>
                 <div className={styles.container}>
                     {
-                        (userId > 0) ? (
+                        (userId) ? (
                             <>
                                 <div className={styles.contentsLogin}>
                                     <div className={styles.chatContainerLogin}>
