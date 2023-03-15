@@ -101,6 +101,7 @@ function Signup() {
                 alert('가입에 성공하셨습니다!');
                 window.location.replace(`/readme`);
                 setCookie("user_id", idRef.current.value);
+
                 setCookie("finishSignup", "done");
             })
             .catch(res => {

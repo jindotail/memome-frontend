@@ -6,6 +6,7 @@ import Loading from './Loading';
 import { useState } from 'react';
 import { useSelector } from "react-redux";
 
+
 function Comments({ comment, page, id, themeData }) {
     const date = comment.iso_time;
     const [loading, setLoading] = useState(false);  

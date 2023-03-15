@@ -93,6 +93,7 @@ function ResetPassword() {
                         <button type="button" className={styles.disabledButton} disabled >비밀번호 재설정</button>
                     ) : (
                         <button type="button" className={styles.submitButton} onClick={onSubmit}>비밀번호 재설정</button>
+
                     )}
                 </form>
             </section>
