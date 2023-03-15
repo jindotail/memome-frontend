@@ -19,8 +19,8 @@ export function token(user, type) {
                 console.log("회원탈퇴 들어옴")
                 withdrawal(user.user);
             }
-            else if (type === "닉네임변경") {
-                alert("다시 닉네임 변경을 시도하세요.");
+            else if (type === "닉네임" || type === "테마") {
+                alert(`다시 ${type} 변경을 시도하세요.`);
                 window.location.replace("/profile");
             }
             else {

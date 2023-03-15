@@ -140,35 +140,39 @@
 .buttonSection {
     display: flex;
     justify-content: center;
+    margin: 0 0 20px 0;
 }
 
+
 .enterButton {
-    display: flex;
+    display: inline-flex;
+    position: relative;
     justify-content: center;
     align-items: center;
-    height: 30px;
-    width: 30%;
-    margin-top: 50px;
-    padding: 12px 0;
-    text-align: center;
-
-    border: none;
+    max-width: 100%;
+    margin-top: 20px;
+    margin-right: 20px;
+    padding: 2px 24px;
+    background-color: #fff;
     border-radius: 30px;
-    box-shadow: rgba(0, 0, 0, 0.2) 0 1px 1px -1px, rgba(0, 0, 0, 0.14) 0 1px 5px 0,
-        rgba(0, 0, 0, 0.12) 0 1px 5px 0;
-    background: linear-gradient(
-        106.37deg,
-        #dfe8ff 29.63%,
-        #f3c6f1 51.55%,
-        #ffcfd1 90.85%
-    );
-
-    font-size: 20px;
-    font-weight: 700;
-    font-family: "Gowun Batang", serif;
-
-    color: #453a3a;
+    border-style: none;
+    box-shadow: rgba(0, 0, 0, .2) 0 3px 5px -1px, rgba(0, 0, 0, .14) 0 6px 10px 0, rgba(0, 0, 0, .12) 0 1px 18px 0;
+    box-sizing: border-box;
+    color: #3c4043;
     cursor: pointer;
+    font-family: 'Cafe24Ssurround';
+    font-size: 14px;
+    font-weight: 500;
+    height: 48px;
+    line-height: normal;
+    text-align: center;
+    transition: box-shadow 280ms cubic-bezier(.4, 0, .2, 1), opacity 15ms linear 30ms, transform 270ms cubic-bezier(0, 0, .2, 1) 0ms;
+}
+
+.enterButton:active {
+    background-color: #efefef;
+    box-shadow: 0 4px 4px 3px rgb(60 64 67 / 30%), 0 8px 12px 6px rgb(60 64 67 / 15%);
+    outline: none;
 }
 
 @media (max-width:500px) {
