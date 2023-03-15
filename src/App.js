@@ -4,6 +4,7 @@ import EnterId from './pages/EnterId';
 import FindPassword from './pages/FindPassword';
 import Guestbook from './pages/Guestbook';
 import Login from './pages/Login';
+import OAuth2RedirectHandler from './pages/Login/OAuth2RedirectHandler';
 import NotFound from './pages/NotFound';
 import Profile from './pages/Profile';
 import Readme from './pages/Readme';
@@ -26,6 +27,7 @@ function App() {
         <Route path="/readme" element={<Readme />} />
         <Route path="/version" element={<Version />} />
         <Route path="/404" element={<NotFound />} />
+        <Route path="/kakaoLogin" element={<OAuth2RedirectHandler />} />
         <Route path="/*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>

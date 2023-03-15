@@ -6,9 +6,9 @@ import styles from "./Login.module.css";
 import { getCookie, setCookie } from '../hooks/cookie';
 import Menu from '../components/utils/Menu';
 import userAxios from '../hooks/getNickname';
+import KakaoLogIn from './Login/KakaoLogin';
 
 function Login() {
-    
     const idRef = useRef(null);
     const passwordRef = useRef(null);
     const userId = getCookie("user_id");
@@ -85,6 +85,7 @@ function Login() {
                         <Link to="/signup" className={styles.signIn}>회원가입 &nbsp; </Link>
                         <button type="submit" className={styles.submitButton}>Log In</button>
                     </form>
+                    <KakaoLogIn />
                 </section>
             )}
         </Main>
