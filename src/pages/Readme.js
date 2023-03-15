@@ -1,10 +1,9 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Header from '../components/utils/Header';
-import SelectTheme from '../components/utils/SelectTheme';
+import Menu from '../components/utils/Menu';
 import { getCookie, removeCookie } from '../hooks/cookie';
 import styles from "./Readme.module.css";
-import { AiOutlineHome } from "react-icons/ai";
 
 function Readme () {  
     const userId = getCookie("user_id");
@@ -13,9 +12,6 @@ function Readme () {
     const idRef = useRef(null);
 
     const [id, setId] = useState(userId);
-
-    // 회원가입 직후 아이디 가져오기
-    const signup_id = getCookie("user_id");
 
     const onSubmit = () => {
       setId(idRef.current.value);
@@ -48,10 +44,8 @@ function Readme () {
 
     return (
       <div>
-        <Header userId={userId} />
-        <header className={styles.header}>
-          Memome ReadMe
-        </header>
+        <Header />
+        <header className={styles.header}>Memome ReadMe</header>
         <section className={styles.container}>
           <div className={styles.main}>
             {signup ? (
@@ -81,26 +75,14 @@ function Readme () {
               </>
             )}
 
-            {/* 테마 적용 파트 */}
-            <SelectTheme />
-
             <div>
               <p className={styles.title}>Markdown</p>
               <div className={styles.markdown}>
-                {/* 회원가입 직후와 아닐 경우 분기 처리 */}
-                {id ? (
-                  <p id="readme">
-                    {/* 마크다운 코드 보여줌 */}
-                    [![Memome Profile](https://readme.memome.be/v1/{id}
-                    )](https://memome.bse/{id})
-                  </p>
-                ) : (
-                  <p id="readme">
-                    {/* 마크다운 코드 보여줌 */}
-                    [![Memome Profile](https://readme.memome.be/v1/{signup_id}
-                    )](https://memome.be/{signup_id})
-                  </p>
-                )}
+                <p id="readme">
+                  {/* 마크다운 코드 보여줌 */}
+                  [![Memome Profile](https://readme.memome.be/v1/{id}
+                  )](https://memome.be/{id})
+                </p>
                 <div className={styles.copyButtonContainer}>
                   <button
                     className={styles.copyButton}
@@ -132,7 +114,7 @@ function Readme () {
         </section>
         <section className={styles.buttonSection}>
           <Link to={`/${getCookie("user_id")}`} className={styles.enterButton}>
-            <AiOutlineHome size="24" /> &nbsp; 내 페이지로
+            내 방명록으로 가기
           </Link>
         </section>
       </div>

@@ -6,10 +6,6 @@ import { getCookie } from '../hooks/cookie';
 import userAxios from '../hooks/getUserInfo';
 import axios from 'axios';
 import { token } from '../hooks/token';
-import SelectTheme from '../components/utils/SelectTheme';
-import Header from '../components/utils/Header';
-import { AiOutlineHome } from "react-icons/ai";
-import { useSelector } from 'react-redux';
 
 function Profile() {
 
@@ -35,56 +31,44 @@ function Profile() {
         )
             .then((res) => {
                 alert("닉네임이 변경되었습니다.")
+                window.location.replace(`/profile`);
             })
             .catch(res => {
                 const userId = { user }
                 if (nicknameRef.current.value === '') {
                     alert("변경하고 싶은 닉네임을 입력하세요");
+                    window.location.replace(`/profile`);
                 }
                 else if (res.response.status === 401) {
                     console.log("토큰이 만료되었습니다");
-                    token(userId, "닉네임");
+                    token(userId, "닉네임변경");
                 }
             });
     };
 
-    // 테마색상 가져오기
-    const themeColor = useSelector((state) => state.theme.themeColor);
 
     return (
-      <div>
-        <Header userId={user} />
-        <header className={styles.header}
-          style={{
-            background: `linear-gradient(106.37deg, ${themeColor.startColor} 29.63%, ${themeColor.middleColor} 51.55%, ${themeColor.endColor} 90.85%)`,
-          }}>
-            My Profile 
-        </header>
-        <section className={styles.container}>
-            <div className={styles.nicknamePart}>
-                <p className={styles.title}>닉네임 수정</p>
-                <div>
-                    <input
-                      className={styles.input}
-                      placeholder={prevNickname}
-                      ref={nicknameRef}
-                      maxLength="10"
-                    />
-                    <button className={styles.idButton} onClick={onSubmit}>
-                      수정
-                    </button>
+        <Main>
+            <section className={styles.profilePart}>
+                <div className={styles.titlePart}>
+                    <Link to="/" className={styles.title}>
+                        MEMOME
+                    </Link>
                 </div>
-            </div>
-            <SelectTheme />
-        </section>
-
-        <section className={styles.buttonSection}>
-          <Link to={`/${getCookie("user_id")}`} className={styles.enterButton}>
-            <AiOutlineHome size="24" /> &nbsp; 내 페이지로
-          </Link>
-        </section>
-      </div>
-    );  
-}   
+                <form action="" method="POST" className={styles.fromStyle} onSubmit={onSubmit} disabled>
+                    <div className={styles.inputBox}>
+                        <p>아이디</p>
+                        <input id="id" type="text" name="id" value={id} className={styles.profileInputBox} disabled />
+                    </div>
+                    <div className={styles.inputBox}>
+                        <p>닉네임</p>
+                        <input id="nickname" type="text" name="nickname" placeholder={prevNickname} className={styles.profileInputBox} maxLength='10' ref={nicknameRef} />
+                    </div>
+                    <button type="submit" className={styles.submitButton}>수정</button>
+                </form>
+            </section>
+        </Main>
+    )
+}
 
 export default Profile;

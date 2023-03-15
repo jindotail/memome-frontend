@@ -49,17 +49,16 @@ function ResetPassword() {
     };
 
     // 비밀번호 재설정 버튼 함수
-    const onSubmit = async (e) => {
-        
+    function onSubmit(e) {
         e.preventDefault();
-        await axios.post(`${process.env.REACT_APP_API_URL}/api/auth/change_password`,
+        axios.post(`${process.env.REACT_APP_API_URL}/api/auth/change_password`,
             {
                 id: user,
                 password: passwordRef.current.value
             }
         )
             .then((res) => {
-                // pwdToken(user, passwordRef.current.value);
+                pwdToken(user, passwordRef.current.value);
                 alert("비밀번호가 변경되었습니다.")
                 localStorage.removeItem("find_user");
                 navigate("/");
@@ -79,7 +78,7 @@ function ResetPassword() {
                         MEMOME
                     </Link>
                 </div>
-                <form className={styles.fromStyle} disabled>
+                <form action="" method="POST" className={styles.fromStyle} onSubmit={onSubmit} disabled>
                     <div className={styles.inputBox}>
                         <input id="password" type="password" name="password" placeholder="새 비밀번호 입력" className={styles.resetInput} ref={passwordRef} onChange={handleChangePwd} maxLength='20' />
                         <p className={styles.alert}>{pwdMessage}</p>
@@ -90,10 +89,9 @@ function ResetPassword() {
                     </div>
 
                     {!(isPwd && isPwd2) ? (
-                        <button type="button" className={styles.disabledButton} disabled >비밀번호 재설정</button>
+                        <button type="submit" className={styles.disabledButton} disabled >비밀번호 재설정</button>
                     ) : (
-                        <button type="button" className={styles.submitButton} onClick={onSubmit}>비밀번호 재설정</button>
-
+                        <button type="submit" className={styles.submitButton}>비밀번호 재설정</button>
                     )}
                 </form>
             </section>
