@@ -9,7 +9,7 @@
     margin: 0;
     width: 100vw;
     height: 100vh;
-    background: linear-gradient(106.37deg, #dfe8ff 29.63%, #f3c6f1 51.55%, #ffcfd1 90.85%);
+    /* background: linear-gradient(106.37deg, #dfe8ff 29.63%, #f3c6f1 51.55%, #ffcfd1 90.85%); */
 }
 
 .header {
@@ -23,19 +23,19 @@
     background-color: #ffffff7d;
 }
 
-.header>button {
+.header > button {
     width: 60px;
     height: 25px;
     border: none;
-    background-Color: rgba(255, 235, 235, 0.84);
+    background-color: rgba(255, 235, 235, 0.84);
     font-weight: 700;
     font-size: 12px;
     box-shadow: rgb(187, 187, 187) 0px 3px 10px 0px;
     cursor: pointer;
 }
 
-.header>button:hover {
-    background-Color: rgb(255, 255, 255);
+.header > button:hover {
+    background-color: rgb(255, 255, 255);
 }
 
 .logo {
@@ -65,7 +65,7 @@
     border-bottom-right-radius: 15px;
 }
 
-.alertContainer{
+.alertContainer {
     display: flex;
     justify-content: center;
     margin-top: 10px;
@@ -76,7 +76,7 @@
     align-items: center;
     width: 80%;
     height: 30px;
-    font-family:'GangwonEdu_OTFBoldA';
+    font-family: 'GangwonEdu_OTFBoldA';
     border-radius: 10px;
     background-color: #dbdbdb85;
     color: #535353;
@@ -89,7 +89,7 @@
     align-items: center;
     width: 80%;
     height: 30px;
-    font-family:'GangwonEdu_OTFBoldA';
+    font-family: 'GangwonEdu_OTFBoldA';
     border-radius: 10px;
     background-color: #dbdbdb85;
     color: #535353;
@@ -139,7 +139,8 @@
     background-color: rgba(186, 186, 186, 0.14);
     border: none;
     border-radius: 10px;
-    box-shadow: rgba(0, 0, 0, .2) 0 1px 1px -1px, rgba(0, 0, 0, .14) 0 1px 5px 0, rgba(0, 0, 0, .12) 0 1px 5px 0;
+    box-shadow: rgba(0, 0, 0, 0.2) 0 1px 1px -1px,
+        rgba(0, 0, 0, 0.14) 0 1px 5px 0, rgba(0, 0, 0, 0.12) 0 1px 5px 0;
     cursor: pointer;
 }
 
@@ -163,7 +164,8 @@
     background-color: #fff;
     border-radius: 30px;
     border-style: none;
-    box-shadow: rgba(0, 0, 0, .2) 0 3px 5px -1px, rgba(0, 0, 0, .14) 0 6px 10px 0, rgba(0, 0, 0, .12) 0 1px 18px 0;
+    box-shadow: rgba(0, 0, 0, 0.2) 0 3px 5px -1px,
+        rgba(0, 0, 0, 0.14) 0 6px 10px 0, rgba(0, 0, 0, 0.12) 0 1px 18px 0;
     box-sizing: border-box;
     color: #3c4043;
     cursor: pointer;
@@ -173,12 +175,14 @@
     height: 48px;
     line-height: normal;
     text-align: center;
-    transition: box-shadow 280ms cubic-bezier(.4, 0, .2, 1), opacity 15ms linear 30ms, transform 270ms cubic-bezier(0, 0, .2, 1) 0ms;
+    transition: box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1),
+        opacity 15ms linear 30ms, transform 270ms cubic-bezier(0, 0, 0.2, 1) 0ms;
 }
 
 .shareButton:active {
     background-color: #efefef;
-    box-shadow: 0 4px 4px 3px rgb(60 64 67 / 30%), 0 8px 12px 6px rgb(60 64 67 / 15%);
+    box-shadow: 0 4px 4px 3px rgb(60 64 67 / 30%),
+        0 8px 12px 6px rgb(60 64 67 / 15%);
     outline: none;
 }
 
@@ -194,17 +198,15 @@
     background-color: #dfe8ff;
     border: none;
     border-radius: 30px;
-    box-shadow: rgba(0, 0, 0, .2) 0 3px 5px -1px, rgba(0, 0, 0, .14) 0 6px 10px 0, rgba(0, 0, 0, .12) 0 1px 18px 0;
-    
+    box-shadow: rgba(0, 0, 0, 0.2) 0 3px 5px -1px,
+        rgba(0, 0, 0, 0.14) 0 6px 10px 0, rgba(0, 0, 0, 0.12) 0 1px 18px 0;
 }
 
-.feedback:hover{
+.feedback:hover {
     background-color: #c0d1ff;
 }
 
-
-
-@media (max-width:740px) {
+@media (max-width: 740px) {
     .guestbook {
         width: 100vw;
     }
@@ -243,7 +245,7 @@
         text-align: center;
         width: 80%;
         height: 30px;
-        font-family:'GangwonEdu_OTFBoldA';
+        font-family: 'GangwonEdu_OTFBoldA';
         padding: 5px 10px;
         border-radius: 10px;
         background-color: #dbdbdb85;
@@ -252,37 +254,36 @@
         font-size: 13px;
     }
 
-    .alertMaximum{
+    .alertMaximum {
         display: none;
     }
-    
 }
 
 /* 모바일에서 input 클릭 시 크기 변화 */
-@media (max-height:640px) {
+@media (max-height: 640px) {
     .container {
         width: 90vw;
         height: 60vh;
     }
-    .contents{
+    .contents {
         height: 50%;
         padding: 20px;
     }
-    .buttonPart{
+    .buttonPart {
         display: none;
     }
 }
 
-@media (max-height:500px) {
+@media (max-height: 500px) {
     .container {
         width: 90vw;
         height: 60vh;
     }
-    .contents{
+    .contents {
         height: 40%;
         padding: 20px;
     }
-    .buttonPart{
+    .buttonPart {
         display: none;
     }
 }

@@ -4,10 +4,11 @@ import axios from 'axios';
 import { token } from '../../hooks/token';
 import Loading from './Loading';
 import { useState } from 'react';
+import { useSelector } from "react-redux";
 
-function Comments({ comment, page, id }) {
+function Comments({ comment, page, id, themeData }) {
     const date = comment.iso_time;
-    const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(false);  
     
     // 댓글 삭제 함수
     const deleteComment = async(user, id) => {
@@ -37,8 +38,11 @@ function Comments({ comment, page, id }) {
 
     return (
         <div className={styles.container}>
-            
-            <div className={styles.comment}>
+            <div className={styles.comment}
+                style={{
+                    background: `linear-gradient(${themeData.commentColor.start} 0%, ${themeData.commentColor.end} 100%)`
+                }}   
+            >
                 <span>
                     {comment.comment}
                 </span>
