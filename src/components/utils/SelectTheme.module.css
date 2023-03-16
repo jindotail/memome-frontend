@@ -6,7 +6,9 @@
 .content {
   width: 40%;
   height: 100%;
-  margin: 10px 0;
+  margin: 10px 10px;
+  max-width: 200px;
+  max-width: 200px;
 }
 
 .select {
