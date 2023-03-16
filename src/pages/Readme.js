@@ -16,7 +16,6 @@ function Readme () {
 
     // 회원가입 직후 아이디 가져오기
     const signup_id = getCookie("user_id");
-
     const onSubmit = () => {
       setId(idRef.current.value);
     }

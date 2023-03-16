@@ -18,7 +18,7 @@ import { useSelector } from "react-redux";
 function Guestbook() {
   const navigate = useNavigate();
   const { userId } = useParams();
-
+  
   const user_Id = getCookie("user_id");
 
   const commentsInit = useAxios(
@@ -68,7 +68,7 @@ function Guestbook() {
   // 전송 버튼 함수
   const onSubmit = async (e) => {
     e.preventDefault();
-
+    
     // form input 값 없이 submit 금지
     if (commentRef.current.value.length === 0) {
       alert("인사말을 입력해주세요!");
