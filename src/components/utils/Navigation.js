@@ -93,7 +93,7 @@ export function DropdownMenuLogin() {
             <div>
                 <div className={styles.menu}>
                     <DropdownItem leftIcon={<RiLoginCircleLine size="24" />}>
-                        <Link to="/" onClick={Main}>
+                        <Link to="/">
                             로그인
                         </Link>
                     </DropdownItem>
