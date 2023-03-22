@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
-import Header from "../components/utils/Header";
-import { getCookie } from "../hooks/cookie";
+import Header from "../../components/utils/Header";
+import { getCookie } from "../../hooks/cookie";
 import styles from "./Version.module.css";
 
 function Version () {

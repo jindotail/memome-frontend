@@ -1,13 +1,12 @@
 import styles from './Profile.module.css';
-import Main from "../components/utils/Main";
 import { Link } from 'react-router-dom';
 import { useRef } from 'react';
-import { getCookie } from '../hooks/cookie';
-import userAxios from '../hooks/getUserInfo';
+import { getCookie } from '../../hooks/cookie';
+import userAxios from '../../hooks/getUserInfo';
 import axios from 'axios';
-import { token } from '../hooks/token';
-import SelectTheme from '../components/utils/SelectTheme';
-import Header from '../components/utils/Header';
+import { token } from '../../hooks/token';
+import SelectTheme from '../../components/utils/SelectTheme';
+import Header from '../../components/utils/Header';
 import { AiOutlineHome } from "react-icons/ai";
 import { useSelector } from 'react-redux';
 

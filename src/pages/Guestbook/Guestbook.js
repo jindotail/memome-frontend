@@ -1,18 +1,18 @@
 import { useEffect, useRef, useState } from "react";
 import axios from "axios";
-import Comments from "../components/utils/Comments";
+import Comments from "../../components/utils/Comments";
 import styles from "./Guestbook.module.css";
 import { BsGithub } from 'react-icons/bs';
 import { FaTwitter } from "react-icons/fa";
 import { RiKakaoTalkFill } from "react-icons/ri";
 import { ImBubble } from "react-icons/im";
-import useAxios from "../hooks/getComments";
-import userAxios from "../hooks/getNickname";
+import useAxios from "../../hooks/getComments";
+import userAxios from "../../hooks/getNickname";
 import { useParams, useNavigate, Link } from "react-router-dom";
-import NotFound from "./NotFound";
-import Loading from "../components/utils/Loading";
-import { getCookie } from "../hooks/cookie";
-import Header from "../components/utils/Header";
+import NotFound from '../NotFound/NotFound';
+import Loading from "../../components/utils/Loading";
+import { getCookie } from "../../hooks/cookie";
+import Header from "../../components/utils/Header";
 import { useSelector } from "react-redux";
 
 function Guestbook() {

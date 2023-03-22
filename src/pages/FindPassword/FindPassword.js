@@ -1,9 +1,9 @@
 import styles from './FindPassword.module.css';
-import Main from "../components/utils/Main";
+import Main from "../../components/utils/Main";
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { useRef } from 'react';
-import pwdQuestionAxios from '../hooks/getPwdQuestion';
+import pwdQuestionAxios from '../../hooks/getPwdQuestion';
 
 function FindPassword() {
 

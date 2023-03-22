@@ -1,10 +1,8 @@
 import styles from './ResetPassword.module.css';
-import Main from "../components/utils/Main";
+import Main from "../../components/utils/Main";
 import { Link, useNavigate } from 'react-router-dom';
 import { useRef, useState } from 'react';
 import axios from 'axios';
-import { getCookie, removeCookie } from '../hooks/cookie';
-import pwdToken from '../hooks/pwdToken';
 
 function ResetPassword() {
     

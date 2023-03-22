@@ -1,15 +1,15 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
-import EnterId from './pages/EnterId';
-import FindPassword from './pages/FindPassword';
-import Guestbook from './pages/Guestbook';
-import Login from './pages/Login';
-import NotFound from './pages/NotFound';
-import Profile from './pages/Profile';
-import Readme from './pages/Readme';
-import ResetPassword from './pages/ResetPassword';
-import Signup from './pages/Signup';
-import Version from './pages/Version';
+import EnterId from './pages/EnterId/EnterId';
+import FindPassword from './pages/FindPassword/FindPassword';
+import Guestbook from './pages/Guestbook/Guestbook';
+import Login from './pages/Login/Login';
+import NotFound from './pages/NotFound/NotFound';
+import Profile from './pages/Profile/Profile';
+import Readme from './pages/Readme/Readme';
+import ResetPassword from './pages/ResetPassword/ResetPassword';
+import Signup from './pages/Signup/Signup';
+import Version from './pages/Version/Version';
 
 
 function App() {

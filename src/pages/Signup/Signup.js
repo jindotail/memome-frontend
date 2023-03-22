@@ -1,9 +1,9 @@
 import { useRef, useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import Main from '../components/utils/Main';
+import Main from '../../components/utils/Main';
 import styles from "./Signup.module.css";
-import { setCookie } from '../hooks/cookie';
+import { setCookie } from '../../hooks/cookie';
 
 function Signup() {
     const idRef = useRef(null);

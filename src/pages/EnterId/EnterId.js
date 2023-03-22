@@ -1,9 +1,8 @@
 import styles from './EnterId.module.css';
-import Main from "../components/utils/Main";
+import Main from "../../components/utils/Main";
 import { Link } from 'react-router-dom';
 import { useRef } from 'react';
 import axios from 'axios';
-import { setCookie } from '../hooks/cookie';
 
 function EnterId() {
 
