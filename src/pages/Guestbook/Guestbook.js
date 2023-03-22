@@ -13,7 +13,6 @@ import NotFound from '../NotFound/NotFound';
 import Loading from "../../components/utils/Loading";
 import { getCookie } from "../../hooks/cookie";
 import Header from "../../components/utils/Header";
-import { useSelector } from "react-redux";
 
 function Guestbook() {
   const navigate = useNavigate();
@@ -21,13 +20,8 @@ function Guestbook() {
 
   const user_Id = getCookie("user_id");
 
-  const commentsInit = useAxios(
-    `${process.env.REACT_APP_API_URL}/api/comment/${userId}`
-  );
-  
-  const nickname = userAxios(
-    `${process.env.REACT_APP_API_URL}/api/user/${userId}`
-  );
+  const commentsInit = useAxios(`${process.env.REACT_APP_API_URL}/api/comment/${userId}`);
+  const nickname = userAxios(`${process.env.REACT_APP_API_URL}/api/user/${userId}`);
 
   // 테마 데이터 가져오기
   const [theme, setTheme] = useState();
@@ -62,7 +56,6 @@ function Guestbook() {
   },[]);
 
   const [comments, setComments] = useState(commentsInit);
-
   const [loading, setLoading] = useState(false);
 
   // 전송 버튼 함수
@@ -151,22 +144,6 @@ function Guestbook() {
       ],
     });
   };
-
-  // 테마색상 가져오기
-  const themeColor = useSelector((state) => state.theme.themeColor);
-
-  // custom modal창 함수
-  const [modalOpen, setModalOpen] = useState(false);
-
-  const openModal = () => {
-    setModalOpen(true);
-  };
-  const closeModal = () => {
-    setModalOpen(false);
-  };
-
-  // 방명록 배경 색상 custom
-  const [color, setColor] = useState("");
 
   // 처음 방명록 방문 시, 이미 저장된 댓글 보여주는 기능
   useEffect(() => {
@@ -259,9 +236,6 @@ function Guestbook() {
           </button>
         </div>
       )}
-
-      {/* 커스텀 기능 해제  */}
-      {/* <Custom open={modalOpen} close={closeModal} setColor={setColor} /> */}
 
       {/* 로딩중일 때 화면 */}
       {loading ? <Loading /> : null}
