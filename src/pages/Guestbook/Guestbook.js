@@ -15,11 +15,11 @@ import Header from "../../components/utils/Header";
 
 function Guestbook() {
   const navigate = useNavigate();
-  const { userId } = useParams();
 
-  const user_Id = getCookie("user_id");
+  const { userId } = useParams(); // 현재 방문한 방명록 유저 id 가져오기
+  const login = getCookie("user_id"); // 로그인 여부 파악 변수
 
-  const commentsInit = useAxios(`${process.env.REACT_APP_API_URL}/api/comment/${userId}`);
+  const commentsInit = useAxios(`${process.env.REACT_APP_API_URL}/api/comment/${userId}`); // 기존 댓글 데이터 가져오기
   
   const [comments, setComments] = useState(commentsInit);
   const [loading, setLoading] = useState(false);
@@ -54,11 +54,6 @@ function Guestbook() {
     }
   }
 
-  useEffect(() => {
-    getUserInfo();
-  },[]);
-
-  
   // 전송 버튼 함수
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -111,7 +106,7 @@ function Guestbook() {
     );
   };
 
-  // SNS 공유 기능 (카카오)
+  /* SNS 공유 기능 (카카오) */ 
   if (window.Kakao) {
     const kakao = window.Kakao;
     if (!kakao.isInitialized()) {
@@ -146,24 +141,32 @@ function Guestbook() {
     });
   };
 
+
+
   // 처음 방명록 방문 시, 이미 저장된 댓글 보여주는 기능
   useEffect(() => {
     setComments(commentsInit);
   }, [commentsInit]);
 
+  // 방명록 창 스크롤을 위한 높이 계산
   useEffect(()=>{
     const scrollToTop = document.getElementById("contents");
     //scrollToTop.scrollTop -= 150000;
     scrollToTop.scrollTop = scrollToTop.scrollHeight+500;
   },[comments]);
 
-  //
+  // 카카오 공유하기 기능 설정
   useEffect(() => {
     const script = document.createElement("script");
     script.src = "https://developers.kakao.com/sdk/js/kakao.js";
     script.axync = true;
     document.body.appendChild(script);
     return () => document.body.removeChild(script);
+  }, []);
+
+  // 유저 정보 가져오기
+  useEffect(() => {
+      getUserInfo();
   }, []);
 
   return commentsInit !== "notFound" ? (
@@ -212,7 +215,7 @@ function Guestbook() {
         <ImBubble size="24" />
       </Link>
 
-      {user_Id ? (
+      {login ? (
         <div className={styles.buttonPart}>
           <Link to="/readme" className={styles.shareButton}>
             <BsGithub size="24" />
