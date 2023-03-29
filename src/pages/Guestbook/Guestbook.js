@@ -7,7 +7,6 @@ import { FaTwitter } from "react-icons/fa";
 import { RiKakaoTalkFill } from "react-icons/ri";
 import { ImBubble } from "react-icons/im";
 import useAxios from "../../hooks/getComments";
-import userAxios from "../../hooks/getNickname";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import NotFound from '../NotFound/NotFound';
 import Loading from "../../components/utils/Loading";
@@ -21,15 +20,19 @@ function Guestbook() {
   const user_Id = getCookie("user_id");
 
   const commentsInit = useAxios(`${process.env.REACT_APP_API_URL}/api/comment/${userId}`);
-  const nickname = userAxios(`${process.env.REACT_APP_API_URL}/api/user/${userId}`);
+  
+  const [comments, setComments] = useState(commentsInit);
+  const [loading, setLoading] = useState(false);
+  const [nickname, setNickname] = useState(""); // 닉네임 데이터 가져오기
+  const [theme, setTheme] = useState(); // 테마 데이터 가져오기
+  
 
-  // 테마 데이터 가져오기
-  const [theme, setTheme] = useState();
-
-  const getTheme = async() => {
+  // user 정보 가져오기 (닉네임, 테마 데이터)
+  const getUserInfo = async() => {
     await axios.get(`${process.env.REACT_APP_API_URL}/api/user/${userId}`)
       .then((res) => {
-        setTheme(res.data.theme)
+        setTheme(res.data.theme);
+        setNickname(res.data.nickname);
       })
   }
 
@@ -52,12 +55,10 @@ function Guestbook() {
   }
 
   useEffect(() => {
-    getTheme();
+    getUserInfo();
   },[]);
 
-  const [comments, setComments] = useState(commentsInit);
-  const [loading, setLoading] = useState(false);
-
+  
   // 전송 버튼 함수
   const onSubmit = async (e) => {
     e.preventDefault();
