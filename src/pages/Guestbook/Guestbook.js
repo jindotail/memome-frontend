@@ -1,41 +1,38 @@
 import { useEffect, useRef, useState } from "react";
 import axios from "axios";
-import Comments from "../components/utils/Comments";
+import Comments from "../../components/utils/Comments";
 import styles from "./Guestbook.module.css";
 import { BsGithub } from 'react-icons/bs';
 import { FaTwitter } from "react-icons/fa";
 import { RiKakaoTalkFill } from "react-icons/ri";
 import { ImBubble } from "react-icons/im";
-import useAxios from "../hooks/getComments";
-import userAxios from "../hooks/getNickname";
+import useAxios from "../../hooks/getComments";
 import { useParams, useNavigate, Link } from "react-router-dom";
-import NotFound from "./NotFound";
-import Loading from "../components/utils/Loading";
-import { getCookie } from "../hooks/cookie";
-import Header from "../components/utils/Header";
-import { useSelector } from "react-redux";
+import NotFound from '../NotFound/NotFound';
+import Loading from "../../components/utils/Loading";
+import { getCookie } from "../../hooks/cookie";
+import Header from "../../components/utils/Header";
 
 function Guestbook() {
   const navigate = useNavigate();
-  const { userId } = useParams();
+
+  const { userId } = useParams(); // 현재 방문한 방명록 유저 id 가져오기
+  const login = getCookie("user_id"); // 로그인 여부 파악 변수
+
+  const commentsInit = useAxios(`${process.env.REACT_APP_API_URL}/api/comment/${userId}`); // 기존 댓글 데이터 가져오기
   
-  const user_Id = getCookie("user_id");
-
-  const commentsInit = useAxios(
-    `${process.env.REACT_APP_API_URL}/api/comment/${userId}`
-  );
+  const [comments, setComments] = useState(commentsInit);
+  const [loading, setLoading] = useState(false);
+  const [nickname, setNickname] = useState(""); // 닉네임 데이터 가져오기
+  const [theme, setTheme] = useState(); // 테마 데이터 가져오기
   
-  const nickname = userAxios(
-    `${process.env.REACT_APP_API_URL}/api/user/${userId}`
-  );
 
-  // 테마 데이터 가져오기
-  const [theme, setTheme] = useState();
-
-  const getTheme = async() => {
+  // user 정보 가져오기 (닉네임, 테마 데이터)
+  const getUserInfo = async() => {
     await axios.get(`${process.env.REACT_APP_API_URL}/api/user/${userId}`)
       .then((res) => {
-        setTheme(res.data.theme)
+        setTheme(res.data.theme);
+        setNickname(res.data.nickname);
       })
   }
 
@@ -57,18 +54,10 @@ function Guestbook() {
     }
   }
 
-  useEffect(() => {
-    getTheme();
-  },[]);
-
-  const [comments, setComments] = useState(commentsInit);
-
-  const [loading, setLoading] = useState(false);
-
   // 전송 버튼 함수
   const onSubmit = async (e) => {
     e.preventDefault();
-    
+
     // form input 값 없이 submit 금지
     if (commentRef.current.value.length === 0) {
       alert("인사말을 입력해주세요!");
@@ -117,7 +106,7 @@ function Guestbook() {
     );
   };
 
-  // SNS 공유 기능 (카카오)
+  /* SNS 공유 기능 (카카오) */ 
   if (window.Kakao) {
     const kakao = window.Kakao;
     if (!kakao.isInitialized()) {
@@ -152,40 +141,32 @@ function Guestbook() {
     });
   };
 
-  // 테마색상 가져오기
-  const themeColor = useSelector((state) => state.theme.themeColor);
 
-  // custom modal창 함수
-  const [modalOpen, setModalOpen] = useState(false);
-
-  const openModal = () => {
-    setModalOpen(true);
-  };
-  const closeModal = () => {
-    setModalOpen(false);
-  };
-
-  // 방명록 배경 색상 custom
-  const [color, setColor] = useState("");
 
   // 처음 방명록 방문 시, 이미 저장된 댓글 보여주는 기능
   useEffect(() => {
     setComments(commentsInit);
   }, [commentsInit]);
 
+  // 방명록 창 스크롤을 위한 높이 계산
   useEffect(()=>{
     const scrollToTop = document.getElementById("contents");
     //scrollToTop.scrollTop -= 150000;
     scrollToTop.scrollTop = scrollToTop.scrollHeight+500;
   },[comments]);
 
-  //
+  // 카카오 공유하기 기능 설정
   useEffect(() => {
     const script = document.createElement("script");
     script.src = "https://developers.kakao.com/sdk/js/kakao.js";
     script.axync = true;
     document.body.appendChild(script);
     return () => document.body.removeChild(script);
+  }, []);
+
+  // 유저 정보 가져오기
+  useEffect(() => {
+      getUserInfo();
   }, []);
 
   return commentsInit !== "notFound" ? (
@@ -234,7 +215,7 @@ function Guestbook() {
         <ImBubble size="24" />
       </Link>
 
-      {user_Id ? (
+      {login ? (
         <div className={styles.buttonPart}>
           <Link to="/readme" className={styles.shareButton}>
             <BsGithub size="24" />
@@ -259,9 +240,6 @@ function Guestbook() {
           </button>
         </div>
       )}
-
-      {/* 커스텀 기능 해제  */}
-      {/* <Custom open={modalOpen} close={closeModal} setColor={setColor} /> */}
 
       {/* 로딩중일 때 화면 */}
       {loading ? <Loading /> : null}

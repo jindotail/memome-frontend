@@ -1,11 +1,10 @@
 import { useRef } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import Main from '../components/utils/Main';
+import Main from '../../components/utils/Main';
 import styles from "./Login.module.css";
-import { getCookie, setCookie } from '../hooks/cookie';
-import Menu from '../components/utils/Menu';
-import userAxios from '../hooks/getNickname';
+import { getCookie, setCookie } from '../../hooks/cookie';
+import userAxios from '../../hooks/getNickname';
 
 function Login() {
     

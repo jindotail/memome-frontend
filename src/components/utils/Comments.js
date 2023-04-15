@@ -38,6 +38,7 @@ function Comments({ comment, page, id, themeData }) {
 
     return (
         <div className={styles.container}>
+            
             <div className={styles.comment}
                 style={{
                     background: `linear-gradient(${themeData.commentColor.start} 0%, ${themeData.commentColor.end} 100%)`
