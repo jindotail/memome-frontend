@@ -6,7 +6,7 @@ import Loading from './Loading';
 import { useState } from 'react';
 import { useSelector } from "react-redux";
 
-function Comments({ comment, page, id, themeData }) {
+function Comments({ comment, page, id, themeData, owner }) {
     const date = comment.iso_time;
     const [loading, setLoading] = useState(false);  
 
@@ -36,9 +36,22 @@ function Comments({ comment, page, id, themeData }) {
         
     };
 
+    // 임시 owner 뱐수 설정
+    // const owner = false;
+
     return (
-        <div className={styles.container}>
-            
+        <div className={owner ? styles.ownerContainer: styles.container}>
+            { owner ? (
+                <span className={styles.ownerDate}>
+                    {
+                        (getCookie("user_id") === page) ? (
+                            <span className={styles.deleteButton} onClick={e => deleteComment(page, id)}>&nbsp; x</span>
+                        ) : null
+                    }
+                    {date.substr(0, 10)}
+                </span>): null
+            }
+
             <div className={styles.comment}
                 style={{
                     background: `linear-gradient(${themeData.commentColor.start} 0%, ${themeData.commentColor.end} 100%)`
@@ -49,14 +62,17 @@ function Comments({ comment, page, id, themeData }) {
                 </span>
                 <span></span>
             </div>
-            <div className={styles.date}>
-                {date.substr(0, 10)}
-                {
-                    (getCookie("user_id") === page) ? (
-                        <span className={styles.deleteButton} onClick={e => deleteComment(page, id)}>&nbsp; x</span>
-                    ) : null
-                }
-            </div>
+
+            { !owner ? (
+                <div className={styles.date}>
+                    {date.substr(0, 10)}
+                    {
+                        (getCookie("user_id") === page) ? (
+                            <span className={styles.deleteButton} onClick={e => deleteComment(page, id)}>&nbsp; x</span>
+                        ) : null
+                    }
+                </div>): null
+            }
             
             {/* 로딩중일 때 화면 */}
             {loading ? <Loading /> : null} 

@@ -197,6 +197,7 @@ function Guestbook() {
               page={userId}
               id={comment.idx}
               themeData={themeData}
+              owner={comment.owner}
             />
           ))}
         </div>

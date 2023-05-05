@@ -5,6 +5,13 @@
     margin: 10px auto 20px 0;
 }
 
+.ownerContainer {
+    display: flex;
+    position: relative;
+    text-align: right; 
+    margin: 10px auto 20px 0;
+}
+
 .comment {
     display: inline-block;
     max-width: 80%;
@@ -21,6 +28,15 @@
     display: flex;
     align-items: flex-end;
     margin-left: 10px;
+    color: #5d5d5d;
+    font-size: 11px;
+}
+
+.ownerDate {
+    display: flex;
+    align-items: flex-end;
+    margin-left: auto;
+    margin-right : 10px;
     color: #5d5d5d;
     font-size: 11px;
 }
