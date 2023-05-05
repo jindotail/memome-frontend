@@ -9,6 +9,7 @@ import SelectTheme from '../../components/utils/SelectTheme';
 import Header from '../../components/utils/Header';
 import { AiOutlineHome } from "react-icons/ai";
 import { useSelector } from 'react-redux';
+import ChangePwdQnA from '../../components/utils/ChangePwdQnA';
 
 function Profile() {
 
@@ -74,6 +75,9 @@ function Profile() {
                     </button>
                 </div>
             </div>
+            
+            <ChangePwdQnA />
+
             <SelectTheme />
         </section>
 
