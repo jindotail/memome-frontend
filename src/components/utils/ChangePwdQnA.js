@@ -51,24 +51,24 @@ const ChangePwdQnA = () => {
                 <div className={styles.inputContainer}>
                     <input
                         className={styles.input}
-                        placeholder={passwordQuestion}
+                        placeholder={passwordQuestion ? passwordQuestion : "질문"}
                         ref={pwdQuestionRef}
                         maxLength="10"
                     />
-                    
+            
                     <input
                         className={styles.input}
-                        placeholder={passwordAnswer}
+                        placeholder={passwordAnswer ? passwordAnswer : "답변"}
                         ref={pwdAnswerRef}
                         maxLength="10"
                     />
                 </div>
                 <button className={styles.idButton} onClick={onSubmit}>
-                변경
+                  변경
                 </button>
             </div>
         </div>
-    )
-}
+    );
+};
 
 export default ChangePwdQnA;
