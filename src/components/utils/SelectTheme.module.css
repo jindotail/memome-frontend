@@ -3,7 +3,7 @@
 .title {
   font-size: 20px;
   font-weight: 600;
-  font-family: "Noto Sans KR, sans-serif";
+  /* font-family: "Noto Sans KR, sans-serif"; */
 }
 
 .content {
@@ -115,7 +115,8 @@
 }
 
 .idButton:active {
-    background-color: #efefef;
-    box-shadow: 0 4px 4px 3px rgb(60 64 67 / 30%), 0 8px 12px 6px rgb(60 64 67 / 15%);
-    outline: none;
+  background-color: #efefef;
+  box-shadow: 0 4px 4px 3px rgb(60 64 67 / 30%),
+    0 8px 12px 6px rgb(60 64 67 / 15%);
+  outline: none;
 }
