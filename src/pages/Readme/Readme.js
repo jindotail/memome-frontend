@@ -92,7 +92,7 @@ function Readme () {
                   <p id="readme">
                     {/* 마크다운 코드 보여줌 */}
                     [![Memome Profile](https://readme.memome.be/v1/{id}
-                    )](https://memome.bse/{id})
+                    )](https://memome.be/{id})
                   </p>
                 ) : (
                   <p id="readme">
