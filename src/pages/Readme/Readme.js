@@ -62,7 +62,12 @@ function Readme () {
                 </p>
                 <br />
               </>
-            ) : (
+            ) : null}
+
+            {/* 테마 적용 파트 */}
+            <SelectTheme />
+
+            {!signup ? (
               <>
                 <div>
                   <p className={styles.title}>ID 입력</p>
@@ -79,10 +84,7 @@ function Readme () {
                 </div>
                 <br />
               </>
-            )}
-
-            {/* 테마 적용 파트 */}
-            <SelectTheme />
+            ):null}
 
             <div>
               <p className={styles.title}>Markdown</p>
@@ -92,7 +94,7 @@ function Readme () {
                   <p id="readme">
                     {/* 마크다운 코드 보여줌 */}
                     [![Memome Profile](https://readme.memome.be/v1/{id}
-                    )](https://memome.bse/{id})
+                    )](https://memome.be/{id})
                   </p>
                 ) : (
                   <p id="readme">

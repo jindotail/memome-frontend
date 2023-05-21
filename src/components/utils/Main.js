@@ -1,6 +1,6 @@
 import styles from "./Main.module.css";
 import useAxios from '../../hooks/getRandomUser';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { AiOutlineHome } from 'react-icons/ai';
 import { getCookie } from "../../hooks/cookie";
 import Header from "./Header";
@@ -9,10 +9,17 @@ import { currentTime } from "../common/common";
 function Main({ children }) {
     const users = useAxios(`${process.env.REACT_APP_API_URL}/api/user/random?count=3`);
     const userId = getCookie("user_id");
+    const url = window.location.href.split("3000/")[1];
 
+
+    console.log(url)
     return (
         <div className={styles.main}>
-            <Header userId={userId}/>
+            {
+                (url || userId)? (
+                    <Header userId={userId}/>
+                ) : null
+            }
             <section className={styles.imagePart}>
                 <div className={styles.container}>
                     {
