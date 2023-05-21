@@ -62,7 +62,12 @@ function Readme () {
                 </p>
                 <br />
               </>
-            ) : (
+            ) : null}
+
+            {/* 테마 적용 파트 */}
+            <SelectTheme />
+
+            {!signup ? (
               <>
                 <div>
                   <p className={styles.title}>ID 입력</p>
@@ -79,10 +84,7 @@ function Readme () {
                 </div>
                 <br />
               </>
-            )}
-
-            {/* 테마 적용 파트 */}
-            <SelectTheme />
+            ):null}
 
             <div>
               <p className={styles.title}>Markdown</p>
