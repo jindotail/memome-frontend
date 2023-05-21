@@ -36,9 +36,6 @@ function Comments({ comment, page, id, themeData, owner }) {
         
     };
 
-    // 임시 owner 뱐수 설정
-    // const owner = false;
-
     return (
         <div className={owner ? styles.ownerContainer: styles.container}>
             { owner ? (
