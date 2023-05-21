@@ -9,7 +9,7 @@ import { useSelector } from "react-redux";
 function Comments({ comment, page, id, themeData, owner }) {
     const date = comment.iso_time;
     const [loading, setLoading] = useState(false);  
-
+    
     // 댓글 삭제 함수
     const deleteComment = async(user, id) => {
         setLoading(true); 

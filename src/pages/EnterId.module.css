@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Galada&family=Gowun+Batang&family=Poor+Story&family=Yeon+Sung&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Galada&family=Gowun+Batang&family=Poor+Story&family=Yeon+Sung&display=swap');
 
 .enterPart {
     display: flex;
@@ -9,52 +9,52 @@
 }
 
 .title {
-  color: #453a3a;
-  font-size: 50px;
-  font-family: "Galada", cursive;
+    color: #453a3a;
+    font-size: 50px;
+    font-family: 'Galada', cursive;
 }
 
 .fromStyle {
-  width: 30vw;
+    width: 30vw;
 }
 
 .header {
-  position: absolute;
-  top: 0;
-  right: 0;
-  margin: 15px 18px 0 0;
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 15px 18px 0 0;
 }
 
 .inputBox {
-  margin-top: 30px;
-  text-align: center;
+    margin-top: 30px;
+    text-align: center;
 }
 
 .login {
-  height: 50px;
-  width: 90%;
-  padding-left: 20px;
-  border-radius: 30px;
-  border: 0px solid;
-  box-shadow: 1px 1px 8px 1px #dadce0 inset;
+    height: 50px;
+    width: 90%;
+    padding-left: 20px;
+    border-radius: 30px;
+    border: 0px solid;
+    box-shadow: 1px 1px 8px 1px #dadce0 inset;
 }
 
 .signIn {
-  font-size: 15px;
-  margin-top: 5px;
-  margin-right: 10px;
-  float: right;
-  text-decoration: none !important;
-  color: #191919;
+    font-size: 15px;
+    margin-top: 5px;
+    margin-right: 10px;
+    float: right;
+    text-decoration: none !important;
+    color: #191919;
 }
 
 /*로그인 했을 시 main 페이지*/
 .enterPart {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 40vw;
-  margin-top: 30vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 40vw;
+    margin-top: 30vh;
 }
 
 .submitButton {
@@ -72,9 +72,9 @@
 }
 
 .greeting {
-  margin-top: 20px;
-  font-size: 25px;
-  font-family: "GangwonEdu_OTFBoldA";
+    margin-top: 20px;
+    font-size: 25px;
+    font-family: 'GangwonEdu_OTFBoldA';
 }
 
 .enterButton {
@@ -96,15 +96,6 @@
     cursor: pointer;
 }
 
-@media (max-width: 740px) {
-  .loginPart {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100vw;
-    margin-top: 20vh;
-  }
-}
 
 @media (max-width:740px) {
     .enterPart {
@@ -115,43 +106,43 @@
         margin-top: 20vh;
     }
 
-  .inputBox:nth-child(1) {
-    margin-top: 10px;
-  }
+    .title {
+        text-align: center;
+    }
 
-  .fromStyle {
-    background-color: #ffffff;
-    width: 80vw;
-    padding: 20px;
-    border-radius: 30px;
-  }
+    .inputBox:nth-child(1) {
+        margin-top: 10px;
+    }
 
-  .submitButton {
-    background: linear-gradient(
-      106.37deg,
-      #dfe8ff 29.63%,
-      #f3c6f1 51.55%,
-      #ffcfd1 90.85%
-    );
-    cursor: pointer;
-  }
+    .fromStyle {
+        background-color: #ffffff;
+        width: 80vw;
+        padding: 20px;
+        border-radius: 30px;
 
-  /*로그인 했을 시 main 페이지*/
-  .enterPart {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100vw;
-    margin-top: 30vh;
-  }
+    }
 
     .submitButton {
         background: linear-gradient(106.37deg, #dfe8ff 29.63%, #f3c6f1 51.55%, #ffcfd1 90.85%);
         cursor: pointer;
     }
 
-  .enterButton:hover {
-    background: rgb(255, 251, 251);
-    color: #453a3a;
-  }
+    /*로그인 했을 시 main 페이지*/
+    .enterPart {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100vw;
+        margin-top: 30vh;
+    }
+
+    .enterButton {
+        background: linear-gradient(106.37deg, #fed6d8 29.63%, #fccbf9 51.55%, #d1deff 90.85%);
+    }
+
+    .enterButton:hover {
+        background: rgb(255, 251, 251);
+        color: #453a3a;
+    }
+
 }
