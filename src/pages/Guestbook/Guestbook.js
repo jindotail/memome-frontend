@@ -25,16 +25,7 @@ function Guestbook() {
   const [loading, setLoading] = useState(false);
   const [nickname, setNickname] = useState(""); // 닉네임 데이터 가져오기
   const [theme, setTheme] = useState(); // 테마 데이터 가져오기
-  
 
-  // user 정보 가져오기 (닉네임, 테마 데이터)
-  const getUserInfo = async() => {
-    await axios.get(`${process.env.REACT_APP_API_URL}/api/user/${userId}`)
-      .then((res) => {
-        setTheme(res.data.theme);
-        setNickname(res.data.nickname);
-      })
-  }
 
   let themeData; //실제로 사용할 테마 데이터 담아두는 변수
 
@@ -164,10 +155,14 @@ function Guestbook() {
     return () => document.body.removeChild(script);
   }, []);
 
-  // 유저 정보 가져오기
+  // 유저 정보 가져오기 (닉네임, 테마 데이터)
   useEffect(() => {
-      getUserInfo();
-  }, []);
+      axios.get(`${process.env.REACT_APP_API_URL}/api/user/${userId}`)
+      .then((res) => {
+        setTheme(res.data.theme);
+        setNickname(res.data.nickname);
+      })
+  }, [userId]);
 
   return commentsInit !== "notFound" ? (
     <div
