@@ -82,7 +82,10 @@ function Login() {
                         </div>
                         <Link to="/enterId" className={styles.signIn}>비밀번호 찾기</Link>
                         <Link to="/signup" className={styles.signIn}>회원가입 &nbsp; </Link>
-                        <button type="submit" className={styles.submitButton}>Log In</button>
+                        
+                        <div className={styles.inputBox}>
+                            <button type="submit" className={styles.submitButton}>Log In</button>
+                        </div>
                     </form>
                 </section>
             )}

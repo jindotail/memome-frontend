@@ -37,6 +37,7 @@
   border-radius: 30px;
   border: 0px solid;
   box-shadow: 1px 1px 8px 1px #dadce0 inset;
+  box-sizing: border-box;
 }
 
 .signIn {
@@ -59,7 +60,7 @@
 
 .submitButton {
   height: 50px;
-  width: 100%;
+  width: 90%;
   margin-top: 50px;
   border: none;
   border-radius: 30px;
