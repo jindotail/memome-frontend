@@ -48,7 +48,9 @@ function EnterId() {
                     <div className={styles.inputBox}>
                         <input id="username" type="text" name="username" placeholder="비밀번호를 찾고 싶은 아이디를 입력하세요" className={styles.login} ref={idRef} />
                     </div>
-                    <button type="submit" className={styles.submitButton}>Check</button>
+                    <div className={styles.inputBox}>
+                        <button type="submit" className={styles.submitButton}>Check</button>
+                    </div>
                 </form>
             </section>
         </Main>
