@@ -37,7 +37,8 @@ function Version () {
                 <hr />
                 <div className={styles.versionContainer}>
                     <p className={styles.title}>Version</p>
-                    <p className={styles.versionTitle}>v 1.1.0</p>
+                    <p className={styles.versionTitle}>v 1.2.0</p>
+
                     <li>오렌지 테마색상 변경</li>
                     <li>비밀번호 찾기 질문 답변 수정기능 추가</li>
                     <li>방명록 소유자 댓글 오른쪽 표시</li>
