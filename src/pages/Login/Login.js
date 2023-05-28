@@ -80,9 +80,12 @@ function Login() {
                         <div className={styles.inputBox}>
                             <input id="password" type="password" name="password" placeholder="비밀번호" className={styles.login} ref={passwordRef} />
                         </div>
-                        <Link to="/enterId" className={styles.signIn}>비밀번호 찾기</Link>
+                        <Link to="/enterId" className={styles.findPassword}>비밀번호 찾기</Link>
                         <Link to="/signup" className={styles.signIn}>회원가입 &nbsp; </Link>
-                        <button type="submit" className={styles.submitButton}>Log In</button>
+                        
+                        <div className={styles.inputBox}>
+                            <button type="submit" className={styles.submitButton}>Log In</button>
+                        </div>
                     </form>
                 </section>
             )}

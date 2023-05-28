@@ -21,6 +21,10 @@
     text-align: center;
 }
 
+.buttonBox {
+    text-align: center;
+}
+
 .singup {
     height: 50px;
     width: 90%;
@@ -28,6 +32,7 @@
     border-radius: 30px;
     border: 0px solid;
     box-shadow: 1px 1px 8px 1px #dadce0 inset;
+    box-sizing: border-box;
 }
 
 .login {
@@ -41,7 +46,7 @@
 
 .submitButton {
     height: 50px;
-    width: 100%;
+    width: 90%;
     margin-top: 50px;
     border: none;
     border-radius: 30px;
@@ -55,7 +60,7 @@
 
 .disabledButton {
     height: 50px;
-    width: 100%;
+    width: 90%;
     margin-top: 50px;
     border: none;
     border-radius: 30px;
@@ -68,7 +73,7 @@
 }
 
 .alert {
-    margin-left: 20px;
+    margin-left: 35px;
     float: left;
     font-size: 11px;
     color: #f82c2c;

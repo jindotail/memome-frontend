@@ -35,7 +35,7 @@ const ChangePwdQnA = () => {
             .catch(res => {
                 const userId = { user }
                 if (pwdQuestionRef.current.value === '' || pwdAnswerRef.current.value === '' ) {
-                    alert("변경하고 싶은 닉네임을 입력하세요");
+                    alert("변경할 질문 또는 답변 문구를 입력하세요");
                 }
                 else if (res.response.status === 401) {
                     console.log("토큰이 만료되었습니다");

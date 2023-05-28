@@ -130,31 +130,35 @@ function Signup() {
                 <form action="" method="POST" className={styles.fromStyle} onSubmit={onSubmit} disabled>
                     <div className={styles.inputBox}>
                         <input id="username" type="text" name="username" placeholder="닉네임" className={styles.singup} ref={nicknameRef} onChange={handleChangeName} maxLength='10' />
-                        <p className={styles.alert}>{nameMessage}</p>
+                        <span className={styles.alert}>{nameMessage}</span>
                     </div>
                     <div className={styles.inputBox}>
                         <input id="id" type="text" name="username" placeholder="아이디" className={styles.singup} ref={idRef} onChange={handleChangeId} maxLength='10' />
-                        <p className={styles.alert}>{idMessage}</p>
+                        <span className={styles.alert}>{idMessage}</span>
                     </div>
                     <div className={styles.inputBox}>
                         <input id="password" type="password" name="password" placeholder="비밀번호" className={styles.singup} ref={passwordRef} onChange={handleChangePwd} maxLength='20' />
-                        <p className={styles.alert}>{pwdMessage}</p>
+                        <span className={styles.alert}>{pwdMessage}</span>
                     </div>
                     <div className={styles.inputBox}>
                         <input id="password2" type="password" name="password2" placeholder="비밀번호 재확인" className={styles.singup} ref={password2Ref} onChange={handleChangePwd2} maxLength='20' />
-                        <p className={styles.alert}>{pwd2Message}</p>
+                        <span className={styles.alert}>{pwd2Message}</span>
                     </div>
                     <div className={styles.inputBox}>
                         <input id="pwdQuestion" type="text" name="pwdQuestion" placeholder="비밀번호 찾기 질문 : Ex) 내가 좋아하는 동물은?" className={styles.singup} ref={pwdQuestionRef} onChange={handleChangePwdQuestion} />
+                        <span className={styles.alert}></span>
                     </div>
                     <div className={styles.inputBox}>
                         <input id="pwdAnswer" type="text" name="pwdAnswer" placeholder="비밀번호 찾기 답변 : Ex) 코알라" className={styles.singup} ref={pwdAnswerRef} onChange={handleChangePwdAnswer} />
+                        <span className={styles.alert}></span>
                     </div>
-                    {!(isId && isName && isPwd && isPwd2 && isPwdQuestion && isPwdAnswer) ? (
-                        <button type="submit" className={styles.disabledButton} disabled >Sign Up</button>
-                    ) : (
-                        <button type="submit" className={styles.submitButton}>Sign Up</button>
-                    )}
+                    <div className={styles.buttonBox}> 
+                        {!(isId && isName && isPwd && isPwd2 && isPwdQuestion && isPwdAnswer) ? (
+                            <button type="submit" className={styles.disabledButton} disabled >Sign Up</button>
+                        ) : (
+                            <button type="submit" className={styles.submitButton}>Sign Up</button>
+                        )}
+                    </div>
                 </form>
             </section>
         </Main>
