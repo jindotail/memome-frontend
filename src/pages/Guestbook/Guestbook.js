@@ -162,6 +162,9 @@ function Guestbook() {
         setTheme(res.data.theme);
         setNickname(res.data.nickname);
       })
+      .catch((e) => {
+        navigate("/404");
+      });
   }, [userId]);
 
   return commentsInit !== "notFound" ? (
