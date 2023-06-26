@@ -2,16 +2,17 @@ import { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import Comments from "../../components/utils/Comments";
 import styles from "./Guestbook.module.css";
-import { BsGithub } from 'react-icons/bs';
+import { BsGithub } from "react-icons/bs";
 import { FaTwitter } from "react-icons/fa";
 import { RiKakaoTalkFill } from "react-icons/ri";
 import { ImBubble } from "react-icons/im";
 import useAxios from "../../hooks/getComments";
 import { useParams, useNavigate, Link } from "react-router-dom";
-import NotFound from '../NotFound/NotFound';
+import NotFound from "../NotFound/NotFound";
 import Loading from "../../components/utils/Loading";
 import { getCookie } from "../../hooks/cookie";
 import Header from "../../components/utils/Header";
+import InfiniteScroll from "react-infinite-scroll-component";
 
 function Guestbook() {
   const navigate = useNavigate();
@@ -19,30 +20,58 @@ function Guestbook() {
   const { userId } = useParams(); // 현재 방문한 방명록 유저 id 가져오기
   const login = getCookie("user_id"); // 로그인 여부 파악 변수
 
-  const commentsInit = useAxios(`${process.env.REACT_APP_API_URL}/api/comment/${userId}`); // 기존 댓글 데이터 가져오기
-  
+  const commentsInit = useAxios(
+    `${process.env.REACT_APP_API_URL}/api/comment/${userId}`
+  ); // 기존 댓글 데이터 가져오기
+
   const [comments, setComments] = useState(commentsInit);
   const [loading, setLoading] = useState(false);
   const [nickname, setNickname] = useState(""); // 닉네임 데이터 가져오기
   const [theme, setTheme] = useState(); // 테마 데이터 가져오기
+  const [hasMore, setHasMore] = useState(true);
+  const [page, setPage] = useState(1);
 
+  useEffect(() => {
+    fetchMoreData();
+  }, []);
+
+  const fetchMoreData = async () => {
+    try {
+      const newData = commentsInit;
+
+      // 가져온 데이터를 기존 아이템 배열에 추가합니다.
+      setComments((prevItems) => [...prevItems, ...newData]);
+
+      // 가져온 데이터의 길이를 확인하여 더 가져올 데이터가 있는지 판단합니다.
+      if (newData.length === 0) {
+        setHasMore(false);
+      }
+
+      // 페이지 번호를 증가시킵니다.
+      setPage((prevPage) => prevPage + 1);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
 
   let themeData; //실제로 사용할 테마 데이터 담아두는 변수
 
-  if (theme) { // theme이 undefined이지 않을 경우
-    themeData = theme
-  } else { // theme이 undefined일 않을 경우 (데이터가 아직 안불러져 왔을 때)
+  if (theme) {
+    // theme이 undefined이지 않을 경우
+    themeData = theme;
+  } else {
+    // theme이 undefined일 않을 경우 (데이터가 아직 안불러져 왔을 때)
     themeData = {
       backgroundColor: {
         start: "#FFFFF",
         middle: "#00000",
-        end: "#00000"
+        end: "#00000",
       },
       commentColor: {
         start: "#00000",
-        end: "#FFFFF"
-      }
-    }
+        end: "#FFFFF",
+      },
+    };
   }
 
   // 전송 버튼 함수
@@ -97,7 +126,7 @@ function Guestbook() {
     );
   };
 
-  /* SNS 공유 기능 (카카오) */ 
+  /* SNS 공유 기능 (카카오) */
   if (window.Kakao) {
     const kakao = window.Kakao;
     if (!kakao.isInitialized()) {
@@ -132,19 +161,17 @@ function Guestbook() {
     });
   };
 
-
-
   // 처음 방명록 방문 시, 이미 저장된 댓글 보여주는 기능
   useEffect(() => {
     setComments(commentsInit);
   }, [commentsInit]);
 
   // 방명록 창 스크롤을 위한 높이 계산
-  useEffect(()=>{
+  useEffect(() => {
     const scrollToTop = document.getElementById("contents");
     //scrollToTop.scrollTop -= 150000;
-    scrollToTop.scrollTop = scrollToTop.scrollHeight+500;
-  },[comments]);
+    scrollToTop.scrollTop = scrollToTop.scrollHeight + 500;
+  }, [comments]);
 
   // 카카오 공유하기 기능 설정
   useEffect(() => {
@@ -157,7 +184,8 @@ function Guestbook() {
 
   // 유저 정보 가져오기 (닉네임, 테마 데이터)
   useEffect(() => {
-      axios.get(`${process.env.REACT_APP_API_URL}/api/user/${userId}`)
+    axios
+      .get(`${process.env.REACT_APP_API_URL}/api/user/${userId}`)
       .then((res) => {
         setTheme(res.data.theme);
         setNickname(res.data.nickname);
@@ -174,7 +202,7 @@ function Guestbook() {
         background: `linear-gradient(106.37deg, ${themeData.backgroundColor.start} 29.63%, ${themeData.backgroundColor.middle} 51.55%, ${themeData.backgroundColor.end} 90.85%)`,
       }}
     >
-      <Header userId={userId}/>
+      <Header userId={userId} />
       <span className={styles.title}> {nickname}의 방명록</span>
       <div className={styles.container}>
         <div className={styles.alertContainer}>
@@ -188,16 +216,24 @@ function Guestbook() {
           </div>
         </div>
         <div className={styles.contents} id="contents">
-          {comments.map((comment) => (
-            <Comments
-              comment={comment}
-              key={comment.idx}
-              page={userId}
-              id={comment.idx}
-              themeData={themeData}
-              owner={comment.owner}
-            />
-          ))}
+          <InfiniteScroll
+            dataLength={comments.length}
+            next={fetchMoreData}
+            hasMore={hasMore}
+            loader={<h4>Loading...</h4>}
+            endMessage={<p>No more items to load</p>}
+          >
+            {comments.map((comment) => (
+              <Comments
+                comment={comment}
+                key={comment.idx}
+                page={userId}
+                id={comment.idx}
+                themeData={themeData}
+                owner={comment.owner}
+              />
+            ))}
+          </InfiniteScroll>
         </div>
         <form className={styles.inputBox} onSubmit={onSubmit}>
           <input
