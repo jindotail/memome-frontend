@@ -133,7 +133,6 @@ function Guestbook() {
   };
 
 
-
   // 처음 방명록 방문 시, 이미 저장된 댓글 보여주는 기능
   useEffect(() => {
     setComments(commentsInit);
@@ -166,6 +165,16 @@ function Guestbook() {
         navigate("/404");
       });
   }, [userId]);
+
+  
+  // 없는 유저인 경우 404페이지로 호출
+  useEffect(()=>{
+    axios.get(`${process.env.REACT_APP_API_URL}/api/user/${userId}`).then((res)=>{
+      console.log("성공")
+    }).catch((e)=>{
+      navigate("/404")
+    })
+  },[])
 
   return commentsInit !== "notFound" ? (
     <div
