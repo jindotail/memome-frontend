@@ -98,12 +98,12 @@ function Guestbook() {
   };
 
   /* SNS 공유 기능 (카카오) */ 
-  if (window.Kakao) {
-    const kakao = window.Kakao;
-    if (!kakao.isInitialized()) {
-      kakao.init(process.env.REACT_APP_KAKAO_API_KEY);
-    }
-  }
+  // if (window.Kakao) {
+  //   const kakao = window.Kakao;
+  //   if (!kakao.isInitialized()) {
+  //     kakao.init(process.env.REACT_APP_KAKAO_API_KEY);
+  //   }
+  // }
 
   // url 가져오기
   const url = `https://memome.be/${userId}`;
